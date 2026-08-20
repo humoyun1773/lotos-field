@@ -5,9 +5,16 @@ export interface ServiceItem {
   subtitleTag?: string;
   description: string;
   category: string;
-  features?: string[];
+  features: string[];
   bannerStyle: 'brush' | 'pill' | 'taxi' | 'architect' | 'it';
   phone?: string;
-  link?: string;
+  details: {
+    tagline: string;
+    summary: string;
+    highlights: string[];
+    advantages: string[];
+    contactActionText: string;
+  };
 }
 
+export type ActiveModal = 'service' | 'contact' | 'location' | null;

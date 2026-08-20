@@ -1,38 +1,48 @@
-# LOTOS FIELD - ZALATIYE LASTOCHKA MCHJ
+# ZALATIYE LASTOCHKA MCHJ — Rasmiy Veb-Sayt (Lotos Field)
 
-✨ **Sifat • Ishonch • Natija — Birga Yuksalamiz!**
-
-Zamonaviy **React 19**, **TypeScript**, **Tailwind CSS**, va **Vite** asosida yaratilgan **ZALATIYE LASTOCHKA MCHJ** korporativ veb-platformasi va vizual taqdimoti.
+Zamonaviy, tezkor va interaktiv veb-platforma: **React 19**, **TypeScript** va **Tailwind CSS v4** asosida yaratilgan.
 
 ---
 
-## 🚀 Faoliyat Yo'nalishlari (5 ta yo'nalish)
+## 🌟 Kompaniya Faoliyat Yo'nalishlari
 
-1. **01. LOTOS FIELD TRAVEL** — Sayohatlar, Umra & Haj ziyoratlari, aviabiletlar va viza xizmatlari.
-2. **02. AL-HAKIM AT-TERMEZIY O'QUV MARKAZI** — Til kurslari, Prezident maktabiga tayyorlov, ma'rifiy va zamonaviy ta'lim.
-3. **03. ES O'RGIMCHAK TAXI** — Tezkor, xavfsiz va ishonchli shahar hamda viloyatlararo taksi xizmati.
-4. **04. ARXETEKTURA (3D LOYIHALASH)** — 3D renderlar, interyer va eksteryer arxitektura loyihalash.
-5. **05. IT XIZMATLARI (DASTURLAR, WEBSITELAR)** — Zamonaviy veb-saytlar, CRM, Telegram botlar va mobil ilovalar.
+1. **01 — LOTOS FIELD TRAVEL**: Sayohatlar uchun yangi imkoniyatlar (Umra & Haj, xalqaro turlar, aviabiletlar)
+2. **02 — AL-HAKIM AT-TERMEZIY O'QUV MARKAZI**: Ilm bilan rivojlanish, kelajak sari qadam (Tilllar, IT, Prezident maktabiga tayyorlov)
+3. **03 — ES O'RGIMCHAK TAXI**: Tez, xavfsiz va ishonchli taxi xizmati (24/7 shahar va viloyatlararo)
+4. **04 — ARXETEKTURA 3D LOYIHALASH**: G'oyadan — loyihagacha, kelajakni shakllantiramiz (3D render, interyer & eksteryer)
+5. **05 — IT XIZMATLARI (DASTURLAR, WEBSITELAR)**: Zamonaviy dasturiy yechimlar biznesingiz uchun (Veb-saytlar, CRM, Telegram botlar)
 
 ---
 
-## 📞 Bog'lanish
+## 🚀 Texnologiyalar
 
-- **Telefon**: `+998 91 951 73 35`
-- **Xizmat**: 24/7
+- **Frontend**: React 19 + TypeScript
+- **Styling**: Tailwind CSS v4 + Glassmorphism UI
+- **Icons**: Lucide React
+- **Build Tool**: Vite 8
+- **Linter**: Oxlint
 
 ---
 
 ## 🛠 O'rnatish va Ishga tushirish
 
 ```bash
-# Paketlarni o'rnatish
+# Kutubxonalarni o'rnatish
 npm install
 
-# Dasturchi rejimida ishga tushirish
+# Dasturchi rejimida ishga tushirish (Dev server)
 npm run dev
 
-# Production uchun build olish
+# Production uchun yig'ish (Build)
 npm run build
+
+# Loyihani ko'rib chiqish (Preview)
+npm run preview
 ```
+
+---
+
+## 📞 Aloqa
+- **Telefon**: +998 91 951 73 35
+- **Shior**: SIFAT • ISHONCH • NATIJA — BIRGA YUKSALAMIZ!
 

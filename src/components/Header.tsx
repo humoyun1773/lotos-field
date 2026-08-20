@@ -1,4 +1,6 @@
-export const Header = () => {
+import type { FC } from 'react';
+
+export const Header: FC = () => {
   return (
     <header className="relative w-full flex flex-col items-center justify-center pt-8 pb-4 px-4 text-center select-none">
       {/* Swallow Bird (Lastochka) Logo */}
@@ -90,47 +92,47 @@ export const Header = () => {
       </div>
 
       {/* Main Title: ZALATIYE LASTOCHKA */}
-      <h1 className="font-cinzel text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[44px] font-extrabold tracking-[0.08em] sm:tracking-[0.12em] text-[#0f2963] uppercase drop-shadow-sm leading-tight max-w-full break-words">
+      <h1 className="font-cinzel text-3xl sm:text-4xl md:text-5xl lg:text-[44px] font-extrabold tracking-[0.12em] text-[#0f2963] uppercase drop-shadow-sm">
         ZALATIYE LASTOCHKA
       </h1>
 
       {/* Subtitle: M C H J */}
-      <h2 className="font-cinzel text-sm sm:text-base md:text-xl font-bold tracking-[0.35em] sm:tracking-[0.45em] text-[#1e3a8a] uppercase mt-1 mb-1.5">
+      <h2 className="font-cinzel text-base sm:text-lg md:text-xl font-bold tracking-[0.45em] text-[#1e3a8a] uppercase mt-1 mb-2">
         M C H J
       </h2>
 
       {/* Elegant Separator Line with Diamond */}
-      <div className="flex items-center justify-center gap-2 sm:gap-3 w-full max-w-xs sm:max-w-md my-1 opacity-70">
+      <div className="flex items-center justify-center gap-3 w-full max-w-md my-1 opacity-70">
         <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#2563eb] to-[#1e3a8a]" />
-        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rotate-45 bg-[#1e3a8a]" />
+        <span className="w-2 h-2 rotate-45 bg-[#1e3a8a]" />
         <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#2563eb] to-[#1e3a8a]" />
       </div>
 
       {/* Motto / Slogan: SIFAT • ISHONCH • NATIJA */}
-      <div className="flex items-center justify-center gap-1.5 sm:gap-3 text-[11px] xs:text-xs sm:text-sm md:text-base font-bold tracking-[0.15em] sm:tracking-[0.25em] text-[#2563eb] uppercase my-1.5">
+      <div className="flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm md:text-base font-bold tracking-[0.25em] text-[#2563eb] uppercase my-2">
         <span>SIFAT</span>
-        <span className="text-[#1e3a8a] text-[8px] sm:text-[10px]">•</span>
+        <span className="text-[#1e3a8a] text-[10px]">•</span>
         <span>ISHONCH</span>
-        <span className="text-[#1e3a8a] text-[8px] sm:text-[10px]">•</span>
+        <span className="text-[#1e3a8a] text-[10px]">•</span>
         <span>NATIJA</span>
       </div>
 
       {/* Section Title Banner: FAOLIYAT YO'NALISHLARIMIZ */}
-      <div className="relative inline-flex items-center justify-center gap-2 sm:gap-3 mt-2 sm:mt-3 px-3 sm:px-6 py-1">
+      <div className="relative inline-flex items-center justify-center gap-3 mt-3 px-6 py-1">
         {/* Left Line */}
-        <div className="flex items-center gap-1">
+        <div className="hidden sm:flex items-center gap-1">
           <span className="w-1.5 h-1.5 rounded-full bg-[#0f2963]" />
-          <div className="w-6 xs:w-10 sm:w-16 md:w-20 h-[1.5px] bg-[#0f2963]" />
+          <div className="w-12 md:w-20 h-[1.5px] bg-[#0f2963]" />
         </div>
 
         {/* Section Heading */}
-        <span className="text-xs xs:text-sm sm:text-base md:text-lg font-extrabold tracking-[0.12em] sm:tracking-[0.18em] text-[#0f2963] uppercase whitespace-nowrap">
+        <span className="text-sm sm:text-base md:text-lg font-extrabold tracking-[0.18em] text-[#0f2963] uppercase">
           FAOLIYAT YO'NALISHLARIMIZ
         </span>
 
         {/* Right Line */}
-        <div className="flex items-center gap-1">
-          <div className="w-6 xs:w-10 sm:w-16 md:w-20 h-[1.5px] bg-[#0f2963]" />
+        <div className="hidden sm:flex items-center gap-1">
+          <div className="w-12 md:w-20 h-[1.5px] bg-[#0f2963]" />
           <span className="w-1.5 h-1.5 rounded-full bg-[#0f2963]" />
         </div>
       </div>

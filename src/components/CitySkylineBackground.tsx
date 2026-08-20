@@ -1,4 +1,6 @@
-export const CitySkylineBackground = () => {
+import type { FC } from 'react';
+
+export const CitySkylineBackground: FC = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 select-none">
       {/* Radial Sky Light Blobs */}

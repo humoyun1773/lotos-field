@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import type { ServiceItem } from '../types';
 import { TravelVisual } from './visuals/TravelVisual';
 import { EducationVisual } from './visuals/EducationVisual';
@@ -8,9 +9,10 @@ import { ArrowUpRight } from 'lucide-react';
 
 interface ServiceCardProps {
   service: ServiceItem;
+  onSelect: (service: ServiceItem) => void;
 }
 
-export const ServiceCard = ({ service }: ServiceCardProps) => {
+export const ServiceCard: FC<ServiceCardProps> = ({ service, onSelect }) => {
   // Render visualizer according to service id
   const renderVisual = () => {
     switch (service.id) {
@@ -35,17 +37,17 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
       case 'brush':
         // 01: LOTOS FIELD TRAVEL with textured brush / ribbon style
         return (
-          <div className="flex flex-col items-center w-full my-2">
-            <div className="relative bg-gradient-to-r from-[#1746a2] via-[#1d4ed8] to-[#1746a2] text-white px-4 py-1.5 rounded-lg shadow-md text-center border-y-2 border-white/50 w-full max-w-[190px]">
-              <div className="font-extrabold text-[13px] sm:text-[14px] tracking-wider uppercase drop-shadow-sm leading-tight">
+          <div className="flex flex-col items-center w-full my-1.5">
+            <div className="relative bg-gradient-to-r from-[#1746a2] via-[#1d4ed8] to-[#1746a2] text-white px-5 py-1.5 rounded-md shadow-md text-center border-y-2 border-white/40 w-full max-w-[200px]">
+              <span className="font-extrabold text-xs sm:text-sm tracking-wider uppercase drop-shadow">
                 LOTOS FIELD
-              </div>
-              <div className="font-black text-[14px] sm:text-[15px] tracking-[0.2em] uppercase text-sky-100 leading-tight">
+              </span>
+              <div className="font-black text-sm sm:text-base tracking-widest uppercase -mt-0.5 text-sky-200">
                 TRAVEL
               </div>
-              {/* Ribbon side notches */}
-              <span className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-1.5 h-4 bg-[#0a1945] rounded-l-xs" />
-              <span className="absolute -right-1.5 top-1/2 -translate-y-1/2 w-1.5 h-4 bg-[#0a1945] rounded-r-xs" />
+              {/* Ribbon edge notches */}
+              <span className="absolute -left-1 top-1/2 -translate-y-1/2 w-1 h-3 bg-blue-900 rounded-l-xs" />
+              <span className="absolute -right-1 top-1/2 -translate-y-1/2 w-1 h-3 bg-blue-900 rounded-r-xs" />
             </div>
           </div>
         );
@@ -53,14 +55,14 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
       case 'pill':
         // 02: AL-HAKIM AT-TERMEZIY O'QUV MARKAZI
         return (
-          <div className="flex flex-col items-center w-full my-2 text-center">
-            <span className="font-black text-[13px] sm:text-[14px] tracking-wider text-[#0f2963] uppercase leading-tight font-cinzel">
+          <div className="flex flex-col items-center w-full my-1.5 text-center">
+            <span className="font-black text-xs sm:text-sm tracking-wide text-[#0f2963] uppercase leading-tight">
               AL-HAKIM
             </span>
-            <span className="font-black text-[13px] sm:text-[14px] tracking-wider text-[#0f2963] uppercase leading-tight font-cinzel">
+            <span className="font-black text-xs sm:text-sm tracking-wide text-[#0f2963] uppercase leading-tight -mt-0.5">
               AT-TERMEZIY
             </span>
-            <div className="bg-[#1746a2] text-white text-[10px] sm:text-[11px] font-extrabold tracking-widest px-3.5 py-0.5 rounded-full mt-1.5 uppercase shadow-sm">
+            <div className="bg-[#1746a2] text-white text-[10px] font-extrabold tracking-widest px-3 py-0.5 rounded-full mt-1 uppercase shadow-sm">
               O'QUV MARKAZI
             </div>
           </div>
@@ -69,19 +71,21 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
       case 'taxi':
         // 03: ES O'RGIMCHAK TAXI with checker flags and checker tape
         return (
-          <div className="flex flex-col items-center w-full my-1.5 text-center">
-            <span className="font-black text-[13px] sm:text-[14px] tracking-wider text-[#0f2963] uppercase leading-tight">
+          <div className="flex flex-col items-center w-full my-1 text-center">
+            <span className="font-black text-xs sm:text-sm tracking-wider text-[#0f2963] uppercase leading-tight">
               ES O'RGIMCHAK
             </span>
-            <div className="flex items-center justify-center gap-1.5 mt-0.5">
+            <div className="flex items-center justify-center gap-1 mt-0.5">
+              {/* Checker flag left */}
               <span className="text-xs">🏁</span>
-              <span className="font-black text-sm sm:text-base tracking-[0.2em] text-[#0f2963] uppercase font-space">
+              <span className="font-black text-sm sm:text-base tracking-widest text-[#0f2963] uppercase">
                 TAXI
               </span>
+              {/* Checker flag right */}
               <span className="text-xs">🏁</span>
             </div>
             {/* Blue & White Taxi Checker tape */}
-            <div className="w-full max-w-[160px] h-2.5 mt-1 rounded overflow-hidden flex shadow-inner border border-blue-900/40">
+            <div className="w-full max-w-[170px] h-2 mt-1 rounded overflow-hidden flex shadow-inner border border-blue-900/40">
               <div className="w-full h-full checker-stripe opacity-90" />
             </div>
           </div>
@@ -90,11 +94,11 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
       case 'architect':
         // 04: ARXETEKTURA with 3D LOYIHALASH bordered pill
         return (
-          <div className="flex flex-col items-center w-full my-2 text-center">
-            <span className="font-black text-sm sm:text-base tracking-wider text-[#1746a2] uppercase leading-tight font-cinzel">
+          <div className="flex flex-col items-center w-full my-1.5 text-center">
+            <span className="font-black text-sm sm:text-base tracking-wider text-[#1746a2] uppercase leading-tight">
               ARXETEKTURA
             </span>
-            <div className="border-1.5 border-[#1746a2] text-[#1746a2] bg-white text-[10px] sm:text-[11px] font-extrabold tracking-wider px-3.5 py-0.5 rounded-full mt-1.5 uppercase shadow-2xs">
+            <div className="border border-[#1746a2] text-[#1746a2] bg-white text-[10px] font-extrabold tracking-wider px-3 py-0.5 rounded-full mt-1 uppercase shadow-2xs">
               3D LOYIHALASH
             </div>
           </div>
@@ -103,11 +107,11 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
       case 'it':
         // 05: IT XIZMATLARI with DASTURLAR, WEBSITELAR blue pill
         return (
-          <div className="flex flex-col items-center w-full my-2 text-center">
-            <span className="font-black text-sm sm:text-base tracking-wider text-[#1746a2] uppercase leading-tight font-space">
+          <div className="flex flex-col items-center w-full my-1.5 text-center">
+            <span className="font-black text-sm sm:text-base tracking-wider text-[#1746a2] uppercase leading-tight">
               IT XIZMATLARI
             </span>
-            <div className="bg-[#1746a2] text-white text-[9.5px] sm:text-[10.5px] font-bold tracking-wider px-3 py-0.5 rounded-full mt-1.5 uppercase shadow-sm">
+            <div className="bg-[#1746a2] text-white text-[9px] sm:text-[10px] font-bold tracking-wider px-2.5 py-0.5 rounded-full mt-1 uppercase shadow-sm">
               DASTURLAR, WEBSITELAR
             </div>
           </div>
@@ -118,16 +122,10 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
     }
   };
 
-  const isExternal = service.link?.startsWith('http');
-
   return (
-    <a
-      href={service.link || '#'}
-      target={isExternal ? '_blank' : undefined}
-      rel={isExternal ? 'noopener noreferrer' : undefined}
-      aria-label={`${service.number} - ${service.title}: ${service.description}`}
-      title={`${service.title} sahifasiga o'tish`}
-      className="group relative flex flex-col items-center justify-between rounded-3xl p-3.5 sm:p-4 lg:p-4.5 xl:p-5 pt-5 sm:pt-6 transition-all duration-300 cursor-pointer glass-card hover:-translate-y-2 hover:shadow-[0_20px_35px_-10px_rgba(29,78,216,0.25)] select-none border border-white/90 text-inherit no-underline w-full"
+    <div
+      onClick={() => onSelect(service)}
+      className="group relative flex flex-col items-center justify-between rounded-3xl p-3 sm:p-4 pt-5 transition-all duration-300 cursor-pointer glass-card hover:-translate-y-2 hover:shadow-[0_20px_35px_-10px_rgba(29,78,216,0.25)] select-none border border-white/90"
     >
       {/* Top Floating Number Badge: 01, 02, etc. */}
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-30">
@@ -150,12 +148,12 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
           {service.description}
         </p>
 
-        {/* Action indicator */}
+        {/* Hover action indicator */}
         <div className="w-full pt-1.5 mt-1 border-t border-slate-200/60 flex items-center justify-center gap-1 text-[10px] font-bold text-blue-700 opacity-80 group-hover:opacity-100 transition-opacity">
-          <span>O'tish</span>
+          <span>Batafsil ma'lumot</span>
           <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </div>
       </div>
-    </a>
+    </div>
   );
 };

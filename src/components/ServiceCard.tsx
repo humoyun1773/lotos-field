@@ -125,6 +125,8 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
       href={service.link || '#'}
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener noreferrer' : undefined}
+      aria-label={`${service.number} - ${service.title}: ${service.description}`}
+      title={`${service.title} sahifasiga o'tish`}
       className="group relative flex flex-col items-center justify-between rounded-3xl p-3 sm:p-4 pt-5 transition-all duration-300 cursor-pointer glass-card hover:-translate-y-2 hover:shadow-[0_20px_35px_-10px_rgba(29,78,216,0.25)] select-none border border-white/90 text-inherit no-underline"
     >
       {/* Top Floating Number Badge: 01, 02, etc. */}

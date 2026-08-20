@@ -8,13 +8,12 @@ import { ServiceModal } from './components/ServiceModal';
 import { ContactModal } from './components/ContactModal';
 import { LocationModal } from './components/LocationModal';
 import { CitySkylineBackground } from './components/CitySkylineBackground';
-import { Phone, Eye } from 'lucide-react';
+import { Phone } from 'lucide-react';
 
 export function App() {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isLocationOpen, setIsLocationOpen] = useState(false);
-  const [showOriginalBanner, setShowOriginalBanner] = useState(false);
 
   return (
     <div className="min-h-screen relative flex flex-col justify-between overflow-x-hidden font-sans text-slate-800 bg-gradient-to-b from-[#ebf4ff] via-[#f5f9ff] to-[#e4f0ff]">
@@ -31,16 +30,6 @@ export function App() {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* View Original Banner Reference Toggle */}
-          <button
-            onClick={() => setShowOriginalBanner(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white/80 hover:bg-white text-slate-700 shadow-xs border border-slate-200 transition-all cursor-pointer"
-            title="Original banner rasmini ko'rish"
-          >
-            <Eye className="w-3.5 h-3.5 text-blue-600" />
-            <span className="hidden sm:inline">Original Poster</span>
-          </button>
-
           {/* Direct Call Button */}
           <a
             href={`tel:${companyInfo.rawPhone}`}
@@ -92,29 +81,6 @@ export function App() {
         isOpen={isLocationOpen}
         onClose={() => setIsLocationOpen(false)}
       />
-
-      {/* Original Banner Modal Preview */}
-      {showOriginalBanner && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-md">
-          <div className="absolute inset-0" onClick={() => setShowOriginalBanner(false)} />
-          <div className="relative max-w-4xl max-h-[90vh] bg-white rounded-2xl overflow-hidden shadow-2xl p-2 z-10 flex flex-col items-center">
-            <button
-              onClick={() => setShowOriginalBanner(false)}
-              className="absolute top-4 right-4 bg-black/60 hover:bg-black text-white px-3 py-1 rounded-full text-xs font-bold z-20 cursor-pointer"
-            >
-              Yopish ✕
-            </button>
-            <img
-              src="/banner.jpg"
-              alt="ZALATIYE LASTOCHKA MCHJ"
-              className="w-full h-auto max-h-[80vh] object-contain rounded-xl"
-            />
-            <div className="text-xs text-slate-500 py-2 font-medium text-center">
-              Asosiy dizayn va poster namunasi
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

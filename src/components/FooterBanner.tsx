@@ -3,9 +3,9 @@ import { companyInfo } from '../data/servicesData';
 
 export const FooterBanner = () => {
   return (
-    <footer className="w-full max-w-6xl mx-auto px-2 sm:px-4 py-4 sm:py-6 mt-4 select-none">
+    <footer className="w-full max-w-7xl 2xl:max-w-[1536px] mx-auto py-4 sm:py-6 mt-4 select-none">
       {/* Floating Bottom Card / Pill Container */}
-      <div className="relative glass-panel rounded-3xl md:rounded-full shadow-[0_12px_32px_rgba(26,86,219,0.14)] p-3 sm:p-3.5 border border-white flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 transition-all duration-300">
+      <div className="relative glass-panel rounded-3xl md:rounded-full shadow-[0_12px_32px_rgba(26,86,219,0.14)] p-3 sm:p-3.5 border border-white flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 transition-all duration-300 w-full">
         
         {/* Left Section: BIZ BILAN BOG'LANING + PHONE */}
         <a

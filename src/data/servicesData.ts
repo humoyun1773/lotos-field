@@ -21,7 +21,7 @@ export const services: ServiceItem[] = [
     description: 'Sayohatlar uchun yangi imkoniyatlar',
     category: 'Turizm & Sayohat',
     bannerStyle: 'brush',
-    link: '#travel'
+    link: 'https://travel.lotosfield.uz/'
   },
   {
     id: 'education',
@@ -31,7 +31,7 @@ export const services: ServiceItem[] = [
     description: 'Ilm bilan rivojlanish, kelajak sari qadam',
     category: 'Ta’lim & Rivojlanish',
     bannerStyle: 'pill',
-    link: '#education'
+    link: 'https://edu.lotosfield.uz/'
   },
   {
     id: 'taxi',
@@ -41,7 +41,7 @@ export const services: ServiceItem[] = [
     description: 'Tez, xavfsiz va ishonchli taxi xizmati',
     category: 'Yo‘lovchi & Yuk tashish',
     bannerStyle: 'taxi',
-    link: '#taxi'
+    link: 'tel:+998919517335'
   },
   {
     id: 'architecture',
@@ -51,7 +51,7 @@ export const services: ServiceItem[] = [
     description: "G'oyadan - loyihagacha, kelajakni shakllantiramiz",
     category: 'Loyiha & Arxitektura',
     bannerStyle: 'architect',
-    link: '#architecture'
+    link: 'https://t.me/zalatiyelastochka'
   },
   {
     id: 'it',
@@ -61,7 +61,7 @@ export const services: ServiceItem[] = [
     description: 'Zamonaviy dasturiy yechimlar biznesingiz uchun',
     category: 'Axborot Texnologiyalari',
     bannerStyle: 'it',
-    link: '#it'
+    link: 'https://t.me/zalatiyelastochka'
   }
 ];
 

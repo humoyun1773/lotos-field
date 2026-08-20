@@ -8,10 +8,9 @@ import { ArrowUpRight } from 'lucide-react';
 
 interface ServiceCardProps {
   service: ServiceItem;
-  onSelect: (service: ServiceItem) => void;
 }
 
-export const ServiceCard = ({ service, onSelect }: ServiceCardProps) => {
+export const ServiceCard = ({ service }: ServiceCardProps) => {
   // Render visualizer according to service id
   const renderVisual = () => {
     switch (service.id) {
@@ -120,9 +119,9 @@ export const ServiceCard = ({ service, onSelect }: ServiceCardProps) => {
   };
 
   return (
-    <div
-      onClick={() => onSelect(service)}
-      className="group relative flex flex-col items-center justify-between rounded-3xl p-3 sm:p-4 pt-5 transition-all duration-300 cursor-pointer glass-card hover:-translate-y-2 hover:shadow-[0_20px_35px_-10px_rgba(29,78,216,0.25)] select-none border border-white/90"
+    <a
+      href={service.link || '#'}
+      className="group relative flex flex-col items-center justify-between rounded-3xl p-3 sm:p-4 pt-5 transition-all duration-300 cursor-pointer glass-card hover:-translate-y-2 hover:shadow-[0_20px_35px_-10px_rgba(29,78,216,0.25)] select-none border border-white/90 text-inherit no-underline"
     >
       {/* Top Floating Number Badge: 01, 02, etc. */}
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-30">
@@ -145,12 +144,12 @@ export const ServiceCard = ({ service, onSelect }: ServiceCardProps) => {
           {service.description}
         </p>
 
-        {/* Hover action indicator */}
+        {/* Action indicator */}
         <div className="w-full pt-1.5 mt-1 border-t border-slate-200/60 flex items-center justify-center gap-1 text-[10px] font-bold text-blue-700 opacity-80 group-hover:opacity-100 transition-opacity">
-          <span>Batafsil ma'lumot</span>
+          <span>O'tish</span>
           <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </div>
       </div>
-    </div>
+    </a>
   );
 };

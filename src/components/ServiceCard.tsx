@@ -5,14 +5,12 @@ import { EducationVisual } from './visuals/EducationVisual';
 import { TaxiVisual } from './visuals/TaxiVisual';
 import { ArchitectureVisual } from './visuals/ArchitectureVisual';
 import { TechVisual } from './visuals/TechVisual';
-import { ArrowUpRight } from 'lucide-react';
 
 interface ServiceCardProps {
   service: ServiceItem;
-  onSelect: (service: ServiceItem) => void;
 }
 
-export const ServiceCard: FC<ServiceCardProps> = ({ service, onSelect }) => {
+export const ServiceCard: FC<ServiceCardProps> = ({ service }) => {
   // Render visualizer according to service id
   const renderVisual = () => {
     switch (service.id) {
@@ -123,10 +121,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, onSelect }) => {
   };
 
   return (
-    <div
-      onClick={() => onSelect(service)}
-      className="group relative flex flex-col items-center justify-between rounded-3xl p-3 sm:p-4 pt-5 transition-all duration-300 cursor-pointer glass-card hover:-translate-y-2 hover:shadow-[0_20px_35px_-10px_rgba(29,78,216,0.25)] select-none border border-white/90"
-    >
+    <div className="group relative flex flex-col items-center justify-between rounded-3xl p-3 sm:p-4 pt-5 transition-all duration-300 glass-card hover:-translate-y-1 hover:shadow-[0_15px_30px_-8px_rgba(29,78,216,0.2)] select-none border border-white/90">
       {/* Top Floating Number Badge: 01, 02, etc. */}
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-30">
         <div className="bg-gradient-to-r from-[#1746a2] to-[#2563eb] text-white font-extrabold text-xs px-3.5 py-0.5 rounded-full shadow-md border border-white/80 flex items-center justify-center">
@@ -147,13 +142,8 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, onSelect }) => {
         <p className="text-[11px] sm:text-xs text-slate-600 font-medium text-center mt-2 mb-1 px-1 line-clamp-2 leading-relaxed min-h-[34px] flex items-center justify-center">
           {service.description}
         </p>
-
-        {/* Hover action indicator */}
-        <div className="w-full pt-1.5 mt-1 border-t border-slate-200/60 flex items-center justify-center gap-1 text-[10px] font-bold text-blue-700 opacity-80 group-hover:opacity-100 transition-opacity">
-          <span>Batafsil ma'lumot</span>
-          <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-        </div>
       </div>
     </div>
   );
 };
+

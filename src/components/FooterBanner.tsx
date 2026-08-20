@@ -2,15 +2,7 @@ import type { FC } from 'react';
 import { Phone, ShieldCheck, MapPin } from 'lucide-react';
 import { companyInfo } from '../data/servicesData';
 
-interface FooterBannerProps {
-  onOpenContact: () => void;
-  onOpenLocation: () => void;
-}
-
-export const FooterBanner: FC<FooterBannerProps> = ({
-  onOpenContact,
-  onOpenLocation,
-}) => {
+export const FooterBanner: FC = () => {
   return (
     <footer className="w-full max-w-6xl mx-auto px-4 py-6 mt-4 select-none">
       {/* Floating Bottom Card / Pill Container */}
@@ -39,11 +31,8 @@ export const FooterBanner: FC<FooterBannerProps> = ({
         </a>
 
         {/* Center Section: SIFAT - ISHONCH - NATIJA Shield Badge */}
-        <div
-          onClick={onOpenContact}
-          className="flex-1 max-w-sm w-full cursor-pointer group"
-        >
-          <div className="relative bg-gradient-to-r from-[#0f2963] via-[#1d4ed8] to-[#0f2963] text-white rounded-full py-2.5 px-5 shadow-lg border border-white/40 flex items-center justify-center gap-3 group-hover:scale-[1.02] transition-transform">
+        <div className="flex-1 max-w-sm w-full">
+          <div className="relative bg-gradient-to-r from-[#0f2963] via-[#1d4ed8] to-[#0f2963] text-white rounded-full py-2.5 px-5 shadow-lg border border-white/40 flex items-center justify-center gap-3">
             {/* Shield Icon in white circle */}
             <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center border border-white/40">
               <ShieldCheck className="w-5 h-5 text-sky-200" />
@@ -62,17 +51,13 @@ export const FooterBanner: FC<FooterBannerProps> = ({
         </div>
 
         {/* Right Section: BIZ HAR DOIM SIZ BILAN (Location/Pin) */}
-        <div
-          onClick={onOpenLocation}
-          className="group flex items-center gap-3 px-4 py-2 rounded-full hover:bg-blue-50/80 transition-all cursor-pointer w-full md:w-auto justify-center md:justify-end"
-          title="Manzil va ma'lumotlar"
-        >
+        <div className="group flex items-center gap-3 px-4 py-2 rounded-full w-full md:w-auto justify-center md:justify-end">
           {/* Text labels */}
           <div className="flex flex-col text-right">
             <span className="text-[10px] sm:text-xs font-bold tracking-wider text-slate-500 uppercase">
               BIZ HAR DOIM
             </span>
-            <span className="text-base sm:text-lg md:text-xl font-black tracking-wide text-[#0f2963] uppercase group-hover:text-blue-600 transition-colors">
+            <span className="text-base sm:text-lg md:text-xl font-black tracking-wide text-[#0f2963] uppercase">
               SIZ BILAN
             </span>
           </div>
@@ -92,3 +77,4 @@ export const FooterBanner: FC<FooterBannerProps> = ({
     </footer>
   );
 };
+

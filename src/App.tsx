@@ -1,20 +1,11 @@
-import { useState } from 'react';
 import { services, companyInfo } from './data/servicesData';
-import type { ServiceItem } from './types';
 import { Header } from './components/Header';
 import { ServiceCard } from './components/ServiceCard';
 import { FooterBanner } from './components/FooterBanner';
-import { ServiceModal } from './components/ServiceModal';
-import { ContactModal } from './components/ContactModal';
-import { LocationModal } from './components/LocationModal';
 import { CitySkylineBackground } from './components/CitySkylineBackground';
 import { Phone } from 'lucide-react';
 
 export function App() {
-  const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
-  const [isContactOpen, setIsContactOpen] = useState(false);
-  const [isLocationOpen, setIsLocationOpen] = useState(false);
-
   return (
     <div className="min-h-screen relative flex flex-col justify-between overflow-x-hidden font-sans text-slate-800 bg-gradient-to-b from-[#ebf4ff] via-[#f5f9ff] to-[#e4f0ff]">
       {/* Background Graphic Elements */}
@@ -53,34 +44,14 @@ export function App() {
               <ServiceCard
                 key={service.id}
                 service={service}
-                onSelect={(srv) => setSelectedService(srv)}
               />
             ))}
           </div>
         </section>
 
         {/* Bottom Contact Pill Footer */}
-        <FooterBanner
-          onOpenContact={() => setIsContactOpen(true)}
-          onOpenLocation={() => setIsLocationOpen(true)}
-        />
+        <FooterBanner />
       </main>
-
-      {/* Modals */}
-      <ServiceModal
-        service={selectedService}
-        onClose={() => setSelectedService(null)}
-      />
-
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
-
-      <LocationModal
-        isOpen={isLocationOpen}
-        onClose={() => setIsLocationOpen(false)}
-      />
     </div>
   );
 }

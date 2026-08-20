@@ -51,7 +51,7 @@ export const services: ServiceItem[] = [
     description: "G'oyadan - loyihagacha, kelajakni shakllantiramiz",
     category: 'Loyiha & Arxitektura',
     bannerStyle: 'architect',
-    link: 'https://t.me/zalatiyelastochka'
+    link: 'https://arxitektura-web.vercel.app/'
   },
   {
     id: 'it',

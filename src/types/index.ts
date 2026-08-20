@@ -8,6 +8,7 @@ export interface ServiceItem {
   features: string[];
   bannerStyle: 'brush' | 'pill' | 'taxi' | 'architect' | 'it';
   phone?: string;
+  link?: string;
   details: {
     tagline: string;
     summary: string;
@@ -18,3 +19,4 @@ export interface ServiceItem {
 }
 
 export type ActiveModal = 'service' | 'contact' | 'location' | null;
+

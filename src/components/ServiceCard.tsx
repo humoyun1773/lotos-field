@@ -120,8 +120,10 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service }) => {
     }
   };
 
-  return (
-    <div className="group relative flex flex-col items-center justify-between rounded-3xl p-3 sm:p-4 pt-5 transition-all duration-300 glass-card hover:-translate-y-1 hover:shadow-[0_15px_30px_-8px_rgba(29,78,216,0.2)] select-none border border-white/90">
+  const cardClass = "group relative flex flex-col items-center justify-between rounded-3xl p-3 sm:p-4 pt-5 transition-all duration-300 glass-card hover:-translate-y-2 hover:shadow-[0_20px_35px_-10px_rgba(29,78,216,0.25)] select-none border border-white/90 h-full";
+
+  const cardContent = (
+    <>
       {/* Top Floating Number Badge: 01, 02, etc. */}
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-30">
         <div className="bg-gradient-to-r from-[#1746a2] to-[#2563eb] text-white font-extrabold text-xs px-3.5 py-0.5 rounded-full shadow-md border border-white/80 flex items-center justify-center">
@@ -142,7 +144,36 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service }) => {
         <p className="text-[11px] sm:text-xs text-slate-600 font-medium text-center mt-2 mb-1 px-1 line-clamp-2 leading-relaxed min-h-[34px] flex items-center justify-center">
           {service.description}
         </p>
+
+        {/* Link indicator - only shown if service has a link */}
+        {service.link && (
+          <div className="w-full pt-1.5 mt-1 border-t border-blue-100 flex items-center justify-center gap-1 text-[10px] font-bold text-blue-600 opacity-70 group-hover:opacity-100 transition-opacity">
+            <span>Saytga o'tish</span>
+            <svg className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </div>
+        )}
       </div>
+    </>
+  );
+
+  if (service.link) {
+    return (
+      <a
+        href={service.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cardClass + " cursor-pointer no-underline"}
+      >
+        {cardContent}
+      </a>
+    );
+  }
+
+  return (
+    <div className={cardClass}>
+      {cardContent}
     </div>
   );
 };

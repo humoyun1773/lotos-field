@@ -21,6 +21,7 @@ export const services: ServiceItem[] = [
     description: 'Sayohatlar uchun yangi imkoniyatlar',
     category: 'Turizm & Sayohat',
     bannerStyle: 'brush',
+    link: 'https://travel.lotosfield.uz/',
     features: ['Umra & Haj ziyoratlari', 'Dunyo bo‘ylab sayohatlar', 'Aviabiletlar & Vizalar', 'Premium mehmonxonalar'],
     details: {
       tagline: 'Orzuingizdagi sayohatni biz bilan rejalashtiring!',
@@ -47,6 +48,7 @@ export const services: ServiceItem[] = [
     description: 'Ilm bilan rivojlanish, kelajak sari qadam',
     category: 'Ta’lim & Rivojlanish',
     bannerStyle: 'pill',
+    link: 'https://edu.lotosfield.uz/',
     features: ['Arab tili & Tajvid', 'Ingliz va Rus tillari', 'Prezident maktabiga tayyorlov', 'Mental arifmetika'],
     details: {
       tagline: 'Kelajagingiz uchun poydevor qo‘ying!',
@@ -99,6 +101,7 @@ export const services: ServiceItem[] = [
     description: "G'oyadan - loyihagacha, kelajakni shakllantiramiz",
     category: 'Loyiha & Arxitektura',
     bannerStyle: 'architect',
+    link: 'https://architectury.lotosfield.uz/',
     features: ['3D Vizualizatsiya & Render', 'Interyer va Eksteryer dizayn', 'Konstruktiv chizmalar', 'Mualliflik nazorati'],
     details: {
       tagline: 'Orzuingizdagi binoni 3D hajmda yarating!',

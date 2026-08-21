@@ -129,6 +129,7 @@ export const services: ServiceItem[] = [
     description: 'Zamonaviy dasturiy yechimlar biznesingiz uchun',
     category: 'Axborot Texnologiyalari',
     bannerStyle: 'it',
+    link: 'https://it-services.lotosfield.uz/',
     features: ['Veb-saytlar va Landing pagelar', 'Telegram botlar va mini-applar', 'CRM va Avtomatlashtirish', 'Mobil ilovalar (iOS / Android)'],
     details: {
       tagline: 'Biznesingizni raqamli dunyoda yangi bosqichga olib chiqing!',

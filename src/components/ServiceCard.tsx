@@ -120,7 +120,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service }) => {
     }
   };
 
-  const cardClass = "group relative flex flex-col items-center justify-between rounded-3xl p-3 sm:p-4 pt-5 transition-all duration-300 glass-card hover:-translate-y-2 hover:shadow-[0_20px_35px_-10px_rgba(29,78,216,0.25)] select-none border border-white/90 h-full";
+  const baseClass = "group relative flex flex-col items-center justify-between rounded-3xl p-3 sm:p-4 pt-5 transition-all duration-300 glass-card hover:-translate-y-2 hover:shadow-[0_20px_35px_-10px_rgba(29,78,216,0.25)] border border-white/90 h-full";
 
   const cardContent = (
     <>
@@ -132,12 +132,12 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service }) => {
       </div>
 
       {/* Visualizer Area */}
-      <div className="w-full flex-1 flex items-center justify-center my-1 relative">
+      <div className="w-full flex-1 flex items-center justify-center my-1 relative pointer-events-none">
         {renderVisual()}
       </div>
 
       {/* Title & Banner Badge Area */}
-      <div className="w-full flex flex-col items-center">
+      <div className="w-full flex flex-col items-center pointer-events-none">
         {renderTitleBanner()}
 
         {/* Subtitle / Description Text */}
@@ -164,7 +164,8 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service }) => {
         href={service.link}
         target="_blank"
         rel="noopener noreferrer"
-        className={cardClass + " cursor-pointer no-underline"}
+        className={baseClass + " cursor-pointer block"}
+        style={{ textDecoration: 'none', display: 'flex' }}
       >
         {cardContent}
       </a>
@@ -172,7 +173,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service }) => {
   }
 
   return (
-    <div className={cardClass}>
+    <div className={baseClass}>
       {cardContent}
     </div>
   );

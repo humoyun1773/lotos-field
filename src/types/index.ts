@@ -6,7 +6,7 @@ export interface ServiceItem {
   description: string;
   category: string;
   features: string[];
-  bannerStyle: 'brush' | 'pill' | 'taxi' | 'architect' | 'it';
+  bannerStyle: 'brush' | 'pill' | 'taxi' | 'architect' | 'it' | 'lastochka';
   phone?: string;
   link?: string;
   details: {

@@ -147,5 +147,32 @@ export const services: ServiceItem[] = [
       ],
       contactActionText: 'IT loyihani muhokama qilish'
     }
+  },
+  {
+    id: 'lastochka',
+    number: '06',
+    title: 'ZALATIYE LASTOCHKA',
+    subtitleTag: 'M C H J',
+    description: 'Sifat, ishonch va natija bilan xizmat',
+    category: 'Korporativ Sayt',
+    bannerStyle: 'lastochka',
+    link: 'https://zalatoye-lastochka.vercel.app/',
+    features: ['Korporativ brending', 'Barcha xizmatlar bir joyda', 'Professional jamoa', '24/7 qo\'llab-quvvatlash'],
+    details: {
+      tagline: 'SIFAT • ISHONCH • NATIJA — BIRGA YUKSALAMIZ!',
+      summary: 'ZALATIYE LASTOCHKA MCHJ — sayohat, ta\'lim, taxi, arxitektura va IT xizmatlari bo\'yicha yetakchi kompaniya. Biz bilan har bir soha bo\'yicha eng sifatli xizmatni oling.',
+      highlights: [
+        'Barcha yo\'nalishlar bo\'yicha professional jamoa',
+        'Yuqori sifat va ishonchlilik kafolati',
+        'Har bir mijozga individual yondashuv',
+        'Uzluksiz 24/7 qo\'llab-quvvatlash'
+      ],
+      advantages: [
+        'Ko\'p yillik tajriba va obro\'',
+        'Keng xizmat ko\'rsatish tarmog\'i',
+        'Hamyonbop narxlar va chegirmalar'
+      ],
+      contactActionText: 'Biz bilan bog\'lanish'
+    }
   }
 ];

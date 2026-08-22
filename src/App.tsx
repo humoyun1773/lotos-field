@@ -39,7 +39,7 @@ export function App() {
 
         {/* 5 Service Cards Grid */}
         <section className="w-full mt-2 mb-4 sm:mt-3 sm:mb-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 sm:gap-5">
             {services.map((service) => (
               <ServiceCard
                 key={service.id}

@@ -5,6 +5,7 @@ import { EducationVisual } from './visuals/EducationVisual';
 import { TaxiVisual } from './visuals/TaxiVisual';
 import { ArchitectureVisual } from './visuals/ArchitectureVisual';
 import { TechVisual } from './visuals/TechVisual';
+import { LastochkaVisual } from './visuals/LastochkaVisual';
 
 interface ServiceCardProps {
   service: ServiceItem;
@@ -24,6 +25,8 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service }) => {
         return <ArchitectureVisual />;
       case 'it':
         return <TechVisual />;
+      case 'lastochka':
+        return <LastochkaVisual />;
       default:
         return null;
     }
@@ -111,6 +114,26 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service }) => {
             </span>
             <div className="bg-[#1746a2] text-white text-[9px] sm:text-[10px] font-bold tracking-wider px-2.5 py-0.5 rounded-full mt-1 uppercase shadow-sm">
               DASTURLAR, WEBSITELAR
+            </div>
+          </div>
+        );
+
+      case 'lastochka':
+        // 06: ZALATIYE LASTOCHKA with golden gradient ribbon
+        return (
+          <div className="flex flex-col items-center w-full my-1.5 text-center">
+            <div className="relative w-full max-w-[210px] bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 px-3 py-1.5 rounded-md shadow-md border border-amber-300/60 overflow-hidden">
+              {/* Shine sweep */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-[-20deg]" />
+              <div className="relative font-black text-xs sm:text-sm tracking-widest uppercase text-amber-950 leading-none">
+                ZALATIYE
+              </div>
+              <div className="relative font-black text-sm sm:text-base tracking-widest uppercase text-amber-950 -mt-0.5">
+                LASTOCHKA
+              </div>
+            </div>
+            <div className="bg-gradient-to-r from-[#0f2963] to-[#1d4ed8] text-white text-[9px] font-black tracking-[0.2em] px-3 py-0.5 rounded-full mt-1 uppercase shadow-sm">
+              M C H J
             </div>
           </div>
         );

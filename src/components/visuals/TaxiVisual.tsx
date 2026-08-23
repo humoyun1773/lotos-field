@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Car, Zap } from 'lucide-react';
+import { Car } from 'lucide-react';
 
 export const TaxiVisual: FC = () => {
   return (
@@ -67,10 +67,6 @@ export const TaxiVisual: FC = () => {
         </svg>
       </div>
 
-      {/* Floating Speed & Taxi Accents */}
-      <div className="absolute top-2 right-4 bg-amber-400 text-amber-950 p-1.5 rounded-full shadow-md animate-pulse">
-        <Zap className="w-3.5 h-3.5 fill-current" />
-      </div>
 
       {/* Taxi Car Icon Mini Badge */}
       <div className="absolute bottom-2 left-4 bg-blue-900 text-amber-300 p-1.5 rounded-lg shadow-md border border-white/60">

@@ -156,8 +156,8 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false })
         className="group relative w-full flex flex-col sm:flex-row items-center gap-6 sm:gap-10 rounded-3xl px-6 sm:px-10 py-6 sm:py-8 glass-card border border-white/90 hover:shadow-[0_24px_48px_-12px_rgba(29,78,216,0.28)] hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden"
         style={{ textDecoration: 'none', display: 'flex' }}
       >
-        {/* Shimmering golden border top accent */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 rounded-t-3xl" />
+        {/* Blue border top accent */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#1746a2] via-[#3b82f6] to-[#1746a2] rounded-t-3xl" />
 
         {/* Number badge */}
         <div className="absolute top-3 left-6 bg-gradient-to-r from-[#1746a2] to-[#2563eb] text-white font-extrabold text-xs px-3 py-0.5 rounded-full shadow border border-white/80">

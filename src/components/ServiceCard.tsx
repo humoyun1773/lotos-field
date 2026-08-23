@@ -153,11 +153,11 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false })
         href={service.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative w-full flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-10 rounded-3xl px-6 sm:px-10 py-6 sm:py-8 bg-gradient-to-r from-white/95 via-blue-50/60 to-white/95 backdrop-blur-xl border border-white/90 hover:border-blue-300/80 shadow-[0_16px_36px_-6px_rgba(23,70,162,0.14)] hover:shadow-[0_24px_48px_-8px_rgba(23,70,162,0.22)] hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden"
+        className="group relative w-full flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-10 rounded-3xl px-6 sm:px-10 py-7 sm:py-9 bg-gradient-to-r from-white via-blue-50/70 to-white backdrop-blur-xl border-2 border-blue-200/80 hover:border-blue-400 shadow-[0_16px_40px_-6px_rgba(15,41,99,0.12)] hover:shadow-[0_24px_50px_-8px_rgba(23,70,162,0.25)] hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden"
         style={{ textDecoration: 'none', display: 'flex' }}
       >
-        {/* Top elegant accent line */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#1746a2] via-[#3b82f6] to-[#1746a2] rounded-t-3xl" />
+        {/* Top elegant blue gradient accent line */}
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#0f2963] via-[#2563eb] to-[#0f2963] rounded-t-3xl" />
 
         {/* Number badge */}
         <div className="absolute top-3.5 left-6 bg-gradient-to-r from-[#0f2963] to-[#2563eb] text-white font-extrabold text-xs px-3.5 py-0.5 rounded-full shadow border border-white/80">
@@ -165,49 +165,59 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false })
         </div>
 
         {/* Left: Swallow Bird Visual with Ambient Glow */}
-        <div className="flex-shrink-0 w-full lg:w-80 flex items-center justify-center pointer-events-none">
-          <div className="relative w-full h-44 sm:h-48 flex items-center justify-center">
+        <div className="flex-shrink-0 w-full lg:w-72 flex flex-col items-center justify-center pointer-events-none">
+          <div className="relative w-full h-40 sm:h-44 flex items-center justify-center">
             <LastochkaVisual />
+          </div>
+          <div className="text-center -mt-2">
+            <span className="text-[11px] font-extrabold tracking-[0.2em] text-[#0f2963] uppercase bg-blue-100/70 px-3 py-0.5 rounded-full">
+              EKOTIZIM MARKAZI
+            </span>
           </div>
         </div>
 
-        {/* Right: Text & Action Content */}
+        {/* Right: Persuasive Business & Investment Content */}
         <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left pointer-events-none w-full">
-          {/* Title and Tag Badges */}
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 mb-2">
-            <div className="relative bg-gradient-to-r from-[#0f2963] via-[#1746a2] to-[#2563eb] text-white px-5 py-2 rounded-xl shadow-md border border-white/30">
-              <span className="font-cinzel font-black text-lg sm:text-xl md:text-2xl tracking-[0.15em] uppercase drop-shadow">
-                ZALATIYE LASTOCHKA
-              </span>
-            </div>
-            <div className="bg-blue-800 text-sky-200 text-xs font-black tracking-[0.25em] px-3.5 py-1.5 rounded-xl uppercase shadow-sm border border-blue-700">
-              M C H J
-            </div>
+          {/* Top Tagline Pill */}
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100/80 border border-blue-200 text-[#0f2963] text-[11px] font-bold tracking-wider uppercase mb-2 shadow-2xs">
+            <span className="w-2 h-2 rounded-full bg-blue-600 animate-ping" />
+            INVESTITSIYA VA HAMKORLIK IMKONIYATI
           </div>
 
-          {/* Slogan */}
-          <div className="text-xs sm:text-sm font-bold text-[#1746a2] tracking-[0.2em] uppercase mb-2">
-            SIFAT • ISHONCH • NATIJA — BIRGA YUKSALAMIZ!
+          {/* Main Headline */}
+          <h3 className="font-cinzel text-xl sm:text-2xl lg:text-3xl font-black text-[#0f2963] tracking-wide uppercase leading-tight mb-1">
+            BIZNESINGIZNI BIZ BILAN RIVOJLANTIRING!
+          </h3>
+
+          {/* Subheading with company name badge */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-3">
+            <span className="text-xs sm:text-sm font-bold text-blue-700 tracking-wider uppercase">
+              ZALATIYE LASTOCHKA MCHJ
+            </span>
+            <span className="text-slate-400 hidden sm:inline">•</span>
+            <span className="text-xs sm:text-sm font-semibold text-slate-600">
+              Kafolatlangan daromad, barqaror o'sish va kengayish
+            </span>
           </div>
 
-          {/* Description */}
-          <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed max-w-2xl mb-4">
-            {service.description} — sayohat, ta'lim, taxi, arxitektura va IT xizmatlari bo'yicha yetakchi ko'p tarmoqli kompaniya.
+          {/* Core pitch text explaining WHY they should click and invest */}
+          <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed max-w-3xl mb-4">
+            Biznesingizga investitsiya kiritmoqchimisiz yoki yangi yo‘nalishda daromad olmoqchimisiz? Bizning ko‘p tarmoqli ekotizimimiz (<span className="font-bold text-blue-900">Sayohat, Ta’lim, Taxi, Arxitektura va IT</span>) orqali tayyor infratuzilma, 100% yuridik shaffoflik va barqaror foydali hamkorlikka ega bo‘ling!
           </p>
 
-          {/* Features Pills */}
-          <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-4">
+          {/* Value Proposition Pills */}
+          <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-5">
             {service.features?.map((f, i) => (
-              <span key={i} className="text-[11px] font-semibold bg-white/90 text-blue-900 border border-blue-200/80 px-3 py-1 rounded-full shadow-2xs">
-                ✓ {f}
+              <span key={i} className="text-[11px] font-bold bg-white text-[#0f2963] border border-blue-200 px-3 py-1 rounded-xl shadow-2xs flex items-center gap-1">
+                <span className="text-blue-600">✦</span> {f}
               </span>
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#0f2963] to-[#2563eb] text-white text-xs sm:text-sm font-bold px-6 py-2.5 rounded-full shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all">
-            <span>Rasmiy saytga o'tish</span>
-            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+          {/* High-Converting CTA Button */}
+          <div className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#0f2963] via-[#1746a2] to-[#2563eb] text-white text-xs sm:text-sm font-extrabold px-7 py-3 rounded-full shadow-lg group-hover:shadow-blue-500/30 group-hover:scale-105 transition-all duration-300">
+            <span>Hamkorlik & Investitsiya portaliga o‘tish</span>
+            <svg className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </div>

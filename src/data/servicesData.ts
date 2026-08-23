@@ -153,26 +153,26 @@ export const services: ServiceItem[] = [
     number: '06',
     title: 'ZALATIYE LASTOCHKA',
     subtitleTag: 'M C H J',
-    description: 'Sifat, ishonch va natija bilan xizmat',
-    category: 'Korporativ Sayt',
+    description: 'Biznesingizni biz bilan yangi bosqichga olib chiqing va kafolatli daromadga erishing',
+    category: 'Investitsiya & Hamkorlik',
     bannerStyle: 'lastochka',
     link: 'https://zalatoye-lastochka.vercel.app/',
-    features: ['Korporativ brending', 'Barcha xizmatlar bir joyda', 'Professional jamoa', '24/7 qo\'llab-quvvatlash'],
+    features: ['Kafolatlangan daromad & ROI', 'To‘liq biznes ekotizimi', 'Ishonchli investitsiya', '100% yuridik shaffoflik'],
     details: {
-      tagline: 'SIFAT • ISHONCH • NATIJA — BIRGA YUKSALAMIZ!',
-      summary: 'ZALATIYE LASTOCHKA MCHJ — sayohat, ta\'lim, taxi, arxitektura va IT xizmatlari bo\'yicha yetakchi kompaniya. Biz bilan har bir soha bo\'yicha eng sifatli xizmatni oling.',
+      tagline: 'BIZNESINGIZNI BIZ BILAN RIVOJLANTIRING — KAFOLATLI NATIJA VA KENGAYISH!',
+      summary: 'ZALATIYE LASTOCHKA MCHJ — turizm, ta’lim, logistika, arxitektura va IT texnologiyalarini birlashtirgan yagona yirik biznes ekotizimi. Bizga sarmoya kiritib yoki hamkor bo‘lib, barqaror va yuqori daromadli biznesga ega bo‘ling!',
       highlights: [
-        'Barcha yo\'nalishlar bo\'yicha professional jamoa',
-        'Yuqori sifat va ishonchlilik kafolati',
-        'Har bir mijozga individual yondashuv',
-        'Uzluksiz 24/7 qo\'llab-quvvatlash'
+        'Har bir investitsiya uchun qonuniy kafolat va aniq hisobot',
+        'Biznes jarayonlarini to‘liq avtomatlashtirish va qo‘llab-quvvatlash',
+        'Katta bozor ulushi va doimiy mijozlar oqimi',
+        '24/7 professional boshqaruv va maslahat'
       ],
       advantages: [
-        'Ko\'p yillik tajriba va obro\'',
-        'Keng xizmat ko\'rsatish tarmog\'i',
-        'Hamyonbop narxlar va chegirmalar'
+        'Tez o‘zini oqlovchi biznes modellar (Yuqori ROI)',
+        'Tayyor infratuzilma va tajribali mutaxassislar jamoasi',
+        'Risk darajasi minimal bo‘lgan ishonchli loyihalar'
       ],
-      contactActionText: 'Biz bilan bog\'lanish'
+      contactActionText: 'Hamkorlikni boshlash'
     }
   }
 ];

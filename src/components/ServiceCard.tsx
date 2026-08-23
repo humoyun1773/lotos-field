@@ -120,16 +120,16 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false })
         );
 
       case 'lastochka':
-        // 06: ZALATIYE LASTOCHKA with golden gradient ribbon
+        // 06: ZALATIYE LASTOCHKA with blue gradient ribbon
         return (
           <div className="flex flex-col items-center w-full my-1.5 text-center">
-            <div className="relative w-full max-w-[210px] bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 px-3 py-1.5 rounded-md shadow-md border border-amber-300/60 overflow-hidden">
+            <div className="relative w-full max-w-[210px] bg-gradient-to-r from-[#1746a2] via-[#1d4ed8] to-[#1746a2] px-3 py-1.5 rounded-md shadow-md border border-white/40 overflow-hidden">
               {/* Shine sweep */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-[-20deg]" />
-              <div className="relative font-black text-xs sm:text-sm tracking-widest uppercase text-amber-950 leading-none">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent skew-x-[-20deg]" />
+              <div className="relative font-black text-xs sm:text-sm tracking-widest uppercase text-white leading-none">
                 ZALATIYE
               </div>
-              <div className="relative font-black text-sm sm:text-base tracking-widest uppercase text-amber-950 -mt-0.5">
+              <div className="relative font-black text-sm sm:text-base tracking-widest uppercase text-sky-200 -mt-0.5">
                 LASTOCHKA
               </div>
             </div>
@@ -175,12 +175,12 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false })
         <div className="flex-1 flex flex-col items-center sm:items-start text-center sm:text-left pointer-events-none">
           {/* Title ribbon */}
           <div className="relative inline-flex flex-col items-center sm:items-start mb-3">
-            <div className="relative bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 px-5 py-2 rounded-xl shadow-lg border border-amber-300/60 overflow-hidden mb-2">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-[-20deg]" />
-              <div className="relative font-black text-xl sm:text-2xl tracking-widest uppercase text-amber-950 leading-none">
+            <div className="relative bg-gradient-to-r from-[#1746a2] via-[#1d4ed8] to-[#1746a2] px-5 py-2 rounded-xl shadow-lg border border-white/40 overflow-hidden mb-2">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent skew-x-[-20deg]" />
+              <div className="relative font-black text-xl sm:text-2xl tracking-widest uppercase text-white leading-none">
                 ZALATIYE
               </div>
-              <div className="relative font-black text-2xl sm:text-3xl tracking-widest uppercase text-amber-950 -mt-1">
+              <div className="relative font-black text-2xl sm:text-3xl tracking-widest uppercase text-sky-200 -mt-1">
                 LASTOCHKA
               </div>
             </div>

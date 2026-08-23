@@ -48,7 +48,7 @@ export const services: ServiceItem[] = [
     description: 'Ilm bilan rivojlanish, kelajak sari qadam',
     category: 'Ta’lim & Rivojlanish',
     bannerStyle: 'pill',
-    link: 'https://edu.lotosfield.uz/',
+    link: 'https://lotosfield.uz/',
     features: ['Arab tili & Tajvid', 'Ingliz va Rus tillari', 'Prezident maktabiga tayyorlov', 'Mental arifmetika'],
     details: {
       tagline: 'Kelajagingiz uchun poydevor qo‘ying!',

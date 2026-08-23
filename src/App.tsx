@@ -6,6 +6,9 @@ import { CitySkylineBackground } from './components/CitySkylineBackground';
 import { Phone } from 'lucide-react';
 
 export function App() {
+  const lastochkaService = services.find(s => s.id === 'lastochka');
+  const otherServices = services.filter(s => s.id !== 'lastochka');
+
   return (
     <div className="min-h-screen relative flex flex-col overflow-x-hidden font-sans text-slate-800 bg-gradient-to-b from-[#ebf4ff] via-[#f5f9ff] to-[#e4f0ff]">
       {/* Background Graphic Elements */}
@@ -21,7 +24,6 @@ export function App() {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Direct Call Button */}
           <a
             href={`tel:${companyInfo.rawPhone}`}
             className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition-all"
@@ -37,10 +39,17 @@ export function App() {
         {/* Brand Header */}
         <Header />
 
-        {/* 5 Service Cards Grid */}
-        <section className="w-full mt-2 mb-4 sm:mt-3 sm:mb-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 sm:gap-5">
-            {services.map((service) => (
+        <section className="w-full mt-2 mb-4 sm:mt-3 sm:mb-6 flex flex-col gap-4 sm:gap-5">
+          {/* Featured Top Card — ZALATIYE LASTOCHKA (full width, tall) */}
+          {lastochkaService && (
+            <div className="w-full">
+              <ServiceCard service={lastochkaService} featured />
+            </div>
+          )}
+
+          {/* 5 Service Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5">
+            {otherServices.map((service) => (
               <ServiceCard
                 key={service.id}
                 service={service}

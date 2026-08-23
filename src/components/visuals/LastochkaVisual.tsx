@@ -6,11 +6,6 @@ export const LastochkaVisual: FC = () => {
       {/* Background soft golden-blue glow */}
       <div className="absolute inset-0 rounded-2xl" style={{ background: 'radial-gradient(ellipse at 50% 40%, rgba(251,191,36,0.12) 0%, rgba(219,234,254,0.35) 50%, transparent 100%)' }} />
 
-      {/* Sparkle dots */}
-      <div className="absolute top-4 left-8 w-1.5 h-1.5 bg-amber-400 rounded-full animate-ping" style={{ animationDuration: '2s' }} />
-      <div className="absolute top-10 right-10 w-1 h-1 bg-blue-400 rounded-full animate-pulse" />
-      <div className="absolute bottom-8 left-12 w-1 h-1 bg-amber-300 rounded-full animate-ping" style={{ animationDelay: '1s', animationDuration: '3s' }} />
-      <div className="absolute bottom-12 right-8 w-1.5 h-1.5 bg-blue-300 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
 
       {/* Main Swallow Bird SVG */}
       <div className="relative z-10 transition-transform duration-300 hover:scale-110">

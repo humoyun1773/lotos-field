@@ -102,15 +102,6 @@ export const LastochkaVisual: FC = () => {
         </svg>
       </div>
 
-      {/* MCHJ badge bottom left */}
-      <div className="absolute bottom-2 left-4 bg-gradient-to-r from-[#0f2963] to-[#1d4ed8] text-white text-[9px] font-black px-2 py-0.5 rounded shadow border border-white/30 tracking-widest uppercase">
-        M C H J
-      </div>
-
-      {/* Gold badge bottom right */}
-      <div className="absolute bottom-2 right-4 bg-amber-400 text-amber-950 text-[9px] font-black px-2 py-0.5 rounded shadow tracking-wider">
-        ✦ Official
-      </div>
     </div>
   );
 };

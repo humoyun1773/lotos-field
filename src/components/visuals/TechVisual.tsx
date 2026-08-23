@@ -74,7 +74,7 @@ export const TechVisual: FC = () => {
           <div className="flex-1 bg-gradient-to-br from-blue-900 to-indigo-950 rounded-sm m-0.5 p-0.5 flex flex-col justify-around">
             <div className="flex items-center justify-between text-[4px] text-cyan-300">
               <span>9:41</span>
-              <span>⚡100%</span>
+              <span>100%</span>
             </div>
             <div className="w-full h-2 bg-blue-600/60 rounded flex items-center justify-center text-[5px] text-white font-bold">
               PAY

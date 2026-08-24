@@ -168,11 +168,6 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
         {/* Top elegant blue gradient accent line */}
         <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#0f2963] via-[#2563eb] to-[#0f2963] rounded-t-3xl" />
 
-        {/* Number badge */}
-        <div className="absolute top-3.5 left-6 bg-gradient-to-r from-[#0f2963] to-[#2563eb] text-white font-extrabold text-xs px-3.5 py-0.5 rounded-full shadow border border-white/80">
-          {service.number}
-        </div>
-
         {/* Left: Swallow Bird Visual with Ambient Glow */}
         <div className="flex-shrink-0 w-full lg:w-72 flex flex-col items-center justify-center pointer-events-none">
           <div className="relative w-full h-40 sm:h-44 flex items-center justify-center">
@@ -238,13 +233,6 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
   // ── NORMAL card ──
   const cardContent = (
     <>
-      {/* Top Floating Number Badge */}
-      <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-30">
-        <div className="bg-gradient-to-r from-[#0f2963] to-[#2563eb] text-white font-extrabold text-xs px-3.5 py-0.5 rounded-full shadow-md border border-white/80 flex items-center justify-center">
-          {service.number}
-        </div>
-      </div>
-
       {/* Visualizer Area */}
       <div className="w-full flex-1 flex items-center justify-center my-1 relative pointer-events-none min-h-[140px]">
         {renderVisual()}

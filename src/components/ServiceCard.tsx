@@ -10,9 +10,10 @@ import { LastochkaVisual } from './visuals/LastochkaVisual';
 interface ServiceCardProps {
   service: ServiceItem;
   featured?: boolean;
+  onNavigate?: (service: ServiceItem) => void;
 }
 
-export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false }) => {
+export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, onNavigate }) => {
   // Render visualizer according to service id
   const renderVisual = () => {
     switch (service.id) {
@@ -146,6 +147,13 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false })
 
   const baseClass = "group relative flex flex-col items-center justify-between rounded-3xl p-4 pt-6 transition-all duration-300 bg-white/80 backdrop-blur-md hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(23,70,162,0.22)] border border-white/90 hover:border-blue-300 shadow-[0_8px_24px_rgba(15,41,99,0.06)] h-full";
 
+  const handleClick = (e: React.MouseEvent) => {
+    if (onNavigate && service.link) {
+      e.preventDefault();
+      onNavigate(service);
+    }
+  };
+
   // ── FEATURED (full-width horizontal) card for Zalatiye Lastochka ──
   if (featured && service.link) {
     return (
@@ -153,6 +161,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false })
         href={service.link}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={handleClick}
         className="group relative w-full flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-10 rounded-3xl px-6 sm:px-10 py-7 sm:py-9 bg-gradient-to-r from-white via-blue-50/70 to-white backdrop-blur-xl border-2 border-blue-200/80 hover:border-blue-400 shadow-[0_16px_40px_-6px_rgba(15,41,99,0.12)] hover:shadow-[0_24px_50px_-8px_rgba(23,70,162,0.25)] hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden"
         style={{ textDecoration: 'none', display: 'flex' }}
       >
@@ -271,6 +280,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false })
         href={service.link}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={handleClick}
         className={baseClass + " cursor-pointer block"}
         style={{ textDecoration: 'none', display: 'flex' }}
       >

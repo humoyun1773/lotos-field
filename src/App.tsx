@@ -1,16 +1,42 @@
+import { useState } from 'react';
 import { services, companyInfo } from './data/servicesData';
+import type { ServiceItem } from './types';
 import { Header } from './components/Header';
 import { ServiceCard } from './components/ServiceCard';
 import { FooterBanner } from './components/FooterBanner';
 import { CitySkylineBackground } from './components/CitySkylineBackground';
+import { Preloader } from './components/Preloader';
+import { NavigationLoader } from './components/NavigationLoader';
 import { Phone } from 'lucide-react';
 
 export function App() {
+  const [isNavigating, setIsNavigating] = useState(false);
+  const [targetServiceName, setTargetServiceName] = useState('');
+
   const lastochkaService = services.find(s => s.id === 'lastochka');
   const otherServices = services.filter(s => s.id !== 'lastochka');
 
+  const handleNavigate = (service: ServiceItem) => {
+    if (!service.link) return;
+    setTargetServiceName(service.title);
+    setIsNavigating(true);
+
+    setTimeout(() => {
+      window.open(service.link, '_blank', 'noopener,noreferrer');
+      setTimeout(() => {
+        setIsNavigating(false);
+      }, 400);
+    }, 600);
+  };
+
   return (
     <div className="min-h-screen relative flex flex-col overflow-x-hidden font-sans text-slate-800 bg-gradient-to-b from-[#ebf4ff] via-[#f5f9ff] to-[#e4f0ff]">
+      {/* Initial Page Preloader */}
+      <Preloader />
+
+      {/* Navigation Redirecting Loader */}
+      <NavigationLoader isOpen={isNavigating} targetName={targetServiceName} />
+
       {/* Background Graphic Elements */}
       <CitySkylineBackground />
 
@@ -43,7 +69,11 @@ export function App() {
           {/* Featured Top Card — ZALATIYE LASTOCHKA (full width, tall) */}
           {lastochkaService && (
             <div className="w-full">
-              <ServiceCard service={lastochkaService} featured />
+              <ServiceCard
+                service={lastochkaService}
+                featured
+                onNavigate={handleNavigate}
+              />
             </div>
           )}
 
@@ -53,6 +83,7 @@ export function App() {
               <ServiceCard
                 key={service.id}
                 service={service}
+                onNavigate={handleNavigate}
               />
             ))}
           </div>

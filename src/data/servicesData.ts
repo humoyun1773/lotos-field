@@ -75,7 +75,7 @@ export const services: ServiceItem[] = [
     description: 'Tez, xavfsiz va ishonchli taxi xizmati',
     category: 'Yo‘lovchi & Yuk tashish',
     bannerStyle: 'taxi',
-    link: 'https://taxi-landing-page-five.vercel.app/',
+    link: 'https://taxi.lotosfield.uz/',
     features: ['Tezkor yetib kelish (3-5 daqiqa)', 'Shahar ichi va viloyatlararo', 'Toza va qulay avtomobillar', 'Xushmuomala haydovchilar'],
     details: {
       tagline: 'Manzilingizga omon va qulay yetib oling!',

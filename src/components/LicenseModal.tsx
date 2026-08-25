@@ -1,5 +1,5 @@
 import { useState, useEffect, type FC } from 'react';
-import { X, ShieldCheck, Download, ZoomIn, CheckCircle2, Building2, Award } from 'lucide-react';
+import { X, ShieldCheck, Download, ZoomIn, CheckCircle2, Building2, Award, BookOpen } from 'lucide-react';
 
 interface LicenseItem {
   id: string;
@@ -13,7 +13,7 @@ interface LicenseItem {
   description: string;
 }
 
-const licensesData: LicenseItem[] = [
+const topLicensesData: LicenseItem[] = [
   {
     id: 'tourism',
     title: 'Turistik Faoliyat Litsenziyasi',
@@ -93,7 +93,7 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <>
-      {/* High Performance Modal Backdrop (No heavy backdrop-blur) */}
+      {/* High Performance Modal Backdrop */}
       <div
         className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 md:p-6 bg-slate-950/80 overflow-y-auto transform-gpu"
         onClick={onClose}
@@ -115,14 +115,14 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
               <div>
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   <h2 className="font-cinzel text-sm sm:text-base md:text-lg font-black text-[#0f2963] tracking-wide uppercase leading-tight">
-                    Rasmiy Litsenziyalar
+                    Rasmiy Litsenziya va Sertifikatlar
                   </h2>
                   <span className="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 text-[9px] sm:text-[10px] font-extrabold px-2 py-0.5 rounded-full border border-emerald-200">
                     <CheckCircle2 className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> 100% Qonuniy
                   </span>
                 </div>
                 <p className="text-[11px] sm:text-xs text-slate-500 font-medium mt-0.5 line-clamp-1 sm:line-clamp-none">
-                  "ZALATIYE LASTOCHKA" MCHJ davlat ro'yxatidan o'tgan faoliyat hujjatlari
+                  "ZALATIYE LASTOCHKA" MCHJ ning davlat ro‘yxatidan o‘tgan barcha faoliyat hujjatlari
                 </p>
               </div>
             </div>
@@ -138,10 +138,10 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
             </button>
           </div>
 
-          {/* Modal Body - 3 License Cards */}
-          <div className="p-3 sm:p-5 md:p-6 overflow-y-auto flex-1">
+          {/* Modal Body */}
+          <div className="p-3 sm:p-5 md:p-6 overflow-y-auto flex-1 flex flex-col gap-4 sm:gap-5">
             {/* Quick Badges Info */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 mb-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
               <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-2.5 flex items-center gap-2.5">
                 <Building2 className="w-4 h-4 text-blue-700 flex-shrink-0" />
                 <div>
@@ -159,39 +159,39 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
               <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl p-2.5 flex items-center gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-700 flex-shrink-0" />
                 <div>
-                  <div className="text-[9px] uppercase font-bold text-slate-500">Litsenziya Holati</div>
-                  <div className="text-xs sm:text-sm font-black text-emerald-700">Cheksiz / Faol</div>
+                  <div className="text-[9px] uppercase font-bold text-slate-500">Litsenziyalar Holati</div>
+                  <div className="text-xs sm:text-sm font-black text-emerald-700">Cheksiz / Barchasi Faol</div>
                 </div>
               </div>
             </div>
 
-            {/* The 4 Main License & Certificate Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
-              {licensesData.map((lic, index) => (
+            {/* SECTION 1: Top 4 Main License Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5">
+              {topLicensesData.map((lic, index) => (
                 <div
                   key={lic.id}
-                  className="bg-white rounded-2xl border border-slate-200 shadow-xs hover:border-blue-300 hover:shadow-md transition-all duration-200 flex flex-col justify-between overflow-hidden"
+                  className="bg-white rounded-2xl border border-slate-200 shadow-2xs hover:border-blue-300 hover:shadow-md transition-all duration-200 flex flex-col justify-between overflow-hidden"
                 >
                   {/* Top Badge */}
-                  <div className="p-3.5 pb-1.5">
-                    <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider bg-blue-50 text-blue-800 px-2 py-0.5 rounded-full border border-blue-100">
+                  <div className="p-3 pb-1">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider bg-blue-50 text-blue-800 px-2 py-0.5 rounded-full border border-blue-100">
                         {lic.category}
                       </span>
-                      <span className="text-xs font-black text-slate-400">
+                      <span className="text-[11px] font-black text-slate-400">
                         0{index + 1}
                       </span>
                     </div>
-                    <h3 className="font-cinzel text-xs sm:text-sm font-extrabold text-[#0f2963] leading-snug line-clamp-2 min-h-[38px]">
+                    <h3 className="font-cinzel text-xs sm:text-sm font-extrabold text-[#0f2963] leading-snug line-clamp-2 min-h-[36px]">
                       {lic.title}
                     </h3>
                   </div>
 
                   {/* Document Image Thumbnail Box with Zoom Trigger */}
-                  <div className="px-3.5 py-1.5">
+                  <div className="px-3 py-1">
                     <div
                       onClick={() => setSelectedImage(lic.imageSrc)}
-                      className="relative w-full h-48 sm:h-52 bg-slate-50 rounded-xl border border-slate-200 hover:border-blue-500 overflow-hidden cursor-pointer group/img flex items-center justify-center transition-colors"
+                      className="relative w-full h-44 sm:h-48 bg-slate-50 rounded-xl border border-slate-200 hover:border-blue-500 overflow-hidden cursor-pointer group/img flex items-center justify-center transition-colors"
                     >
                       <img
                         src={lic.imageSrc}
@@ -208,8 +208,8 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
                   </div>
 
                   {/* Details and Specs */}
-                  <div className="p-3.5 pt-1.5 flex flex-col gap-2 flex-1 justify-between">
-                    <div className="space-y-1 text-[11px] text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                  <div className="p-3 pt-1 flex flex-col gap-1.5 flex-1 justify-between">
+                    <div className="space-y-0.5 text-[10px] sm:text-[11px] text-slate-600 bg-slate-50 p-2 rounded-xl border border-slate-100">
                       <div>
                         <span className="font-bold text-slate-800">Raqam:</span> {lic.licenseNumber}
                       </div>
@@ -222,19 +222,19 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
                     </div>
 
                     {/* Action buttons */}
-                    <div className="pt-1 flex items-center gap-2">
+                    <div className="pt-1 flex items-center gap-1.5">
                       <button
                         type="button"
                         onClick={() => setSelectedImage(lic.imageSrc)}
-                        className="flex-1 py-1.5 px-3 rounded-xl bg-blue-50 hover:bg-blue-600 text-[#0f2963] hover:text-white border border-blue-200 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                        className="flex-1 py-1.5 px-2 rounded-xl bg-blue-50 hover:bg-blue-600 text-[#0f2963] hover:text-white border border-blue-200 font-bold text-xs flex items-center justify-center gap-1 transition-colors cursor-pointer"
                       >
                         <ZoomIn className="w-3.5 h-3.5" />
                         <span>Ko‘rish</span>
                       </button>
                       <a
                         href={lic.imageSrc}
-                        download={`${lic.id}-license.png`}
-                        className="py-1.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-bold text-xs flex items-center justify-center transition-colors cursor-pointer"
+                        download={`${lic.id}-document.png`}
+                        className="py-1.5 px-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-bold text-xs flex items-center justify-center transition-colors cursor-pointer"
                         title="Yuklab olish"
                       >
                         <Download className="w-3.5 h-3.5" />
@@ -243,6 +243,139 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* SECTION 2: Full-Width Featured Card for Education Tasdiqnoma (2 images side-by-side) */}
+            <div className="w-full bg-gradient-to-r from-blue-50/90 via-white to-blue-50/90 rounded-2xl sm:rounded-3xl border-2 border-blue-200/90 shadow-sm p-4 sm:p-5 flex flex-col gap-3.5">
+              {/* Header of the Featured Card */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-blue-100 pb-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-xs flex-shrink-0">
+                    <BookOpen className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-extrabold uppercase tracking-wider bg-blue-100 text-blue-900 px-2.5 py-0.5 rounded-full border border-blue-200">
+                        Ta’lim & IT Yo‘nalishlari
+                      </span>
+                      <span className="text-xs font-black text-blue-700">
+                        05 • 2 BETLI HUJJAT
+                      </span>
+                    </div>
+                    <h3 className="font-cinzel text-sm sm:text-base font-black text-[#0f2963] uppercase mt-0.5">
+                      Nodavlat Ta’lim Faoliyati Tasdiqnomasi (Xabarnoma)
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="text-[11px] text-slate-600 bg-white/80 px-3 py-1.5 rounded-xl border border-blue-100 flex flex-wrap gap-x-4 gap-y-1">
+                  <span><strong className="text-slate-800">Raqam:</strong> № 1765022 (X-174848141303)</span>
+                  <span><strong className="text-slate-800">Organ:</strong> Maktabgacha va maktab ta’limi vazirligi</span>
+                  <span><strong className="text-emerald-700">Holat:</strong> Faol (07.06.2026)</span>
+                </div>
+              </div>
+
+              {/* 2 Images Side-by-Side Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                {/* Page 1 (Front page) */}
+                <div className="bg-white rounded-2xl border border-blue-100 p-3 flex flex-col justify-between shadow-2xs">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] font-bold text-slate-600">1-BET: Asosiy Xabarnoma Tasdiqnomasi</span>
+                    <span className="text-[10px] font-extrabold text-blue-600">№ 1765022</span>
+                  </div>
+
+                  <div
+                    onClick={() => setSelectedImage('/licenses/education-tasdiqnoma-1.png')}
+                    className="relative w-full h-52 sm:h-60 bg-slate-50 rounded-xl border border-slate-200 hover:border-blue-500 overflow-hidden cursor-pointer group/img flex items-center justify-center transition-colors"
+                  >
+                    <img
+                      src="/licenses/education-tasdiqnoma-1.png"
+                      alt="Ta'lim tasdiqnomasi 1-bet"
+                      className="w-full h-full object-contain p-1"
+                      loading="eager"
+                    />
+                    <div className="absolute inset-0 bg-blue-950/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-1.5 text-white font-bold text-xs">
+                      <ZoomIn className="w-4 h-4" />
+                      <span>1-betni kattalashtirish</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-2 flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedImage('/licenses/education-tasdiqnoma-1.png')}
+                      className="flex-1 py-1.5 px-3 rounded-xl bg-blue-50 hover:bg-blue-600 text-[#0f2963] hover:text-white border border-blue-200 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                    >
+                      <ZoomIn className="w-3.5 h-3.5" />
+                      <span>Ko‘rish</span>
+                    </button>
+                    <a
+                      href="/licenses/education-tasdiqnoma-1.png"
+                      download="tasdiqnoma-1-bet.png"
+                      className="py-1.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-bold text-xs flex items-center justify-center transition-colors cursor-pointer"
+                      title="Yuklab olish"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Page 2 (Back page - Subjects and Courses) */}
+                <div className="bg-white rounded-2xl border border-blue-100 p-3 flex flex-col justify-between shadow-2xs">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] font-bold text-slate-600">2-BET: Web Dasturlash & Chet Tillari Yo'nalishlari</span>
+                    <span className="text-[10px] font-extrabold text-blue-600">№ 1765022</span>
+                  </div>
+
+                  <div
+                    onClick={() => setSelectedImage('/licenses/education-tasdiqnoma-2.png')}
+                    className="relative w-full h-52 sm:h-60 bg-slate-50 rounded-xl border border-slate-200 hover:border-blue-500 overflow-hidden cursor-pointer group/img flex items-center justify-center transition-colors"
+                  >
+                    <img
+                      src="/licenses/education-tasdiqnoma-2.png"
+                      alt="Ta'lim tasdiqnomasi 2-bet"
+                      className="w-full h-full object-contain p-1"
+                      loading="eager"
+                    />
+                    <div className="absolute inset-0 bg-blue-950/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-1.5 text-white font-bold text-xs">
+                      <ZoomIn className="w-4 h-4" />
+                      <span>2-betni kattalashtirish</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-2 flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedImage('/licenses/education-tasdiqnoma-2.png')}
+                      className="flex-1 py-1.5 px-3 rounded-xl bg-blue-50 hover:bg-blue-600 text-[#0f2963] hover:text-white border border-blue-200 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                    >
+                      <ZoomIn className="w-3.5 h-3.5" />
+                      <span>Ko‘rish</span>
+                    </button>
+                    <a
+                      href="/licenses/education-tasdiqnoma-2.png"
+                      download="tasdiqnoma-2-bet.png"
+                      className="py-1.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-bold text-xs flex items-center justify-center transition-colors cursor-pointer"
+                      title="Yuklab olish"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom course tags */}
+              <div className="flex flex-wrap items-center gap-1.5 pt-1 text-[10px] text-slate-600">
+                <span className="font-bold text-blue-900">Tasdiqlangan yo‘nalishlar:</span>
+                <span className="bg-white border border-blue-200 px-2 py-0.5 rounded-md font-semibold text-blue-800">Web dasturlash</span>
+                <span className="bg-white border border-blue-200 px-2 py-0.5 rounded-md font-semibold text-blue-800">Ingliz tili</span>
+                <span className="bg-white border border-blue-200 px-2 py-0.5 rounded-md font-semibold text-blue-800">Koreys tili</span>
+                <span className="bg-white border border-blue-200 px-2 py-0.5 rounded-md font-semibold text-blue-800">Xitoy tili</span>
+                <span className="bg-white border border-blue-200 px-2 py-0.5 rounded-md font-semibold text-blue-800">Yapon tili</span>
+                <span className="bg-white border border-blue-200 px-2 py-0.5 rounded-md font-semibold text-blue-800">Nemis tili</span>
+                <span className="bg-white border border-blue-200 px-2 py-0.5 rounded-md font-semibold text-blue-800">Rus tili</span>
+                <span className="bg-white border border-blue-200 px-2 py-0.5 rounded-md font-semibold text-blue-800">Turk tili</span>
+              </div>
             </div>
           </div>
 
@@ -262,7 +395,7 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
         </div>
       </div>
 
-      {/* Lightbox Zoom Overlay for full screen image view (Optimized) */}
+      {/* Lightbox Zoom Overlay for full screen image view */}
       {selectedImage && (
         <div
           className="fixed inset-0 z-60 flex items-center justify-center bg-black/95 p-3 sm:p-5 transform-gpu"

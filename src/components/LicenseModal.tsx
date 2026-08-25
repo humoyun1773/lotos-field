@@ -46,6 +46,17 @@ const licensesData: LicenseItem[] = [
     validity: '10.10.2025 yildan — Cheklanmagan',
     imageSrc: '/licenses/transport-license.png',
     description: 'Shahar, shahar atrofi va shaharlararo yengil avtomobillarda yo‘lovchilarni xavfsiz va qonuniy tashish xizmatlari uchun berilgan rasmiy litsenziya.'
+  },
+  {
+    id: 'mechanic',
+    title: 'Kasbiy Malaka Sertifikati (Avto-chilangar)',
+    category: 'Texnik Xizmat & Servis',
+    licenseNumber: '№ 231-023244',
+    issuer: 'Kambag‘allikni qisqartirish va bandlik vazirligi',
+    tin: '308122009',
+    validity: '04.12.2025 yildan — Doimiy (Diplom darajasida)',
+    imageSrc: '/licenses/mechanic-certificate.png',
+    description: 'Avtomobillarni ta’mirlovchi chilangar (Car repair mechanic) kasbi bo‘yicha davlat namunasidagi rasmiy kasbiy malaka sertifikati.'
   }
 ];
 
@@ -154,8 +165,8 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
               </div>
             </div>
 
-            {/* The 3 Main License Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4">
+            {/* The 4 Main License & Certificate Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
               {licensesData.map((lic, index) => (
                 <div
                   key={lic.id}

@@ -68,7 +68,7 @@ export function App() {
             <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 group-hover:scale-110 transition-transform" />
             <span>Litsenziyalar</span>
             <span className="bg-blue-600 text-white text-[9px] sm:text-[10px] px-1.5 py-0.2 rounded-full font-black">
-              3
+              4
             </span>
           </button>
 

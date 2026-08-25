@@ -82,29 +82,31 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <>
-      {/* Modal Backdrop */}
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-8 bg-slate-900/75 backdrop-blur-md animate-fade-in overflow-y-auto">
-        
+      {/* High Performance Modal Backdrop (No heavy backdrop-blur) */}
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 md:p-6 bg-slate-950/80 overflow-y-auto transform-gpu"
+        onClick={onClose}
+      >
         {/* Modal Window Container */}
         <div
-          className="relative w-full max-w-5xl bg-gradient-to-b from-[#f8faff] via-white to-[#f0f6ff] rounded-3xl shadow-2xl border border-white/90 my-auto overflow-hidden flex flex-col max-h-[92vh]"
+          className="relative w-full max-w-5xl bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-100 my-auto overflow-hidden flex flex-col max-h-[94vh] transform-gpu"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Top Blue Accent Gradient */}
-          <div className="h-2 w-full bg-gradient-to-r from-[#0f2963] via-[#2563eb] to-[#0f2963]" />
+          <div className="h-1.5 w-full bg-gradient-to-r from-[#0f2963] via-[#2563eb] to-[#0f2963]" />
 
           {/* Modal Header */}
-          <div className="px-4 py-3.5 sm:px-8 sm:py-6 border-b border-blue-100 flex items-center justify-between bg-white/80 backdrop-blur gap-2">
+          <div className="px-4 py-3 sm:px-6 sm:py-4 border-b border-slate-100 flex items-center justify-between bg-white gap-2">
             <div className="flex items-center gap-2.5 sm:gap-3.5">
-              <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-[#0f2963] to-[#2563eb] text-white flex items-center justify-center shadow-md flex-shrink-0">
+              <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-tr from-[#0f2963] to-[#2563eb] text-white flex items-center justify-center shadow-sm flex-shrink-0">
                 <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div>
                 <div className="flex items-center gap-1.5 sm:gap-2">
-                  <h2 className="font-cinzel text-sm sm:text-lg md:text-xl font-black text-[#0f2963] tracking-wide uppercase leading-tight">
+                  <h2 className="font-cinzel text-sm sm:text-base md:text-lg font-black text-[#0f2963] tracking-wide uppercase leading-tight">
                     Rasmiy Litsenziyalar
                   </h2>
-                  <span className="inline-flex items-center gap-1 bg-emerald-500/10 text-emerald-700 text-[9px] sm:text-[10px] font-extrabold tracking-wider px-2 py-0.2 rounded-full border border-emerald-300">
+                  <span className="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 text-[9px] sm:text-[10px] font-extrabold px-2 py-0.5 rounded-full border border-emerald-200">
                     <CheckCircle2 className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> 100% Qonuniy
                   </span>
                 </div>
@@ -116,8 +118,9 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
 
             {/* Close Button */}
             <button
+              type="button"
               onClick={onClose}
-              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-red-50 text-slate-600 hover:text-red-600 flex items-center justify-center transition-all duration-200 border border-slate-200 flex-shrink-0"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 hover:bg-red-50 text-slate-500 hover:text-red-600 flex items-center justify-center transition-colors border border-slate-200 flex-shrink-0 cursor-pointer"
               title="Yopish"
             >
               <X className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -125,81 +128,81 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
           </div>
 
           {/* Modal Body - 3 License Cards */}
-          <div className="p-3 sm:p-6 md:p-8 overflow-y-auto flex-1 custom-scrollbar">
+          <div className="p-3 sm:p-5 md:p-6 overflow-y-auto flex-1">
             {/* Quick Badges Info */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 mb-4 sm:mb-6">
-              <div className="bg-blue-50/80 border border-blue-200/70 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 sm:gap-3">
-                <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 flex-shrink-0" />
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 mb-4">
+              <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-2.5 flex items-center gap-2.5">
+                <Building2 className="w-4 h-4 text-blue-700 flex-shrink-0" />
                 <div>
-                  <div className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-500">STIR Raqami</div>
+                  <div className="text-[9px] uppercase font-bold text-slate-500">STIR Raqami</div>
                   <div className="text-xs sm:text-sm font-black text-[#0f2963]">308122009</div>
                 </div>
               </div>
-              <div className="bg-blue-50/80 border border-blue-200/70 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 sm:gap-3">
-                <Award className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 flex-shrink-0" />
+              <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-2.5 flex items-center gap-2.5">
+                <Award className="w-4 h-4 text-blue-700 flex-shrink-0" />
                 <div>
-                  <div className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-500">Yuridik Maqomi</div>
+                  <div className="text-[9px] uppercase font-bold text-slate-500">Yuridik Maqomi</div>
                   <div className="text-xs sm:text-sm font-black text-[#0f2963]">M C H J</div>
                 </div>
               </div>
-              <div className="bg-emerald-50/80 border border-emerald-200/70 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 sm:gap-3">
-                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-700 flex-shrink-0" />
+              <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl p-2.5 flex items-center gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-700 flex-shrink-0" />
                 <div>
-                  <div className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-500">Litsenziya Holati</div>
+                  <div className="text-[9px] uppercase font-bold text-slate-500">Litsenziya Holati</div>
                   <div className="text-xs sm:text-sm font-black text-emerald-700">Cheksiz / Faol</div>
                 </div>
               </div>
             </div>
 
             {/* The 3 Main License Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-5 lg:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4">
               {licensesData.map((lic, index) => (
                 <div
                   key={lic.id}
-                  className="group relative bg-white rounded-2xl sm:rounded-3xl border border-blue-100 shadow-sm hover:shadow-lg hover:border-blue-300 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                  className="bg-white rounded-2xl border border-slate-200 shadow-xs hover:border-blue-300 hover:shadow-md transition-all duration-200 flex flex-col justify-between overflow-hidden"
                 >
                   {/* Top Badge */}
-                  <div className="p-4 pb-2">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-full">
+                  <div className="p-3.5 pb-1.5">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[10px] font-extrabold uppercase tracking-wider bg-blue-50 text-blue-800 px-2 py-0.5 rounded-full border border-blue-100">
                         {lic.category}
                       </span>
-                      <span className="text-xs font-black text-[#0f2963]">
+                      <span className="text-xs font-black text-slate-400">
                         0{index + 1}
                       </span>
                     </div>
-                    <h3 className="font-cinzel text-sm sm:text-base font-extrabold text-[#0f2963] leading-snug line-clamp-2 min-h-[44px]">
+                    <h3 className="font-cinzel text-xs sm:text-sm font-extrabold text-[#0f2963] leading-snug line-clamp-2 min-h-[38px]">
                       {lic.title}
                     </h3>
                   </div>
 
                   {/* Document Image Thumbnail Box with Zoom Trigger */}
-                  <div className="px-4 py-2">
+                  <div className="px-3.5 py-1.5">
                     <div
                       onClick={() => setSelectedImage(lic.imageSrc)}
-                      className="relative w-full h-56 bg-slate-50 rounded-2xl border-2 border-dashed border-blue-200 hover:border-blue-500 overflow-hidden cursor-pointer group/img flex items-center justify-center transition-all shadow-inner"
+                      className="relative w-full h-48 sm:h-52 bg-slate-50 rounded-xl border border-slate-200 hover:border-blue-500 overflow-hidden cursor-pointer group/img flex items-center justify-center transition-colors"
                     >
                       <img
                         src={lic.imageSrc}
                         alt={lic.title}
-                        className="w-full h-full object-contain p-1 group-hover/img:scale-105 transition-transform duration-300"
-                        loading="lazy"
+                        className="w-full h-full object-contain p-1"
+                        loading="eager"
                       />
                       {/* Zoom Overlay on Hover */}
-                      <div className="absolute inset-0 bg-blue-900/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-bold text-xs backdrop-blur-2xs">
-                        <ZoomIn className="w-5 h-5" />
-                        <span>Kattalashtirib ko‘rish</span>
+                      <div className="absolute inset-0 bg-blue-950/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-1.5 text-white font-bold text-xs">
+                        <ZoomIn className="w-4 h-4" />
+                        <span>Kattalashtirish</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Details and Specs */}
-                  <div className="p-4 pt-2 flex flex-col gap-2 flex-1 justify-between">
-                    <div className="space-y-1.5 text-[11px] text-slate-600 bg-slate-50/80 p-3 rounded-xl border border-slate-100">
+                  <div className="p-3.5 pt-1.5 flex flex-col gap-2 flex-1 justify-between">
+                    <div className="space-y-1 text-[11px] text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
                       <div>
                         <span className="font-bold text-slate-800">Raqam:</span> {lic.licenseNumber}
                       </div>
-                      <div>
+                      <div className="line-clamp-1">
                         <span className="font-bold text-slate-800">Organ:</span> {lic.issuer}
                       </div>
                       <div>
@@ -208,10 +211,11 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
                     </div>
 
                     {/* Action buttons */}
-                    <div className="pt-2 flex items-center gap-2">
+                    <div className="pt-1 flex items-center gap-2">
                       <button
+                        type="button"
                         onClick={() => setSelectedImage(lic.imageSrc)}
-                        className="flex-1 py-2 px-3 rounded-xl bg-blue-50 hover:bg-blue-600 text-[#0f2963] hover:text-white border border-blue-200 font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-2xs"
+                        className="flex-1 py-1.5 px-3 rounded-xl bg-blue-50 hover:bg-blue-600 text-[#0f2963] hover:text-white border border-blue-200 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                       >
                         <ZoomIn className="w-3.5 h-3.5" />
                         <span>Ko‘rish</span>
@@ -219,7 +223,7 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
                       <a
                         href={lic.imageSrc}
                         download={`${lic.id}-license.png`}
-                        className="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-bold text-xs flex items-center justify-center transition-all"
+                        className="py-1.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-bold text-xs flex items-center justify-center transition-colors cursor-pointer"
                         title="Yuklab olish"
                       >
                         <Download className="w-3.5 h-3.5" />
@@ -232,55 +236,58 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
           </div>
 
           {/* Modal Footer */}
-          <div className="px-6 py-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-            <div className="text-xs text-slate-500 font-medium">
+          <div className="px-4 py-3 sm:px-6 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-2.5 text-center sm:text-left">
+            <div className="text-[11px] sm:text-xs text-slate-500 font-medium">
               Barcha hujjatlar O‘zbekiston Respublikasi qonunchiligiga muvofiq rasmiy ro‘yxatdan o‘tkazilgan.
             </div>
             <button
+              type="button"
               onClick={onClose}
-              className="w-full sm:w-auto px-6 py-2 rounded-full bg-[#0f2963] hover:bg-blue-700 text-white font-bold text-xs transition-all shadow-md"
+              className="w-full sm:w-auto px-5 py-2 rounded-full bg-[#0f2963] hover:bg-blue-700 text-white font-bold text-xs transition-colors shadow-sm cursor-pointer"
             >
-              Tushunarli / Yopish
+              Yopish
             </button>
           </div>
         </div>
       </div>
 
-      {/* Lightbox Zoom Overlay for full screen image view */}
+      {/* Lightbox Zoom Overlay for full screen image view (Optimized) */}
       {selectedImage && (
         <div
-          className="fixed inset-0 z-60 flex items-center justify-center bg-black/90 p-4 animate-fade-in backdrop-blur-sm"
+          className="fixed inset-0 z-60 flex items-center justify-center bg-black/95 p-3 sm:p-5 transform-gpu"
           onClick={() => setSelectedImage(null)}
         >
           <button
+            type="button"
             onClick={() => setSelectedImage(null)}
-            className="absolute top-5 right-5 w-12 h-12 rounded-full bg-white/20 hover:bg-white text-white hover:text-black flex items-center justify-center transition-all z-10"
+            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 hover:bg-white text-white hover:text-black flex items-center justify-center transition-colors z-10 cursor-pointer"
             title="Yopish"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
 
           <div
-            className="relative max-w-4xl max-h-[90vh] bg-white rounded-2xl overflow-hidden shadow-2xl p-2"
+            className="relative max-w-4xl max-h-[92vh] bg-white rounded-2xl overflow-hidden shadow-2xl p-2 flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <img
               src={selectedImage}
               alt="Litsenziya to'liq rasm"
-              className="max-h-[85vh] w-auto object-contain mx-auto rounded-lg"
+              className="max-h-[80vh] w-auto object-contain mx-auto rounded-lg"
             />
-            <div className="p-3 text-center flex items-center justify-center gap-4">
+            <div className="p-2.5 text-center flex items-center justify-center gap-3 w-full">
               <a
                 href={selectedImage}
                 download="license-document.png"
-                className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#0f2963] text-white text-xs font-bold hover:bg-blue-600 transition-all shadow"
+                className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#0f2963] text-white text-xs font-bold hover:bg-blue-600 transition-colors shadow cursor-pointer"
               >
-                <Download className="w-4 h-4" />
-                <span>Asl nusxani yuklab olish</span>
+                <Download className="w-3.5 h-3.5" />
+                <span>Yuklab olish</span>
               </a>
               <button
+                type="button"
                 onClick={() => setSelectedImage(null)}
-                className="px-5 py-2 rounded-full bg-slate-200 text-slate-800 text-xs font-bold hover:bg-slate-300 transition-all"
+                className="px-4 py-1.5 rounded-full bg-slate-200 text-slate-800 text-xs font-bold hover:bg-slate-300 transition-colors cursor-pointer"
               >
                 Yopish
               </button>

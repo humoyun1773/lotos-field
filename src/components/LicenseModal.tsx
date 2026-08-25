@@ -232,13 +232,13 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
                       )}
                     </button>
                   </div>
-                  <div className="font-mono text-sm sm:text-base md:text-lg font-black text-white tracking-wider bg-black/20 p-2 rounded-xl border border-white/10 text-center sm:text-left select-all">
+                  <div className="font-mono text-xs xs:text-sm sm:text-base md:text-lg font-black text-white tracking-normal sm:tracking-wider bg-black/25 p-2 sm:p-2.5 rounded-xl border border-white/10 text-center sm:text-left select-all">
                     {bankRequisites.accountNumber}
                   </div>
                 </div>
 
                 {/* 2. MFO */}
-                <div className="bg-white/10 p-3.5 rounded-2xl border border-white/20 flex flex-col justify-between gap-2">
+                <div className="bg-white/10 p-3 sm:p-3.5 rounded-2xl border border-white/20 flex flex-col justify-between gap-2">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] sm:text-[11px] uppercase font-extrabold text-sky-200 tracking-wider">
                       Bank MFO Kodi
@@ -262,13 +262,13 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
                       )}
                     </button>
                   </div>
-                  <div className="font-mono text-sm sm:text-base md:text-lg font-black text-white tracking-wider bg-black/20 p-2 rounded-xl border border-white/10 text-center sm:text-left select-all">
+                  <div className="font-mono text-xs xs:text-sm sm:text-base md:text-lg font-black text-white tracking-normal sm:tracking-wider bg-black/25 p-2 sm:p-2.5 rounded-xl border border-white/10 text-center sm:text-left select-all">
                     {bankRequisites.mfo}
                   </div>
                 </div>
 
                 {/* 3. STIR (ИНН) */}
-                <div className="bg-white/10 p-3.5 rounded-2xl border border-white/20 flex flex-col justify-between gap-2">
+                <div className="bg-white/10 p-3 sm:p-3.5 rounded-2xl border border-white/20 flex flex-col justify-between gap-2">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] sm:text-[11px] uppercase font-extrabold text-sky-200 tracking-wider">
                       STIR (СТИР / ИНН)
@@ -292,7 +292,7 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
                       )}
                     </button>
                   </div>
-                  <div className="font-mono text-sm sm:text-base md:text-lg font-black text-white tracking-wider bg-black/20 p-2 rounded-xl border border-white/10 text-center sm:text-left select-all">
+                  <div className="font-mono text-xs xs:text-sm sm:text-base md:text-lg font-black text-white tracking-normal sm:tracking-wider bg-black/25 p-2 sm:p-2.5 rounded-xl border border-white/10 text-center sm:text-left select-all">
                     {bankRequisites.tin}
                   </div>
                 </div>

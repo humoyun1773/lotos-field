@@ -4,7 +4,7 @@ import type { ServiceItem } from './types';
 import { Header } from './components/Header';
 import { ServiceCard } from './components/ServiceCard';
 import { FooterBanner } from './components/FooterBanner';
-import { CitySkylineBackground } from './components/CitySkylineBackground';
+import { DynamicBackground } from './components/DynamicBackground';
 import { Preloader } from './components/Preloader';
 import { NavigationLoader } from './components/NavigationLoader';
 import { LicenseModal } from './components/LicenseModal';
@@ -45,8 +45,8 @@ export function App() {
         onClose={() => setIsLicenseModalOpen(false)}
       />
 
-      {/* Background Graphic Elements */}
-      <CitySkylineBackground />
+      {/* Dynamic Rotating Swallow Bird Background (5 images changing smoothly) */}
+      <DynamicBackground />
 
       {/* Top Floating Utility Bar */}
       <nav className="relative w-full px-3 sm:px-6 pt-3 flex items-center justify-between z-20 max-w-screen-2xl mx-auto gap-2">

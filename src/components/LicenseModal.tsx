@@ -1,5 +1,16 @@
 import { useState, useEffect, type FC } from 'react';
-import { X, ShieldCheck, Download, ZoomIn, CheckCircle2, Building2, Award, BookOpen } from 'lucide-react';
+import { 
+  X, 
+  ShieldCheck, 
+  Download, 
+  ZoomIn, 
+  CheckCircle2, 
+  BookOpen, 
+  CreditCard, 
+  Copy, 
+  Check, 
+  Landmark
+} from 'lucide-react';
 
 interface LicenseItem {
   id: string;
@@ -60,6 +71,17 @@ const topLicensesData: LicenseItem[] = [
   }
 ];
 
+export const bankRequisites = {
+  accountNumber: '2020 8000 6053 3284 8001',
+  rawAccount: '20208000605332848001',
+  mfo: '00341',
+  tin: '308 122 009',
+  rawTin: '308122009',
+  bankName: 'AT "Agrobank" Uzun filiali',
+  bankNameRu: 'АТ "Агробанк" Узунский филиал',
+  companyName: '"ZALATIYE LASTOCHKA" MCHJ'
+};
+
 interface LicenseModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -67,6 +89,15 @@ interface LicenseModalProps {
 
 export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
+
+  const handleCopy = (text: string, key: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedKey(key);
+    setTimeout(() => {
+      setCopiedKey(null);
+    }, 2000);
+  };
 
   // Close on Escape key
   useEffect(() => {
@@ -115,14 +146,14 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
               <div>
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   <h2 className="font-cinzel text-sm sm:text-base md:text-lg font-black text-[#0f2963] tracking-wide uppercase leading-tight">
-                    Rasmiy Litsenziya va Sertifikatlar
+                    Rasmiy Litsenziyalar & Rekvizitlar
                   </h2>
                   <span className="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 text-[9px] sm:text-[10px] font-extrabold px-2 py-0.5 rounded-full border border-emerald-200">
                     <CheckCircle2 className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> 100% Qonuniy
                   </span>
                 </div>
                 <p className="text-[11px] sm:text-xs text-slate-500 font-medium mt-0.5 line-clamp-1 sm:line-clamp-none">
-                  "ZALATIYE LASTOCHKA" MCHJ ning davlat ro‘yxatidan o‘tgan barcha faoliyat hujjatlari
+                  "ZALATIYE LASTOCHKA" MCHJ ning rasmiy bank rekvizitlari va barcha davlat litsenziyalari
                 </p>
               </div>
             </div>
@@ -140,29 +171,174 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
 
           {/* Modal Body */}
           <div className="p-3 sm:p-5 md:p-6 overflow-y-auto flex-1 flex flex-col gap-4 sm:gap-5">
-            {/* Quick Badges Info */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
-              <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-2.5 flex items-center gap-2.5">
-                <Building2 className="w-4 h-4 text-blue-700 flex-shrink-0" />
-                <div>
-                  <div className="text-[9px] uppercase font-bold text-slate-500">STIR Raqami</div>
-                  <div className="text-xs sm:text-sm font-black text-[#0f2963]">308122009</div>
+
+            {/* ── LUXURY CORPORATE BANK REQUISITES CARD ── */}
+            <div className="relative w-full rounded-2xl sm:rounded-3xl p-4 sm:p-6 bg-gradient-to-br from-[#0a1945] via-[#0f2963] to-[#1e3a8a] text-white shadow-xl border border-blue-400/30 overflow-hidden">
+              {/* Subtle background circuit/glow accents */}
+              <div className="absolute -top-16 -right-16 w-48 h-48 bg-blue-500/20 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-sky-400/20 rounded-full blur-3xl pointer-events-none" />
+
+              {/* Card Top Row: Header Badge & Bank Info */}
+              <div className="relative flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/15 pb-3 sm:pb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shadow-inner">
+                    <Landmark className="w-5 h-5 text-sky-300" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-extrabold tracking-widest uppercase bg-sky-500/20 border border-sky-400/30 text-sky-200 px-2 py-0.5 rounded-full">
+                        RASMIY REKVIZITLAR
+                      </span>
+                      <span className="text-[10px] text-emerald-400 font-bold flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Faol Hisob
+                      </span>
+                    </div>
+                    <h3 className="font-cinzel text-sm sm:text-base font-black text-white uppercase mt-0.5 tracking-wide">
+                      {bankRequisites.companyName}
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-xs px-3 py-1.5 rounded-xl border border-white/15 text-right self-start sm:self-auto">
+                  <CreditCard className="w-4 h-4 text-sky-300 flex-shrink-0" />
+                  <div className="text-left sm:text-right">
+                    <div className="text-[9px] uppercase font-bold text-sky-200">Xizmat ko‘rsatuvchi Bank</div>
+                    <div className="text-xs font-black text-white">{bankRequisites.bankName}</div>
+                  </div>
                 </div>
               </div>
-              <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-2.5 flex items-center gap-2.5">
-                <Award className="w-4 h-4 text-blue-700 flex-shrink-0" />
-                <div>
-                  <div className="text-[9px] uppercase font-bold text-slate-500">Yuridik Maqomi</div>
-                  <div className="text-xs sm:text-sm font-black text-[#0f2963]">M C H J</div>
+
+              {/* Card Main Grid: Requisites details with instant 1-click Copy */}
+              <div className="relative grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mt-3.5 sm:mt-4">
+                
+                {/* 1. Account Number (р/с) */}
+                <div className="bg-white/10 hover:bg-white/15 transition-colors p-3 sm:p-3.5 rounded-2xl border border-white/15 flex flex-col justify-between gap-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] uppercase font-bold text-sky-200 tracking-wider">
+                      Hisob Raqam (Р/С)
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => handleCopy(bankRequisites.rawAccount, 'account')}
+                      className="p-1 rounded-lg bg-white/10 hover:bg-sky-500 text-white transition-all cursor-pointer flex items-center gap-1 text-[10px] font-bold px-2"
+                      title="Hisob raqamni nusxalash"
+                    >
+                      {copiedKey === 'account' ? (
+                        <>
+                          <Check className="w-3 h-3 text-emerald-300" />
+                          <span className="text-emerald-300">Nusxalandi!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-3 h-3" />
+                          <span>Nusxalash</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                  <div className="font-mono text-sm sm:text-base font-black text-white tracking-wider">
+                    {bankRequisites.accountNumber}
+                  </div>
                 </div>
-              </div>
-              <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl p-2.5 flex items-center gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-700 flex-shrink-0" />
-                <div>
-                  <div className="text-[9px] uppercase font-bold text-slate-500">Litsenziyalar Holati</div>
-                  <div className="text-xs sm:text-sm font-black text-emerald-700">Cheksiz / Barchasi Faol</div>
+
+                {/* 2. MFO */}
+                <div className="bg-white/10 hover:bg-white/15 transition-colors p-3 sm:p-3.5 rounded-2xl border border-white/15 flex flex-col justify-between gap-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] uppercase font-bold text-sky-200 tracking-wider">
+                      Bank MFO Kodi
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => handleCopy(bankRequisites.mfo, 'mfo')}
+                      className="p-1 rounded-lg bg-white/10 hover:bg-sky-500 text-white transition-all cursor-pointer flex items-center gap-1 text-[10px] font-bold px-2"
+                      title="MFO kodni nusxalash"
+                    >
+                      {copiedKey === 'mfo' ? (
+                        <>
+                          <Check className="w-3 h-3 text-emerald-300" />
+                          <span className="text-emerald-300">Nusxalandi!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-3 h-3" />
+                          <span>Nusxalash</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                  <div className="font-mono text-sm sm:text-base font-black text-white tracking-wider">
+                    {bankRequisites.mfo}
+                  </div>
                 </div>
+
+                {/* 3. STIR (INN) */}
+                <div className="bg-white/10 hover:bg-white/15 transition-colors p-3 sm:p-3.5 rounded-2xl border border-white/15 flex flex-col justify-between gap-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] uppercase font-bold text-sky-200 tracking-wider">
+                      STIR (СТИР / ИНН)
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => handleCopy(bankRequisites.rawTin, 'tin')}
+                      className="p-1 rounded-lg bg-white/10 hover:bg-sky-500 text-white transition-all cursor-pointer flex items-center gap-1 text-[10px] font-bold px-2"
+                      title="STIR raqamini nusxalash"
+                    >
+                      {copiedKey === 'tin' ? (
+                        <>
+                          <Check className="w-3 h-3 text-emerald-300" />
+                          <span className="text-emerald-300">Nusxalandi!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-3 h-3" />
+                          <span>Nusxalash</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                  <div className="font-mono text-sm sm:text-base font-black text-white tracking-wider">
+                    {bankRequisites.tin}
+                  </div>
+                </div>
+
               </div>
+
+              {/* Bottom One-Click "All Requisites" Copy */}
+              <div className="relative mt-3 pt-3 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-sky-200">
+                <div className="text-[11px] text-center sm:text-left text-blue-100/90">
+                  Bank orqali shartnoma, to‘lov va rasmiy operatsiyalar uchun barcha ma’lumotlar to‘liq tasdiqlangan.
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const allText = `Tashkilot: ${bankRequisites.companyName}\nHisob raqam: ${bankRequisites.rawAccount}\nMFO: ${bankRequisites.mfo}\nSTIR: ${bankRequisites.rawTin}\nBank: ${bankRequisites.bankName}`;
+                    handleCopy(allText, 'all');
+                  }}
+                  className="px-4 py-1.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-xs transition-all shadow cursor-pointer flex items-center gap-1.5"
+                >
+                  {copiedKey === 'all' ? (
+                    <>
+                      <Check className="w-3.5 h-3.5" />
+                      <span>Barchasi Nusxalandi!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Barcha rekvizitlarni nusxalash</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Status Bar */}
+            <div className="flex items-center justify-between px-1">
+              <span className="text-xs font-black tracking-wider uppercase text-[#0f2963]">
+                Davlat Litsenziya va Sertifikatlari (5 ta Hujjat)
+              </span>
+              <span className="text-[11px] text-slate-500 font-semibold">
+                Barcha hujjatlar 100% faol
+              </span>
             </div>
 
             {/* SECTION 1: Top 4 Main License Cards */}
@@ -382,7 +558,7 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
           {/* Modal Footer */}
           <div className="px-4 py-3 sm:px-6 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-2.5 text-center sm:text-left">
             <div className="text-[11px] sm:text-xs text-slate-500 font-medium">
-              Barcha hujjatlar O‘zbekiston Respublikasi qonunchiligiga muvofiq rasmiy ro‘yxatdan o‘tkazilgan.
+              Barcha bank hisoblari va litsenziyalar O‘zbekiston Respublikasi qonunchiligiga muvofiq rasmiy ro‘yxatdan o‘tkazilgan.
             </div>
             <button
               type="button"

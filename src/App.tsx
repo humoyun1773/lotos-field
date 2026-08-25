@@ -7,11 +7,13 @@ import { FooterBanner } from './components/FooterBanner';
 import { CitySkylineBackground } from './components/CitySkylineBackground';
 import { Preloader } from './components/Preloader';
 import { NavigationLoader } from './components/NavigationLoader';
-import { Phone } from 'lucide-react';
+import { LicenseModal } from './components/LicenseModal';
+import { Phone, ShieldCheck } from 'lucide-react';
 
 export function App() {
   const [isNavigating, setIsNavigating] = useState(false);
   const [targetServiceName, setTargetServiceName] = useState('');
+  const [isLicenseModalOpen, setIsLicenseModalOpen] = useState(false);
 
   const lastochkaService = services.find(s => s.id === 'lastochka');
   const otherServices = services.filter(s => s.id !== 'lastochka');
@@ -37,6 +39,12 @@ export function App() {
       {/* Navigation Redirecting Loader */}
       <NavigationLoader isOpen={isNavigating} targetName={targetServiceName} />
 
+      {/* Official Licenses & Certificates Modal */}
+      <LicenseModal
+        isOpen={isLicenseModalOpen}
+        onClose={() => setIsLicenseModalOpen(false)}
+      />
+
       {/* Background Graphic Elements */}
       <CitySkylineBackground />
 
@@ -50,12 +58,27 @@ export function App() {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
+          {/* License & Certificate Modal Trigger Button */}
+          <button
+            type="button"
+            onClick={() => setIsLicenseModalOpen(true)}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-extrabold bg-white/90 hover:bg-blue-50 text-[#0f2963] border border-blue-200 shadow-sm hover:shadow hover:border-blue-300 transition-all cursor-pointer group"
+            title="Kompaniya rasmiy litsenziya va guvohnomalarini ko'rish"
+          >
+            <ShieldCheck className="w-4 h-4 text-blue-600 group-hover:scale-110 transition-transform" />
+            <span>Litsenziyalar</span>
+            <span className="bg-blue-600 text-white text-[10px] px-1.5 py-0.2 rounded-full font-black">
+              3
+            </span>
+          </button>
+
           <a
             href={`tel:${companyInfo.rawPhone}`}
             className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition-all"
           >
             <Phone className="w-3.5 h-3.5" />
-            <span>{companyInfo.phone}</span>
+            <span className="hidden sm:inline">{companyInfo.phone}</span>
+            <span className="sm:hidden">Qo'ng'iroq</span>
           </a>
         </div>
       </nav>

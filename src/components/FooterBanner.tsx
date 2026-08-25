@@ -6,7 +6,7 @@ export const FooterBanner: FC = () => {
   return (
     <footer className="w-full max-w-6xl mx-auto px-4 py-6 mt-4 select-none">
       {/* Floating Bottom Card / Pill Container */}
-      <div className="relative glass-panel rounded-full shadow-[0_12px_32px_rgba(26,86,219,0.14)] p-2 sm:p-3 border border-white flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 transition-all duration-300">
+      <div className="relative glass-panel rounded-3xl md:rounded-full shadow-[0_10px_28px_rgba(15,41,99,0.1)] p-3 sm:p-4 md:p-3 border border-white/90 flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 transition-all duration-300">
         
         {/* Left Section: BIZ BILAN BOG'LANING + PHONE */}
         <a

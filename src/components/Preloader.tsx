@@ -10,34 +10,27 @@ export const Preloader: FC<PreloaderProps> = ({ onFinish }) => {
   const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
+    let current = 0;
     const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        const diff = Math.floor(Math.random() * 15) + 8;
-        return Math.min(prev + diff, 100);
-      });
-    }, 70);
+      current += Math.floor(Math.random() * 20) + 12;
+      if (current >= 100) {
+        current = 100;
+        setProgress(100);
+        clearInterval(interval);
+        setTimeout(() => {
+          setIsFading(true);
+          setTimeout(() => {
+            setIsHidden(true);
+            onFinish?.();
+          }, 350);
+        }, 200);
+      } else {
+        setProgress(current);
+      }
+    }, 45);
 
     return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    if (progress === 100) {
-      const timer = setTimeout(() => {
-        setIsFading(true);
-        const hideTimer = setTimeout(() => {
-          setIsHidden(true);
-          onFinish?.();
-        }, 500);
-        return () => clearTimeout(hideTimer);
-      }, 300);
-
-      return () => clearTimeout(timer);
-    }
-  }, [progress, onFinish]);
+  }, [onFinish]);
 
   if (isHidden) return null;
 

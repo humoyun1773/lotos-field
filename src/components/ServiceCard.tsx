@@ -162,8 +162,8 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
-        className="group relative w-full flex flex-col lg:flex-row items-center justify-between gap-5 sm:gap-6 lg:gap-10 rounded-3xl px-4 sm:px-8 lg:px-10 py-5 sm:py-7 lg:py-8 bg-gradient-to-r from-white via-blue-50/70 to-white backdrop-blur-xl border-2 border-blue-200/80 hover:border-blue-400 shadow-[0_12px_32px_-6px_rgba(15,41,99,0.1)] hover:shadow-[0_20px_45px_-8px_rgba(23,70,162,0.22)] hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden"
-        style={{ textDecoration: 'none', display: 'flex' }}
+        className="group relative w-full flex flex-col lg:flex-row items-center justify-between gap-5 sm:gap-6 lg:gap-10 rounded-3xl px-4 sm:px-8 lg:px-10 py-5 sm:py-7 lg:py-8 bg-gradient-to-r from-white via-blue-50/70 to-white backdrop-blur-xl border-2 border-blue-200/80 hover:border-blue-400 shadow-[0_12px_32px_-6px_rgba(15,41,99,0.1)] hover:shadow-[0_20px_45px_-8px_rgba(23,70,162,0.22)] hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden select-none"
+        style={{ textDecoration: 'none', display: 'flex', cursor: 'pointer' }}
       >
         {/* Top elegant blue gradient accent line */}
         <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#0f2963] via-[#2563eb] to-[#0f2963] rounded-t-3xl" />
@@ -269,8 +269,8 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
-        className={baseClass + " cursor-pointer block"}
-        style={{ textDecoration: 'none', display: 'flex' }}
+        className={baseClass + " cursor-pointer block select-none"}
+        style={{ textDecoration: 'none', display: 'flex', cursor: 'pointer' }}
       >
         {cardContent}
       </a>

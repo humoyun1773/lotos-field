@@ -12,6 +12,14 @@
     overflow-x: hidden;
   }
 
+  a, button, [role="button"], input[type="button"], input[type="submit"] {
+    cursor: pointer;
+  }
+
+  .cursor-pointer {
+    cursor: pointer !important;
+  }
+
   #root {
     width: 100%;
     min-height: 100vh;

@@ -172,131 +172,127 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
           {/* Modal Body */}
           <div className="p-3 sm:p-5 md:p-6 overflow-y-auto flex-1 flex flex-col gap-4 sm:gap-5">
 
-            {/* ── LUXURY CORPORATE BANK REQUISITES CARD ── */}
-            <div className="relative w-full rounded-2xl sm:rounded-3xl p-4 sm:p-6 bg-gradient-to-br from-[#0a1945] via-[#0f2963] to-[#1e3a8a] text-white shadow-xl border border-blue-400/30 overflow-hidden">
-              {/* Subtle background circuit/glow accents */}
-              <div className="absolute -top-16 -right-16 w-48 h-48 bg-blue-500/20 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-sky-400/20 rounded-full blur-3xl pointer-events-none" />
-
-              {/* Card Top Row: Header Badge & Bank Info */}
-              <div className="relative flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/15 pb-3 sm:pb-4">
+            {/* ── LUXURY CORPORATE BANK REQUISITES CARD (Fully expanded & flex-shrink-0) ── */}
+            <div className="flex-shrink-0 w-full rounded-2xl sm:rounded-3xl p-4 sm:p-5 bg-gradient-to-r from-[#0a1945] via-[#0f2963] to-[#1e3a8a] text-white shadow-xl border-2 border-blue-400/40 relative">
+              {/* Header Info */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/20 pb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shadow-inner">
-                    <Landmark className="w-5 h-5 text-sky-300" />
+                  <div className="w-11 h-11 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center flex-shrink-0 shadow-inner">
+                    <Landmark className="w-6 h-6 text-sky-300" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-extrabold tracking-widest uppercase bg-sky-500/20 border border-sky-400/30 text-sky-200 px-2 py-0.5 rounded-full">
-                        RASMIY REKVIZITLAR
+                      <span className="text-[10px] sm:text-[11px] font-extrabold tracking-widest uppercase bg-sky-400/20 text-sky-200 border border-sky-300/30 px-2.5 py-0.5 rounded-full">
+                        KOMPANIYA BANK REKVIZITLARI
                       </span>
-                      <span className="text-[10px] text-emerald-400 font-bold flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Faol Hisob
+                      <span className="text-[11px] text-emerald-400 font-extrabold flex items-center gap-1">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> 100% Rasmiy
                       </span>
                     </div>
-                    <h3 className="font-cinzel text-sm sm:text-base font-black text-white uppercase mt-0.5 tracking-wide">
+                    <h3 className="font-cinzel text-base sm:text-lg font-black text-white uppercase mt-0.5 tracking-wide">
                       {bankRequisites.companyName}
                     </h3>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-xs px-3 py-1.5 rounded-xl border border-white/15 text-right self-start sm:self-auto">
-                  <CreditCard className="w-4 h-4 text-sky-300 flex-shrink-0" />
-                  <div className="text-left sm:text-right">
+                <div className="bg-white/10 px-3.5 py-2 rounded-xl border border-white/20 self-start sm:self-auto flex items-center gap-2.5">
+                  <CreditCard className="w-5 h-5 text-sky-300 flex-shrink-0" />
+                  <div>
                     <div className="text-[9px] uppercase font-bold text-sky-200">Xizmat ko‘rsatuvchi Bank</div>
-                    <div className="text-xs font-black text-white">{bankRequisites.bankName}</div>
+                    <div className="text-xs sm:text-sm font-black text-white">{bankRequisites.bankName}</div>
                   </div>
                 </div>
               </div>
 
-              {/* Card Main Grid: Requisites details with instant 1-click Copy */}
-              <div className="relative grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mt-3.5 sm:mt-4">
+              {/* 3 Main Data Boxes (Hisob raqam, MFO, STIR) */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mt-3.5">
                 
-                {/* 1. Account Number (р/с) */}
-                <div className="bg-white/10 hover:bg-white/15 transition-colors p-3 sm:p-3.5 rounded-2xl border border-white/15 flex flex-col justify-between gap-1.5">
+                {/* 1. Hisob raqami (р/с) */}
+                <div className="bg-white/10 p-3.5 rounded-2xl border border-white/20 flex flex-col justify-between gap-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] uppercase font-bold text-sky-200 tracking-wider">
+                    <span className="text-[10px] sm:text-[11px] uppercase font-extrabold text-sky-200 tracking-wider">
                       Hisob Raqam (Р/С)
                     </span>
                     <button
                       type="button"
                       onClick={() => handleCopy(bankRequisites.rawAccount, 'account')}
-                      className="p-1 rounded-lg bg-white/10 hover:bg-sky-500 text-white transition-all cursor-pointer flex items-center gap-1 text-[10px] font-bold px-2"
+                      className="py-1 px-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 transition-all cursor-pointer flex items-center gap-1 text-[11px] font-black shadow-sm"
                       title="Hisob raqamni nusxalash"
                     >
                       {copiedKey === 'account' ? (
                         <>
-                          <Check className="w-3 h-3 text-emerald-300" />
-                          <span className="text-emerald-300">Nusxalandi!</span>
+                          <Check className="w-3.5 h-3.5 text-slate-950" />
+                          <span>Nusxalandi!</span>
                         </>
                       ) : (
                         <>
-                          <Copy className="w-3 h-3" />
+                          <Copy className="w-3.5 h-3.5" />
                           <span>Nusxalash</span>
                         </>
                       )}
                     </button>
                   </div>
-                  <div className="font-mono text-sm sm:text-base font-black text-white tracking-wider">
+                  <div className="font-mono text-sm sm:text-base md:text-lg font-black text-white tracking-wider bg-black/20 p-2 rounded-xl border border-white/10 text-center sm:text-left select-all">
                     {bankRequisites.accountNumber}
                   </div>
                 </div>
 
                 {/* 2. MFO */}
-                <div className="bg-white/10 hover:bg-white/15 transition-colors p-3 sm:p-3.5 rounded-2xl border border-white/15 flex flex-col justify-between gap-1.5">
+                <div className="bg-white/10 p-3.5 rounded-2xl border border-white/20 flex flex-col justify-between gap-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] uppercase font-bold text-sky-200 tracking-wider">
+                    <span className="text-[10px] sm:text-[11px] uppercase font-extrabold text-sky-200 tracking-wider">
                       Bank MFO Kodi
                     </span>
                     <button
                       type="button"
                       onClick={() => handleCopy(bankRequisites.mfo, 'mfo')}
-                      className="p-1 rounded-lg bg-white/10 hover:bg-sky-500 text-white transition-all cursor-pointer flex items-center gap-1 text-[10px] font-bold px-2"
+                      className="py-1 px-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 transition-all cursor-pointer flex items-center gap-1 text-[11px] font-black shadow-sm"
                       title="MFO kodni nusxalash"
                     >
                       {copiedKey === 'mfo' ? (
                         <>
-                          <Check className="w-3 h-3 text-emerald-300" />
-                          <span className="text-emerald-300">Nusxalandi!</span>
+                          <Check className="w-3.5 h-3.5 text-slate-950" />
+                          <span>Nusxalandi!</span>
                         </>
                       ) : (
                         <>
-                          <Copy className="w-3 h-3" />
+                          <Copy className="w-3.5 h-3.5" />
                           <span>Nusxalash</span>
                         </>
                       )}
                     </button>
                   </div>
-                  <div className="font-mono text-sm sm:text-base font-black text-white tracking-wider">
+                  <div className="font-mono text-sm sm:text-base md:text-lg font-black text-white tracking-wider bg-black/20 p-2 rounded-xl border border-white/10 text-center sm:text-left select-all">
                     {bankRequisites.mfo}
                   </div>
                 </div>
 
-                {/* 3. STIR (INN) */}
-                <div className="bg-white/10 hover:bg-white/15 transition-colors p-3 sm:p-3.5 rounded-2xl border border-white/15 flex flex-col justify-between gap-1.5">
+                {/* 3. STIR (ИНН) */}
+                <div className="bg-white/10 p-3.5 rounded-2xl border border-white/20 flex flex-col justify-between gap-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] uppercase font-bold text-sky-200 tracking-wider">
+                    <span className="text-[10px] sm:text-[11px] uppercase font-extrabold text-sky-200 tracking-wider">
                       STIR (СТИР / ИНН)
                     </span>
                     <button
                       type="button"
                       onClick={() => handleCopy(bankRequisites.rawTin, 'tin')}
-                      className="p-1 rounded-lg bg-white/10 hover:bg-sky-500 text-white transition-all cursor-pointer flex items-center gap-1 text-[10px] font-bold px-2"
+                      className="py-1 px-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 transition-all cursor-pointer flex items-center gap-1 text-[11px] font-black shadow-sm"
                       title="STIR raqamini nusxalash"
                     >
                       {copiedKey === 'tin' ? (
                         <>
-                          <Check className="w-3 h-3 text-emerald-300" />
-                          <span className="text-emerald-300">Nusxalandi!</span>
+                          <Check className="w-3.5 h-3.5 text-slate-950" />
+                          <span>Nusxalandi!</span>
                         </>
                       ) : (
                         <>
-                          <Copy className="w-3 h-3" />
+                          <Copy className="w-3.5 h-3.5" />
                           <span>Nusxalash</span>
                         </>
                       )}
                     </button>
                   </div>
-                  <div className="font-mono text-sm sm:text-base font-black text-white tracking-wider">
+                  <div className="font-mono text-sm sm:text-base md:text-lg font-black text-white tracking-wider bg-black/20 p-2 rounded-xl border border-white/10 text-center sm:text-left select-all">
                     {bankRequisites.tin}
                   </div>
                 </div>
@@ -304,9 +300,9 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
               </div>
 
               {/* Bottom One-Click "All Requisites" Copy */}
-              <div className="relative mt-3 pt-3 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-sky-200">
-                <div className="text-[11px] text-center sm:text-left text-blue-100/90">
-                  Bank orqali shartnoma, to‘lov va rasmiy operatsiyalar uchun barcha ma’lumotlar to‘liq tasdiqlangan.
+              <div className="mt-3.5 pt-3 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-2.5 text-xs text-sky-200">
+                <div className="text-[11px] text-center sm:text-left text-blue-100 font-medium">
+                  To‘lovlar va shartnomalar uchun rasmiy hisob ma’lumotlari.
                 </div>
                 <button
                   type="button"
@@ -314,17 +310,17 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
                     const allText = `Tashkilot: ${bankRequisites.companyName}\nHisob raqam: ${bankRequisites.rawAccount}\nMFO: ${bankRequisites.mfo}\nSTIR: ${bankRequisites.rawTin}\nBank: ${bankRequisites.bankName}`;
                     handleCopy(allText, 'all');
                   }}
-                  className="px-4 py-1.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-xs transition-all shadow cursor-pointer flex items-center gap-1.5"
+                  className="w-full sm:w-auto px-4 py-2 rounded-xl bg-sky-400 hover:bg-sky-300 text-slate-950 font-black text-xs transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
                 >
                   {copiedKey === 'all' ? (
                     <>
-                      <Check className="w-3.5 h-3.5" />
-                      <span>Barchasi Nusxalandi!</span>
+                      <Check className="w-4 h-4 text-slate-950" />
+                      <span>Barcha Rekvizitlar Nusxalandi!</span>
                     </>
                   ) : (
                     <>
-                      <Copy className="w-3.5 h-3.5" />
-                      <span>Barcha rekvizitlarni nusxalash</span>
+                      <Copy className="w-4 h-4 text-slate-950" />
+                      <span>Barcha rekvizitlarni to‘liq nusxalash</span>
                     </>
                   )}
                 </button>

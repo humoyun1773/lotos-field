@@ -32,7 +32,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col overflow-x-hidden font-sans text-slate-800 bg-gradient-to-b from-[#ebf4ff] via-[#f5f9ff] to-[#e4f0ff]">
+    <div className="min-h-screen relative flex flex-col overflow-x-hidden font-sans text-slate-800 bg-transparent">
       {/* Initial Page Preloader */}
       <Preloader />
 

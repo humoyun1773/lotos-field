@@ -145,7 +145,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
     }
   };
 
-  const baseClass = "group relative flex flex-col items-center justify-between rounded-3xl p-4 pt-6 transition-all duration-300 bg-white/80 backdrop-blur-md hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(23,70,162,0.22)] border border-white/90 hover:border-blue-300 shadow-[0_8px_24px_rgba(15,41,99,0.06)] h-full";
+  const baseClass = "group relative flex flex-col items-center justify-between rounded-3xl p-3.5 sm:p-4 pt-5 sm:pt-6 transition-all duration-300 bg-white/90 backdrop-blur-md hover:-translate-y-1.5 hover:shadow-[0_16px_36px_-8px_rgba(23,70,162,0.2)] border border-white hover:border-blue-300 shadow-[0_4px_20px_rgba(15,41,99,0.06)] h-full w-full";
 
   const handleClick = (e: React.MouseEvent) => {
     if (onNavigate && service.link) {
@@ -162,7 +162,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
-        className="group relative w-full flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-10 rounded-3xl px-6 sm:px-10 py-7 sm:py-9 bg-gradient-to-r from-white via-blue-50/70 to-white backdrop-blur-xl border-2 border-blue-200/80 hover:border-blue-400 shadow-[0_16px_40px_-6px_rgba(15,41,99,0.12)] hover:shadow-[0_24px_50px_-8px_rgba(23,70,162,0.25)] hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden"
+        className="group relative w-full flex flex-col lg:flex-row items-center justify-between gap-5 sm:gap-6 lg:gap-10 rounded-3xl px-4 sm:px-8 lg:px-10 py-5 sm:py-7 lg:py-8 bg-gradient-to-r from-white via-blue-50/70 to-white backdrop-blur-xl border-2 border-blue-200/80 hover:border-blue-400 shadow-[0_12px_32px_-6px_rgba(15,41,99,0.1)] hover:shadow-[0_20px_45px_-8px_rgba(23,70,162,0.22)] hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden"
         style={{ textDecoration: 'none', display: 'flex' }}
       >
         {/* Top elegant blue gradient accent line */}
@@ -170,11 +170,11 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
 
         {/* Left: Swallow Bird Visual with Ambient Glow */}
         <div className="flex-shrink-0 w-full lg:w-72 flex flex-col items-center justify-center pointer-events-none">
-          <div className="relative w-full h-40 sm:h-44 flex items-center justify-center">
+          <div className="relative w-full h-32 sm:h-40 lg:h-44 flex items-center justify-center">
             <LastochkaVisual />
           </div>
-          <div className="text-center -mt-2">
-            <span className="text-[11px] font-extrabold tracking-[0.2em] text-[#0f2963] uppercase bg-blue-100/70 px-3 py-0.5 rounded-full">
+          <div className="text-center -mt-1 sm:-mt-2">
+            <span className="text-[10px] sm:text-[11px] font-extrabold tracking-[0.2em] text-[#0f2963] uppercase bg-blue-100/80 px-3 py-0.5 rounded-full border border-blue-200/60">
               EKOTIZIM MARKAZI
             </span>
           </div>
@@ -183,45 +183,45 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
         {/* Right: Persuasive Business & Investment Content */}
         <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left pointer-events-none w-full">
           {/* Top Tagline Pill */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100/80 border border-blue-200 text-[#0f2963] text-[11px] font-bold tracking-wider uppercase mb-2 shadow-2xs">
-            <span className="w-2 h-2 rounded-full bg-blue-600 animate-ping" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100/80 border border-blue-200 text-[#0f2963] text-[10px] sm:text-[11px] font-bold tracking-wider uppercase mb-2 shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
             INVESTITSIYA VA HAMKORLIK IMKONIYATI
           </div>
 
           {/* Main Headline */}
-          <h3 className="font-cinzel text-xl sm:text-2xl lg:text-3xl font-black text-[#0f2963] tracking-wide uppercase leading-tight mb-1">
+          <h3 className="font-cinzel text-lg sm:text-2xl lg:text-3xl font-black text-[#0f2963] tracking-wide uppercase leading-tight mb-1">
             BIZNESINGIZNI BIZ BILAN RIVOJLANTIRING!
           </h3>
 
           {/* Subheading with company name badge */}
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-3">
-            <span className="text-xs sm:text-sm font-bold text-blue-700 tracking-wider uppercase">
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-1.5 sm:gap-2 mb-2.5">
+            <span className="text-[11px] sm:text-xs md:text-sm font-bold text-blue-700 tracking-wider uppercase">
               ZALATIYE LASTOCHKA MCHJ
             </span>
             <span className="text-slate-400 hidden sm:inline">•</span>
-            <span className="text-xs sm:text-sm font-semibold text-slate-600">
-              Kafolatlangan daromad, barqaror o'sish va kengayish
+            <span className="text-[11px] sm:text-xs md:text-sm font-semibold text-slate-600">
+              Kafolatlangan daromad va barqaror o'sish
             </span>
           </div>
 
           {/* Core pitch text explaining WHY they should click and invest */}
-          <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed max-w-3xl mb-4">
+          <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed max-w-3xl mb-3.5">
             Biznesingizga investitsiya kiritmoqchimisiz yoki yangi yo‘nalishda daromad olmoqchimisiz? Bizning ko‘p tarmoqli ekotizimimiz (<span className="font-bold text-blue-900">Sayohat, Ta’lim, Taxi, Arxitektura va IT</span>) orqali tayyor infratuzilma, 100% yuridik shaffoflik va barqaror foydali hamkorlikka ega bo‘ling!
           </p>
 
           {/* Value Proposition Pills */}
-          <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-5">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 justify-center lg:justify-start mb-4">
             {service.features?.map((f, i) => (
-              <span key={i} className="text-[11px] font-bold bg-white text-[#0f2963] border border-blue-200 px-3 py-1 rounded-xl shadow-2xs flex items-center gap-1">
+              <span key={i} className="text-[10px] sm:text-[11px] font-bold bg-white text-[#0f2963] border border-blue-200 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-xl shadow-2xs flex items-center gap-1">
                 <span className="text-blue-600">✦</span> {f}
               </span>
             ))}
           </div>
 
           {/* High-Converting CTA Button */}
-          <div className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#0f2963] via-[#1746a2] to-[#2563eb] text-white text-xs sm:text-sm font-extrabold px-7 py-3 rounded-full shadow-lg group-hover:shadow-blue-500/30 group-hover:scale-105 transition-all duration-300">
+          <div className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#0f2963] via-[#1746a2] to-[#2563eb] text-white text-xs sm:text-sm font-extrabold px-6 sm:px-7 py-2.5 sm:py-3 rounded-full shadow-md group-hover:shadow-blue-500/25 group-hover:scale-[1.02] transition-all duration-300">
             <span>Hamkorlik & Investitsiya portaliga o‘tish</span>
-            <svg className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </div>
@@ -234,25 +234,25 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
   const cardContent = (
     <>
       {/* Visualizer Area */}
-      <div className="w-full flex-1 flex items-center justify-center my-1 relative pointer-events-none min-h-[140px]">
+      <div className="w-full flex-1 flex items-center justify-center my-1 relative pointer-events-none min-h-[120px] sm:min-h-[140px]">
         {renderVisual()}
       </div>
 
       {/* Title & Banner Badge Area */}
-      <div className="w-full flex flex-col items-center pointer-events-none mt-2">
+      <div className="w-full flex flex-col items-center pointer-events-none mt-1 sm:mt-2">
         {renderTitleBanner()}
 
         {/* Subtitle / Description Text */}
-        <p className="text-[11px] sm:text-xs text-slate-600 font-medium text-center mt-2 mb-2 px-1 line-clamp-2 leading-relaxed min-h-[34px] flex items-center justify-center">
+        <p className="text-[11px] sm:text-xs text-slate-600 font-medium text-center mt-1.5 sm:mt-2 mb-2 px-1 line-clamp-2 leading-relaxed min-h-[32px] sm:min-h-[34px] flex items-center justify-center">
           {service.description}
         </p>
 
         {/* Action Button Style Indicator */}
         {service.link && (
           <div className="w-full pt-2 mt-1 border-t border-blue-100 flex items-center justify-center">
-            <div className="w-full py-1.5 px-3 rounded-xl bg-blue-50/80 group-hover:bg-[#1746a2] text-[#1746a2] group-hover:text-white border border-blue-200/60 group-hover:border-[#1746a2] flex items-center justify-center gap-1.5 text-xs font-bold transition-all duration-300 shadow-2xs">
+            <div className="w-full py-1.5 px-3 rounded-xl bg-blue-50/80 group-hover:bg-[#1746a2] text-[#1746a2] group-hover:text-white border border-blue-200/60 group-hover:border-[#1746a2] flex items-center justify-center gap-1.5 text-[11px] sm:text-xs font-bold transition-all duration-300 shadow-2xs">
               <span>Saytga o'tish</span>
-              <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
             </div>

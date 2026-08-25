@@ -94,22 +94,22 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
           <div className="h-2 w-full bg-gradient-to-r from-[#0f2963] via-[#2563eb] to-[#0f2963]" />
 
           {/* Modal Header */}
-          <div className="px-6 py-5 sm:px-8 sm:py-6 border-b border-blue-100 flex items-center justify-between bg-white/70 backdrop-blur">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#0f2963] to-[#2563eb] text-white flex items-center justify-center shadow-md">
-                <ShieldCheck className="w-6 h-6" />
+          <div className="px-4 py-3.5 sm:px-8 sm:py-6 border-b border-blue-100 flex items-center justify-between bg-white/80 backdrop-blur gap-2">
+            <div className="flex items-center gap-2.5 sm:gap-3.5">
+              <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-[#0f2963] to-[#2563eb] text-white flex items-center justify-center shadow-md flex-shrink-0">
+                <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div>
-                <div className="flex items-center gap-2">
-                  <h2 className="font-cinzel text-lg sm:text-2xl font-black text-[#0f2963] tracking-wide uppercase">
-                    Rasmiy Litsenziya va Guvohnomalar
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <h2 className="font-cinzel text-sm sm:text-lg md:text-xl font-black text-[#0f2963] tracking-wide uppercase leading-tight">
+                    Rasmiy Litsenziyalar
                   </h2>
-                  <span className="hidden sm:inline-flex items-center gap-1 bg-emerald-500/10 text-emerald-700 text-[10px] font-extrabold tracking-wider px-2.5 py-0.5 rounded-full border border-emerald-300">
-                    <CheckCircle2 className="w-3 h-3" /> 100% Qonuniy
+                  <span className="inline-flex items-center gap-1 bg-emerald-500/10 text-emerald-700 text-[9px] sm:text-[10px] font-extrabold tracking-wider px-2 py-0.2 rounded-full border border-emerald-300">
+                    <CheckCircle2 className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> 100% Qonuniy
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-600 font-medium mt-0.5">
-                  "ZALATIYE LASTOCHKA" MCHJ ning davlat tomonidan tasdiqlangan barcha faoliyat hujjatlari
+                <p className="text-[11px] sm:text-xs text-slate-500 font-medium mt-0.5 line-clamp-1 sm:line-clamp-none">
+                  "ZALATIYE LASTOCHKA" MCHJ davlat ro'yxatidan o'tgan faoliyat hujjatlari
                 </p>
               </div>
             </div>
@@ -117,46 +117,46 @@ export const LicenseModal: FC<LicenseModalProps> = ({ isOpen, onClose }) => {
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="w-10 h-10 rounded-full bg-slate-100 hover:bg-red-50 text-slate-600 hover:text-red-600 flex items-center justify-center transition-all duration-200 border border-slate-200"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-red-50 text-slate-600 hover:text-red-600 flex items-center justify-center transition-all duration-200 border border-slate-200 flex-shrink-0"
               title="Yopish"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
 
           {/* Modal Body - 3 License Cards */}
-          <div className="p-4 sm:p-6 md:p-8 overflow-y-auto flex-1 custom-scrollbar">
+          <div className="p-3 sm:p-6 md:p-8 overflow-y-auto flex-1 custom-scrollbar">
             {/* Quick Badges Info */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
-              <div className="bg-blue-50/80 border border-blue-200/70 rounded-2xl p-3 flex items-center gap-3">
-                <Building2 className="w-5 h-5 text-blue-700 flex-shrink-0" />
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <div className="bg-blue-50/80 border border-blue-200/70 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 sm:gap-3">
+                <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 flex-shrink-0" />
                 <div>
-                  <div className="text-[10px] uppercase font-bold text-slate-500">Kompaniya STIR raqami</div>
+                  <div className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-500">STIR Raqami</div>
                   <div className="text-xs sm:text-sm font-black text-[#0f2963]">308122009</div>
                 </div>
               </div>
-              <div className="bg-blue-50/80 border border-blue-200/70 rounded-2xl p-3 flex items-center gap-3">
-                <Award className="w-5 h-5 text-blue-700 flex-shrink-0" />
+              <div className="bg-blue-50/80 border border-blue-200/70 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 sm:gap-3">
+                <Award className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 flex-shrink-0" />
                 <div>
-                  <div className="text-[10px] uppercase font-bold text-slate-500">Yuridik Maqomi</div>
-                  <div className="text-xs sm:text-sm font-black text-[#0f2963]">Mas’uliyati Cheklangan Jamiyat</div>
+                  <div className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-500">Yuridik Maqomi</div>
+                  <div className="text-xs sm:text-sm font-black text-[#0f2963]">M C H J</div>
                 </div>
               </div>
-              <div className="bg-emerald-50/80 border border-emerald-200/70 rounded-2xl p-3 flex items-center gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald-700 flex-shrink-0" />
+              <div className="bg-emerald-50/80 border border-emerald-200/70 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 sm:gap-3">
+                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-700 flex-shrink-0" />
                 <div>
-                  <div className="text-[10px] uppercase font-bold text-slate-500">Litsenziya Holati</div>
+                  <div className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-500">Litsenziya Holati</div>
                   <div className="text-xs sm:text-sm font-black text-emerald-700">Cheksiz / Faol</div>
                 </div>
               </div>
             </div>
 
             {/* The 3 Main License Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-5 lg:gap-6">
               {licensesData.map((lic, index) => (
                 <div
                   key={lic.id}
-                  className="group relative bg-white rounded-3xl border border-blue-100 shadow-md hover:shadow-xl hover:border-blue-300 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                  className="group relative bg-white rounded-2xl sm:rounded-3xl border border-blue-100 shadow-sm hover:shadow-lg hover:border-blue-300 transition-all duration-300 flex flex-col justify-between overflow-hidden"
                 >
                   {/* Top Badge */}
                   <div className="p-4 pb-2">

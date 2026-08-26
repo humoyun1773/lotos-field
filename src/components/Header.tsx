@@ -91,49 +91,49 @@ export const Header: FC = () => {
         </div>
       </div>
 
-      {/* Main Title: ZALATIYE LASTOCHKA */}
-      <h1 className="font-cinzel text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-extrabold tracking-[0.14em] text-[#0f2963] uppercase drop-shadow-xs">
+      {/* Main Title: ZALATIYE LASTOCHKA (White with rich contrast shadow) */}
+      <h1 className="font-cinzel text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-black tracking-[0.14em] text-white uppercase drop-shadow-[0_4px_16px_rgba(10,25,70,0.9)]">
         ZALATIYE LASTOCHKA
       </h1>
 
       {/* Subtitle: M C H J */}
-      <h2 className="font-cinzel text-sm sm:text-base md:text-lg font-bold tracking-[0.4em] text-[#1e3a8a] uppercase mt-0.5 mb-1.5">
+      <h2 className="font-cinzel text-sm sm:text-base md:text-lg font-bold tracking-[0.45em] text-sky-100 uppercase mt-0.5 mb-1.5 drop-shadow-[0_2px_8px_rgba(10,25,70,0.85)]">
         M C H J
       </h2>
 
       {/* Elegant Separator Line with Diamond */}
-      <div className="flex items-center justify-center gap-3 w-full max-w-sm my-1 opacity-70">
-        <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#2563eb] to-[#1e3a8a]" />
-        <span className="w-1.5 h-1.5 rotate-45 bg-[#1e3a8a]" />
-        <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#2563eb] to-[#1e3a8a]" />
+      <div className="flex items-center justify-center gap-3 w-full max-w-sm my-1 opacity-90">
+        <div className="h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-white to-white" />
+        <span className="w-1.5 h-1.5 rotate-45 bg-white shadow-xs" />
+        <div className="h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-white to-white" />
       </div>
 
-      {/* Motto / Slogan: SIFAT • ISHONCH • NATIJA */}
-      <div className="flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-bold tracking-[0.22em] text-[#2563eb] uppercase my-1">
+      {/* Motto / Slogan: SIFAT • ISHONCH • NATIJA (White with glow) */}
+      <div className="flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-extrabold tracking-[0.24em] text-white uppercase my-1 drop-shadow-[0_2px_8px_rgba(10,25,70,0.85)]">
         <span>SIFAT</span>
-        <span className="text-[#1e3a8a] text-[9px]">•</span>
+        <span className="text-sky-300 text-[10px]">•</span>
         <span>ISHONCH</span>
-        <span className="text-[#1e3a8a] text-[9px]">•</span>
+        <span className="text-sky-300 text-[10px]">•</span>
         <span>NATIJA</span>
       </div>
 
       {/* Section Title Banner: FAOLIYAT YO'NALISHLARIMIZ */}
-      <div className="relative inline-flex items-center justify-center gap-3 mt-2 px-6 py-1">
+      <div className="relative inline-flex items-center justify-center gap-3 mt-2.5 px-6 py-1">
         {/* Left Line */}
         <div className="hidden sm:flex items-center gap-1">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#0f2963]" />
-          <div className="w-10 md:w-16 h-[1.5px] bg-[#0f2963]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-white shadow-xs" />
+          <div className="w-10 md:w-16 h-[1.5px] bg-white/90 shadow-xs" />
         </div>
 
         {/* Section Heading */}
-        <span className="text-xs sm:text-sm md:text-base font-extrabold tracking-[0.18em] text-[#0f2963] uppercase bg-blue-50/80 px-4 py-1 rounded-full border border-blue-200/60 shadow-2xs">
+        <span className="text-xs sm:text-sm md:text-base font-black tracking-[0.18em] text-[#0f2963] uppercase bg-white/95 px-5 py-1.5 rounded-full border-2 border-white/90 shadow-[0_4px_16px_rgba(0,0,0,0.15)] backdrop-blur">
           FAOLIYAT YO'NALISHLARIMIZ
         </span>
 
         {/* Right Line */}
         <div className="hidden sm:flex items-center gap-1">
-          <div className="w-10 md:w-16 h-[1.5px] bg-[#0f2963]" />
-          <span className="w-1.5 h-1.5 rounded-full bg-[#0f2963]" />
+          <div className="w-10 md:w-16 h-[1.5px] bg-white/90 shadow-xs" />
+          <span className="w-1.5 h-1.5 rounded-full bg-white shadow-xs" />
         </div>
       </div>
     </header>

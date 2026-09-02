@@ -201,18 +201,18 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
           {/* Subheading with badge */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-1.5 sm:gap-2 mb-2.5">
             <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-wider uppercase text-blue-700">
-              {isEhson ? 'EHSON.UZ PLATFORMASI' : 'ZALATIYE LASTOCHKA MCHJ'}
+              {isEhson ? 'SAXOVAT VA EZGULIK MARKAZI' : 'ZALATIYE LASTOCHKA MCHJ'}
             </span>
             <span className="text-slate-400 hidden sm:inline">•</span>
             <span className="text-[11px] sm:text-xs md:text-sm font-semibold text-slate-600">
-              {isEhson ? 'Muhtojlar, yetimlar va og‘ir xastalarga yordam' : 'Kafolatlangan daromad va barqaror o\'sish'}
+              {isEhson ? 'Muhtojlar, yetimlar va og‘ir xastalarga beg‘araz ko‘mak' : 'Kafolatlangan daromad va barqaror o\'sish'}
             </span>
           </div>
 
           {/* Core pitch text */}
           <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed max-w-3xl mb-3.5">
             {isEhson 
-              ? 'Ehson.uz — muhtoj insonlar, yetim bolalar, kam ta’minlangan oilalar va og‘ir xastalarga to‘g‘ridan-to‘g‘ri bank kartasi orqali yordam berish platformasi. Har bir ehson 100% manzilli, to‘liq shaffof fotohisobotlar va omonat bilan yetkaziladi!'
+              ? 'Muhtoj oilalar, mehrga intiq yetim bolalar va shifoga muhtoj og‘ir xastalarga bevosita ko‘mak qo‘lini cho‘zing. Har bir xayriya yordami omonat sifatida to‘g‘ridan-to‘g‘ri egalariga yetkaziladi va 100% ochiq, shaffof fotohisobotlar orqali tasdiqlanadi!'
               : <>Biznesingizga investitsiya kiritmoqchimisiz yoki yangi yo‘nalishda daromad olmoqchimisiz? Bizning ko‘p tarmoqli ekotizimimiz (<span className="font-bold text-blue-900">Sayohat, Ta’lim, Taxi, Arxitektura va IT</span>) orqali tayyor infratuzilma, 100% yuridik shaffoflik va barqaror foydali hamkorlikka ega bo‘ling!</>
             }
           </p>
@@ -231,7 +231,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
 
           {/* High-Converting CTA Button (Pure Blue) */}
           <div className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-white text-xs sm:text-sm font-extrabold px-6 sm:px-7 py-2.5 sm:py-3 rounded-full shadow-md transition-all duration-300 bg-gradient-to-r from-[#0f2963] via-[#1746a2] to-[#2563eb] group-hover:shadow-blue-500/25 group-hover:scale-[1.02]">
-            <span>{isEhson ? 'Ehson.uz xayriya portaliga o‘tish' : 'Hamkorlik & Investitsiya portaliga o‘tish'}</span>
+            <span>{isEhson ? 'Xayriya va ezgulik portaliga o‘tish' : 'Hamkorlik & Investitsiya portaliga o‘tish'}</span>
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>

@@ -178,7 +178,7 @@ export const services: ServiceItem[] = [
   {
     id: 'ehson',
     number: '07',
-    title: 'EHSON.UZ',
+    title: 'SAXOVAT VA EZGULIK',
     subtitleTag: 'XAYRIYA JAMG‘ARMASI',
     description: '100% rasman tekshirilgan va tasdiqlangan xayriya holatlari orqali muhtojlarga to‘g‘ridan-to‘g‘ri yordam bering',
     category: 'Xayriya & Ezgulik',
@@ -187,7 +187,7 @@ export const services: ServiceItem[] = [
     features: ['100% Shaffof hisobot', 'To‘g‘ridan-to‘g‘ri yordam', 'Tasdiqlangan holatlar', 'Rasmiy xayriya platformasi'],
     details: {
       tagline: 'EZGULIK VA SHAFQAT SARI BIRGA QADAM QO‘YING!',
-      summary: 'Ehson.uz — muhtoj insonlar, yetim bolalar, kam ta’minlangan oilalar va og‘ir xastalarga to‘g‘ridan-to‘g‘ri bank kartasi orqali yordam berish platformasi. Har bir ehson 100% manzilli va shaffof hisobotlar bilan yetkaziladi.',
+      summary: 'Muhtoj oilalar, mehrga intiq yetim bolalar va shifoga muhtoj og‘ir xastalarga bevosita ko‘mak qo‘lini cho‘zing. Har bir xayriya yordami omonat sifatida to‘g‘ridan-to‘g‘ri egalariga yetkaziladi va 100% ochiq, shaffof fotohisobotlar orqali tasdiqlanadi!',
       highlights: [
         '100% rasman tekshirilgan va tasdiqlangan ehtiyojmand holatlar',
         'To‘g‘ridan-to‘g‘ri bank kartalari orqali onlayn ehson qilish',

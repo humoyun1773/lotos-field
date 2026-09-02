@@ -71,7 +71,7 @@ const topLicensesData: LicenseItem[] = [
   }
 ];
 
-export const bankRequisites = {
+const bankRequisites = {
   accountNumber: '2020 8000 6053 3284 8001',
   rawAccount: '20208000605332848001',
   mfo: '00341',

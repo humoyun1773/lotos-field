@@ -167,21 +167,11 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
-        className={`group relative w-full flex flex-col lg:flex-row items-center justify-between gap-5 sm:gap-6 lg:gap-10 rounded-3xl px-4 sm:px-8 lg:px-10 py-5 sm:py-7 lg:py-8 ${
-          isEhson 
-            ? 'bg-gradient-to-r from-white via-emerald-50/70 to-white border-2 border-emerald-200/80 hover:border-emerald-400 shadow-[0_12px_32px_-6px_rgba(5,150,105,0.1)] hover:shadow-[0_20px_45px_-8px_rgba(5,150,105,0.22)]' 
-            : 'bg-gradient-to-r from-white via-blue-50/70 to-white border-2 border-blue-200/80 hover:border-blue-400 shadow-[0_12px_32px_-6px_rgba(15,41,99,0.1)] hover:shadow-[0_20px_45px_-8px_rgba(23,70,162,0.22)]'
-        } backdrop-blur-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden select-none`}
+        className="group relative w-full flex flex-col lg:flex-row items-center justify-between gap-5 sm:gap-6 lg:gap-10 rounded-3xl px-4 sm:px-8 lg:px-10 py-5 sm:py-7 lg:py-8 bg-gradient-to-r from-white via-blue-50/70 to-white border-2 border-blue-200/80 hover:border-blue-400 shadow-[0_12px_32px_-6px_rgba(15,41,99,0.1)] hover:shadow-[0_20px_45px_-8px_rgba(23,70,162,0.22)] backdrop-blur-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden select-none"
         style={{ textDecoration: 'none', display: 'flex', cursor: 'pointer' }}
       >
-        {/* Top elegant gradient accent line */}
-        <div 
-          className={`absolute top-0 left-0 right-0 h-1.5 ${
-            isEhson 
-              ? 'bg-gradient-to-r from-[#065f46] via-[#10b981] to-[#047857]' 
-              : 'bg-gradient-to-r from-[#0f2963] via-[#2563eb] to-[#0f2963]'
-          } rounded-t-3xl`} 
-        />
+        {/* Top elegant gradient accent line (Pure Blue) */}
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#0f2963] via-[#2563eb] to-[#0f2963] rounded-t-3xl" />
 
         {/* Left: Visual with Ambient Glow & Tag */}
         <div className="flex-shrink-0 w-full lg:w-72 flex flex-col items-center justify-center pointer-events-none">
@@ -189,13 +179,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
             {isEhson ? <EhsonVisual /> : <LastochkaVisual />}
           </div>
           <div className="text-center -mt-1 sm:-mt-2">
-            <span 
-              className={`text-[10px] sm:text-[11px] font-extrabold tracking-[0.2em] uppercase px-3 py-0.5 rounded-full border ${
-                isEhson 
-                  ? 'text-emerald-900 bg-emerald-100/80 border-emerald-200/60' 
-                  : 'text-[#0f2963] bg-blue-100/80 border-blue-200/60'
-              }`}
-            >
+            <span className="text-[10px] sm:text-[11px] font-extrabold tracking-[0.2em] uppercase px-3 py-0.5 rounded-full border text-[#0f2963] bg-blue-100/80 border-blue-200/60">
               {isEhson ? 'XAYRIYA PLATFORMASI' : 'EKOTIZIM MARKAZI'}
             </span>
           </div>
@@ -204,29 +188,19 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
         {/* Right: Persuasive Content */}
         <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left pointer-events-none w-full">
           {/* Top Tagline Pill */}
-          <div 
-            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold tracking-wider uppercase mb-2 shadow-2xs border ${
-              isEhson 
-                ? 'bg-emerald-100/80 border-emerald-200 text-emerald-900' 
-                : 'bg-blue-100/80 border-blue-200 text-[#0f2963]'
-            }`}
-          >
-            <span className={`w-1.5 h-1.5 rounded-full ${isEhson ? 'bg-emerald-600' : 'bg-blue-600'} animate-pulse`} />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold tracking-wider uppercase mb-2 shadow-2xs border bg-blue-100/80 border-blue-200 text-[#0f2963]">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
             {isEhson ? 'RASMIY VA SHAFFAF XAYRIYA JAMG‘ARMASI' : 'INVESTITSIYA VA HAMKORLIK IMKONIYATI'}
           </div>
 
           {/* Main Headline */}
-          <h3 
-            className={`font-cinzel text-lg sm:text-2xl lg:text-3xl font-black tracking-wide uppercase leading-tight mb-1 ${
-              isEhson ? 'text-[#064e3b]' : 'text-[#0f2963]'
-            }`}
-          >
+          <h3 className="font-cinzel text-lg sm:text-2xl lg:text-3xl font-black tracking-wide uppercase leading-tight mb-1 text-[#0f2963]">
             {isEhson ? 'EZGULIK VA SHAFQAT SARI BIRGA QADAM QO‘YING!' : 'BIZNESINGIZNI BIZ BILAN RIVOJLANTIRING!'}
           </h3>
 
           {/* Subheading with badge */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-1.5 sm:gap-2 mb-2.5">
-            <span className={`text-[11px] sm:text-xs md:text-sm font-bold tracking-wider uppercase ${isEhson ? 'text-emerald-700' : 'text-blue-700'}`}>
+            <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-wider uppercase text-blue-700">
               {isEhson ? 'EHSON.UZ PLATFORMASI' : 'ZALATIYE LASTOCHKA MCHJ'}
             </span>
             <span className="text-slate-400 hidden sm:inline">•</span>
@@ -248,23 +222,15 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
             {service.features?.map((f, i) => (
               <span 
                 key={i} 
-                className={`text-[10px] sm:text-[11px] font-bold bg-white px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-xl shadow-2xs flex items-center gap-1 border ${
-                  isEhson ? 'text-emerald-900 border-emerald-200' : 'text-[#0f2963] border-blue-200'
-                }`}
+                className="text-[10px] sm:text-[11px] font-bold bg-white px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-xl shadow-2xs flex items-center gap-1 border text-[#0f2963] border-blue-200"
               >
-                <span className={isEhson ? 'text-emerald-600' : 'text-blue-600'}>✦</span> {f}
+                <span className="text-blue-600">✦</span> {f}
               </span>
             ))}
           </div>
 
-          {/* High-Converting CTA Button */}
-          <div 
-            className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 text-white text-xs sm:text-sm font-extrabold px-6 sm:px-7 py-2.5 sm:py-3 rounded-full shadow-md transition-all duration-300 ${
-              isEhson
-                ? 'bg-gradient-to-r from-[#065f46] via-[#059669] to-[#10b981] group-hover:shadow-emerald-500/25 group-hover:scale-[1.02]'
-                : 'bg-gradient-to-r from-[#0f2963] via-[#1746a2] to-[#2563eb] group-hover:shadow-blue-500/25 group-hover:scale-[1.02]'
-            }`}
-          >
+          {/* High-Converting CTA Button (Pure Blue) */}
+          <div className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-white text-xs sm:text-sm font-extrabold px-6 sm:px-7 py-2.5 sm:py-3 rounded-full shadow-md transition-all duration-300 bg-gradient-to-r from-[#0f2963] via-[#1746a2] to-[#2563eb] group-hover:shadow-blue-500/25 group-hover:scale-[1.02]">
             <span>{isEhson ? 'Ehson.uz xayriya portaliga o‘tish' : 'Hamkorlik & Investitsiya portaliga o‘tish'}</span>
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />

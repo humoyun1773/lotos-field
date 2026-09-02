@@ -174,5 +174,32 @@ export const services: ServiceItem[] = [
       ],
       contactActionText: 'Hamkorlikni boshlash'
     }
+  },
+  {
+    id: 'ehson',
+    number: '07',
+    title: 'EHSON.UZ',
+    subtitleTag: 'XAYRIYA JAMG‘ARMASI',
+    description: '100% rasman tekshirilgan va tasdiqlangan xayriya holatlari orqali muhtojlarga to‘g‘ridan-to‘g‘ri yordam bering',
+    category: 'Xayriya & Ezgulik',
+    bannerStyle: 'lastochka',
+    link: 'https://exson-web.vercel.app/',
+    features: ['100% Shaffof hisobot', 'To‘g‘ridan-to‘g‘ri yordam', 'Tasdiqlangan holatlar', 'Rasmiy xayriya platformasi'],
+    details: {
+      tagline: 'EZGULIK VA SHAFQAT SARI BIRGA QADAM QO‘YING!',
+      summary: 'Ehson.uz — muhtoj insonlar, yetim bolalar, kam ta’minlangan oilalar va og‘ir xastalarga to‘g‘ridan-to‘g‘ri bank kartasi orqali yordam berish platformasi. Har bir ehson 100% manzilli va shaffof hisobotlar bilan yetkaziladi.',
+      highlights: [
+        '100% rasman tekshirilgan va tasdiqlangan ehtiyojmand holatlar',
+        'To‘g‘ridan-to‘g‘ri bank kartalari orqali onlayn ehson qilish',
+        'Har bir tiyin uchun to‘liq shaffof fotohisobotlar',
+        'Ishonchli va qonuniy xayriya faoliyati'
+      ],
+      advantages: [
+        'Hech qanday vositachilarsiz bevosita yetkazish',
+        'Qulay to‘lov usullari (Uzcard, Humo, Visa)',
+        'Har bir ehson qiluvchiga shaxsiy minnatdorchilik'
+      ],
+      contactActionText: 'Xayriya loyihalariga o‘tish'
+    }
   }
 ];

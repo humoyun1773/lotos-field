@@ -6,6 +6,7 @@ import { TaxiVisual } from './visuals/TaxiVisual';
 import { ArchitectureVisual } from './visuals/ArchitectureVisual';
 import { TechVisual } from './visuals/TechVisual';
 import { LastochkaVisual } from './visuals/LastochkaVisual';
+import { EhsonVisual } from './visuals/EhsonVisual';
 
 interface ServiceCardProps {
   service: ServiceItem;
@@ -29,6 +30,8 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
         return <TechVisual />;
       case 'lastochka':
         return <LastochkaVisual />;
+      case 'ehson':
+        return <EhsonVisual />;
       default:
         return null;
     }
@@ -154,73 +157,115 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
     }
   };
 
-  // ── FEATURED (full-width horizontal) card for Zalatiye Lastochka ──
+  // ── FEATURED (full-width horizontal) card for Lastochka and Ehson ──
   if (featured && service.link) {
+    const isEhson = service.id === 'ehson';
+
     return (
       <a
         href={service.link}
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
-        className="group relative w-full flex flex-col lg:flex-row items-center justify-between gap-5 sm:gap-6 lg:gap-10 rounded-3xl px-4 sm:px-8 lg:px-10 py-5 sm:py-7 lg:py-8 bg-gradient-to-r from-white via-blue-50/70 to-white backdrop-blur-xl border-2 border-blue-200/80 hover:border-blue-400 shadow-[0_12px_32px_-6px_rgba(15,41,99,0.1)] hover:shadow-[0_20px_45px_-8px_rgba(23,70,162,0.22)] hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden select-none"
+        className={`group relative w-full flex flex-col lg:flex-row items-center justify-between gap-5 sm:gap-6 lg:gap-10 rounded-3xl px-4 sm:px-8 lg:px-10 py-5 sm:py-7 lg:py-8 ${
+          isEhson 
+            ? 'bg-gradient-to-r from-white via-emerald-50/70 to-white border-2 border-emerald-200/80 hover:border-emerald-400 shadow-[0_12px_32px_-6px_rgba(5,150,105,0.1)] hover:shadow-[0_20px_45px_-8px_rgba(5,150,105,0.22)]' 
+            : 'bg-gradient-to-r from-white via-blue-50/70 to-white border-2 border-blue-200/80 hover:border-blue-400 shadow-[0_12px_32px_-6px_rgba(15,41,99,0.1)] hover:shadow-[0_20px_45px_-8px_rgba(23,70,162,0.22)]'
+        } backdrop-blur-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden select-none`}
         style={{ textDecoration: 'none', display: 'flex', cursor: 'pointer' }}
       >
-        {/* Top elegant blue gradient accent line */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#0f2963] via-[#2563eb] to-[#0f2963] rounded-t-3xl" />
+        {/* Top elegant gradient accent line */}
+        <div 
+          className={`absolute top-0 left-0 right-0 h-1.5 ${
+            isEhson 
+              ? 'bg-gradient-to-r from-[#065f46] via-[#10b981] to-[#047857]' 
+              : 'bg-gradient-to-r from-[#0f2963] via-[#2563eb] to-[#0f2963]'
+          } rounded-t-3xl`} 
+        />
 
-        {/* Left: Swallow Bird Visual with Ambient Glow */}
+        {/* Left: Visual with Ambient Glow & Tag */}
         <div className="flex-shrink-0 w-full lg:w-72 flex flex-col items-center justify-center pointer-events-none">
           <div className="relative w-full h-32 sm:h-40 lg:h-44 flex items-center justify-center">
-            <LastochkaVisual />
+            {isEhson ? <EhsonVisual /> : <LastochkaVisual />}
           </div>
           <div className="text-center -mt-1 sm:-mt-2">
-            <span className="text-[10px] sm:text-[11px] font-extrabold tracking-[0.2em] text-[#0f2963] uppercase bg-blue-100/80 px-3 py-0.5 rounded-full border border-blue-200/60">
-              EKOTIZIM MARKAZI
+            <span 
+              className={`text-[10px] sm:text-[11px] font-extrabold tracking-[0.2em] uppercase px-3 py-0.5 rounded-full border ${
+                isEhson 
+                  ? 'text-emerald-900 bg-emerald-100/80 border-emerald-200/60' 
+                  : 'text-[#0f2963] bg-blue-100/80 border-blue-200/60'
+              }`}
+            >
+              {isEhson ? 'XAYRIYA PLATFORMASI' : 'EKOTIZIM MARKAZI'}
             </span>
           </div>
         </div>
 
-        {/* Right: Persuasive Business & Investment Content */}
+        {/* Right: Persuasive Content */}
         <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left pointer-events-none w-full">
           {/* Top Tagline Pill */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100/80 border border-blue-200 text-[#0f2963] text-[10px] sm:text-[11px] font-bold tracking-wider uppercase mb-2 shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
-            INVESTITSIYA VA HAMKORLIK IMKONIYATI
+          <div 
+            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold tracking-wider uppercase mb-2 shadow-2xs border ${
+              isEhson 
+                ? 'bg-emerald-100/80 border-emerald-200 text-emerald-900' 
+                : 'bg-blue-100/80 border-blue-200 text-[#0f2963]'
+            }`}
+          >
+            <span className={`w-1.5 h-1.5 rounded-full ${isEhson ? 'bg-emerald-600' : 'bg-blue-600'} animate-pulse`} />
+            {isEhson ? 'RASMIY VA SHAFFAF XAYRIYA JAMG‘ARMASI' : 'INVESTITSIYA VA HAMKORLIK IMKONIYATI'}
           </div>
 
           {/* Main Headline */}
-          <h3 className="font-cinzel text-lg sm:text-2xl lg:text-3xl font-black text-[#0f2963] tracking-wide uppercase leading-tight mb-1">
-            BIZNESINGIZNI BIZ BILAN RIVOJLANTIRING!
+          <h3 
+            className={`font-cinzel text-lg sm:text-2xl lg:text-3xl font-black tracking-wide uppercase leading-tight mb-1 ${
+              isEhson ? 'text-[#064e3b]' : 'text-[#0f2963]'
+            }`}
+          >
+            {isEhson ? 'EZGULIK VA SHAFQAT SARI BIRGA QADAM QO‘YING!' : 'BIZNESINGIZNI BIZ BILAN RIVOJLANTIRING!'}
           </h3>
 
-          {/* Subheading with company name badge */}
+          {/* Subheading with badge */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-1.5 sm:gap-2 mb-2.5">
-            <span className="text-[11px] sm:text-xs md:text-sm font-bold text-blue-700 tracking-wider uppercase">
-              ZALATIYE LASTOCHKA MCHJ
+            <span className={`text-[11px] sm:text-xs md:text-sm font-bold tracking-wider uppercase ${isEhson ? 'text-emerald-700' : 'text-blue-700'}`}>
+              {isEhson ? 'EHSON.UZ PLATFORMASI' : 'ZALATIYE LASTOCHKA MCHJ'}
             </span>
             <span className="text-slate-400 hidden sm:inline">•</span>
             <span className="text-[11px] sm:text-xs md:text-sm font-semibold text-slate-600">
-              Kafolatlangan daromad va barqaror o'sish
+              {isEhson ? 'Muhtojlar, yetimlar va og‘ir xastalarga yordam' : 'Kafolatlangan daromad va barqaror o\'sish'}
             </span>
           </div>
 
-          {/* Core pitch text explaining WHY they should click and invest */}
+          {/* Core pitch text */}
           <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed max-w-3xl mb-3.5">
-            Biznesingizga investitsiya kiritmoqchimisiz yoki yangi yo‘nalishda daromad olmoqchimisiz? Bizning ko‘p tarmoqli ekotizimimiz (<span className="font-bold text-blue-900">Sayohat, Ta’lim, Taxi, Arxitektura va IT</span>) orqali tayyor infratuzilma, 100% yuridik shaffoflik va barqaror foydali hamkorlikka ega bo‘ling!
+            {isEhson 
+              ? 'Ehson.uz — muhtoj insonlar, yetim bolalar, kam ta’minlangan oilalar va og‘ir xastalarga to‘g‘ridan-to‘g‘ri bank kartasi orqali yordam berish platformasi. Har bir ehson 100% manzilli, to‘liq shaffof fotohisobotlar va omonat bilan yetkaziladi!'
+              : <>Biznesingizga investitsiya kiritmoqchimisiz yoki yangi yo‘nalishda daromad olmoqchimisiz? Bizning ko‘p tarmoqli ekotizimimiz (<span className="font-bold text-blue-900">Sayohat, Ta’lim, Taxi, Arxitektura va IT</span>) orqali tayyor infratuzilma, 100% yuridik shaffoflik va barqaror foydali hamkorlikka ega bo‘ling!</>
+            }
           </p>
 
           {/* Value Proposition Pills */}
           <div className="flex flex-wrap gap-1.5 sm:gap-2 justify-center lg:justify-start mb-4">
             {service.features?.map((f, i) => (
-              <span key={i} className="text-[10px] sm:text-[11px] font-bold bg-white text-[#0f2963] border border-blue-200 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-xl shadow-2xs flex items-center gap-1">
-                <span className="text-blue-600">✦</span> {f}
+              <span 
+                key={i} 
+                className={`text-[10px] sm:text-[11px] font-bold bg-white px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-xl shadow-2xs flex items-center gap-1 border ${
+                  isEhson ? 'text-emerald-900 border-emerald-200' : 'text-[#0f2963] border-blue-200'
+                }`}
+              >
+                <span className={isEhson ? 'text-emerald-600' : 'text-blue-600'}>✦</span> {f}
               </span>
             ))}
           </div>
 
           {/* High-Converting CTA Button */}
-          <div className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#0f2963] via-[#1746a2] to-[#2563eb] text-white text-xs sm:text-sm font-extrabold px-6 sm:px-7 py-2.5 sm:py-3 rounded-full shadow-md group-hover:shadow-blue-500/25 group-hover:scale-[1.02] transition-all duration-300">
-            <span>Hamkorlik & Investitsiya portaliga o‘tish</span>
+          <div 
+            className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 text-white text-xs sm:text-sm font-extrabold px-6 sm:px-7 py-2.5 sm:py-3 rounded-full shadow-md transition-all duration-300 ${
+              isEhson
+                ? 'bg-gradient-to-r from-[#065f46] via-[#059669] to-[#10b981] group-hover:shadow-emerald-500/25 group-hover:scale-[1.02]'
+                : 'bg-gradient-to-r from-[#0f2963] via-[#1746a2] to-[#2563eb] group-hover:shadow-blue-500/25 group-hover:scale-[1.02]'
+            }`}
+          >
+            <span>{isEhson ? 'Ehson.uz xayriya portaliga o‘tish' : 'Hamkorlik & Investitsiya portaliga o‘tish'}</span>
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>

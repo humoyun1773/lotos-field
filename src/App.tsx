@@ -16,7 +16,8 @@ export function App() {
   const [isLicenseModalOpen, setIsLicenseModalOpen] = useState(false);
 
   const lastochkaService = services.find(s => s.id === 'lastochka');
-  const otherServices = services.filter(s => s.id !== 'lastochka');
+  const ehsonService = services.find(s => s.id === 'ehson');
+  const otherServices = services.filter(s => s.id !== 'lastochka' && s.id !== 'ehson');
 
   const handleNavigate = (service: ServiceItem) => {
     if (!service.link) return;
@@ -90,11 +91,22 @@ export function App() {
         <Header />
 
         <section className="w-full mt-2 mb-4 sm:mt-3 sm:mb-6 flex flex-col gap-4 sm:gap-5">
-          {/* Featured Top Card — ZALATIYE LASTOCHKA (full width, tall) */}
+          {/* Featured Top Card 1 — ZALATIYE LASTOCHKA (full width, tall) */}
           {lastochkaService && (
             <div className="w-full">
               <ServiceCard
                 service={lastochkaService}
+                featured
+                onNavigate={handleNavigate}
+              />
+            </div>
+          )}
+
+          {/* Featured Top Card 2 — EHSON.UZ (full width, exactly like top card) */}
+          {ehsonService && (
+            <div className="w-full">
+              <ServiceCard
+                service={ehsonService}
                 featured
                 onNavigate={handleNavigate}
               />

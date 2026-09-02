@@ -186,7 +186,7 @@ export const services: ServiceItem[] = [
     link: 'https://exson-web.vercel.app/',
     features: ['100% Shaffof hisobot', 'To‘g‘ridan-to‘g‘ri yordam', 'Tasdiqlangan holatlar', 'Rasmiy xayriya platformasi'],
     details: {
-      tagline: 'EZGULIK VA SHAFQAT SARI BIRGA QADAM QO‘YING!',
+      tagline: 'EZGULIK VA SHAFQAT SARI BIRGALIKDA QADAM QO‘YAYLIK!',
       summary: 'Muhtoj oilalar, mehrga intiq yetim bolalar va shifoga muhtoj og‘ir xastalarga bevosita ko‘mak qo‘lini cho‘zing. Har bir xayriya yordami omonat sifatida to‘g‘ridan-to‘g‘ri egalariga yetkaziladi va 100% ochiq, shaffof fotohisobotlar orqali tasdiqlanadi!',
       highlights: [
         '100% rasman tekshirilgan va tasdiqlangan ehtiyojmand holatlar',

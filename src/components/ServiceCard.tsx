@@ -195,7 +195,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
 
           {/* Main Headline */}
           <h3 className="font-cinzel text-lg sm:text-2xl lg:text-3xl font-black tracking-wide uppercase leading-tight mb-1 text-[#0f2963]">
-            {isEhson ? 'EZGULIK VA SHAFQAT SARI BIRGA QADAM QO‘YING!' : 'BIZNESINGIZNI BIZ BILAN RIVOJLANTIRING!'}
+            {isEhson ? 'EZGULIK VA SHAFQAT SARI BIRGALIKDA QADAM QO‘YAYLIK!' : 'BIZNESINGIZNI BIZ BILAN RIVOJLANTIRING!'}
           </h3>
 
           {/* Subheading with badge */}

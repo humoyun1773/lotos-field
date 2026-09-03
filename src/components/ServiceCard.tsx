@@ -180,10 +180,10 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
             <img
               src={partnershipBg}
               alt="Hamkorlik va Investitsiya"
-              className="w-full h-full object-cover object-right sm:object-right opacity-70 sm:opacity-80 group-hover:opacity-95 transition-all duration-700 ease-out group-hover:scale-105"
+              className="w-full h-full object-cover object-right sm:object-right transition-all duration-700 ease-out group-hover:scale-105"
             />
-            {/* Gradient overlay so text on left is super crisp and legible, while illustration is clear on right */}
-            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent sm:from-white/95 sm:via-white/80 sm:to-white/20" />
+            {/* Soft left gradient so text remains easy to read while the image stays 100% sharp and clear */}
+            <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/50 to-transparent" />
           </div>
         )}
 

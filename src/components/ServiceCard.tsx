@@ -8,6 +8,7 @@ import { TechVisual } from './visuals/TechVisual';
 import { LastochkaVisual } from './visuals/LastochkaVisual';
 import { EhsonVisual } from './visuals/EhsonVisual';
 import partnershipBg from '../assets/partnership-deal.png';
+import charityBg from '../assets/charity-donation.png';
 
 interface ServiceCardProps {
   service: ServiceItem;
@@ -174,19 +175,17 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
         {/* Top elegant gradient accent line (Pure Blue) */}
         <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#0f2963] via-[#2563eb] to-[#0f2963] rounded-t-3xl z-20" />
 
-        {/* Large Background Image behind text for Lastochka - 100% Crystal Clear */}
-        {!isEhson && (
-          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-3xl">
-            <img
-              src={partnershipBg}
-              alt="Hamkorlik va Investitsiya"
-              className="w-full h-full object-cover object-center lg:object-right transition-transform duration-700 ease-out group-hover:scale-105"
-            />
-          </div>
-        )}
+        {/* Large Background Image behind text - 100% Crystal Clear */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-3xl">
+          <img
+            src={isEhson ? charityBg : partnershipBg}
+            alt={isEhson ? "Xayriya va Saxovat" : "Hamkorlik va Investitsiya"}
+            className="w-full h-full object-cover object-center lg:object-right transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+        </div>
 
         {/* Left: Visual with Ambient Glow & Tag */}
-        <div className={`relative z-10 flex-shrink-0 w-full lg:w-72 flex flex-col items-center justify-center pointer-events-none ${!isEhson ? 'bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-white/80 shadow-md' : ''}`}>
+        <div className="relative z-10 flex-shrink-0 w-full lg:w-72 flex flex-col items-center justify-center pointer-events-none bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-white/80 shadow-md">
           <div className="relative w-full h-32 sm:h-40 lg:h-44 flex items-center justify-center">
             {isEhson ? <EhsonVisual /> : <LastochkaVisual />}
           </div>
@@ -198,7 +197,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
         </div>
 
         {/* Right: Persuasive Content */}
-        <div className={`relative z-10 flex-1 flex flex-col items-center lg:items-start text-center lg:text-left pointer-events-none w-full ${!isEhson ? 'bg-white/90 backdrop-blur-md p-5 sm:p-7 rounded-2xl border border-white/80 shadow-md' : ''}`}>
+        <div className="relative z-10 flex-1 flex flex-col items-center lg:items-start text-center lg:text-left pointer-events-none w-full bg-white/90 backdrop-blur-md p-5 sm:p-7 rounded-2xl border border-white/80 shadow-md">
           {/* Top Tagline Pill */}
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold tracking-wider uppercase mb-2 shadow-2xs border bg-blue-100/80 border-blue-200 text-[#0f2963]">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />

@@ -7,6 +7,7 @@ import { ArchitectureVisual } from './visuals/ArchitectureVisual';
 import { TechVisual } from './visuals/TechVisual';
 import { LastochkaVisual } from './visuals/LastochkaVisual';
 import { EhsonVisual } from './visuals/EhsonVisual';
+import partnershipBg from '../assets/partnership-deal.png';
 
 interface ServiceCardProps {
   service: ServiceItem;
@@ -175,14 +176,14 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
 
         {/* Large Background Image behind text for Lastochka */}
         {!isEhson && (
-          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-3xl">
             <img
-              src="/partnership-deal.png"
+              src={partnershipBg}
               alt="Hamkorlik va Investitsiya"
-              className="w-full h-full object-cover object-right-bottom sm:object-right opacity-25 group-hover:opacity-35 transition-all duration-700 ease-out group-hover:scale-105"
+              className="w-full h-full object-cover object-right sm:object-right opacity-70 sm:opacity-80 group-hover:opacity-95 transition-all duration-700 ease-out group-hover:scale-105"
             />
-            {/* Gradient overlay to ensure text is sharp and 100% readable */}
-            <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/75 sm:from-white/95 sm:via-white/85 sm:to-white/60 backdrop-blur-[0.5px]" />
+            {/* Gradient overlay so text on left is super crisp and legible, while illustration is clear on right */}
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent sm:from-white/95 sm:via-white/80 sm:to-white/20" />
           </div>
         )}
 

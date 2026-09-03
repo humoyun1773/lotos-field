@@ -182,15 +182,17 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
             alt={isEhson ? "Xayriya va Saxovat" : "Hamkorlik va Investitsiya"}
             className="w-full h-full object-cover object-center lg:object-right transition-transform duration-700 ease-out group-hover:scale-105"
           />
+          {/* Subtle dark gradient overlay to ensure white text is 100% crisp and readable */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-950/50 to-slate-950/20" />
         </div>
 
         {/* Left: Visual with Ambient Glow & Tag */}
         <div className="relative z-10 flex-shrink-0 w-full lg:w-72 flex flex-col items-center justify-center pointer-events-none">
-          <div className="relative w-full h-32 sm:h-40 lg:h-44 flex items-center justify-center">
+          <div className="relative w-full h-32 sm:h-40 lg:h-44 flex items-center justify-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
             {isEhson ? <EhsonVisual /> : <LastochkaVisual />}
           </div>
           <div className="text-center mt-1.5 sm:mt-2">
-            <span className="text-[10px] sm:text-[11px] font-extrabold tracking-[0.2em] uppercase px-3 py-0.5 rounded-full border text-[#0f2963] bg-blue-100/80 border-blue-200/60 shadow-2xs">
+            <span className="text-[10px] sm:text-[11px] font-extrabold tracking-[0.2em] uppercase px-3 py-1 rounded-full border text-white bg-blue-900/80 border-white/40 shadow-md backdrop-blur-md">
               {isEhson ? 'XAYRIYA PLATFORMASI' : 'EKOTIZIM MARKAZI'}
             </span>
           </div>
@@ -199,32 +201,32 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
         {/* Right: Persuasive Content */}
         <div className="relative z-10 flex-1 flex flex-col items-center lg:items-start text-center lg:text-left pointer-events-none w-full">
           {/* Top Tagline Pill */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold tracking-wider uppercase mb-2 shadow-2xs border bg-blue-100/80 border-blue-200 text-[#0f2963]">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[10px] sm:text-[11px] font-extrabold tracking-wider uppercase mb-2 shadow-md border bg-blue-950/70 border-white/30 text-white backdrop-blur-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
             {isEhson ? 'RASMIY VA SHAFFAF XAYRIYA JAMG‘ARMASI' : 'INVESTITSIYA VA HAMKORLIK IMKONIYATI'}
           </div>
 
           {/* Main Headline */}
-          <h3 className="font-cinzel text-lg sm:text-2xl lg:text-3xl font-black tracking-wide uppercase leading-tight mb-1 text-[#0f2963]">
+          <h3 className="font-cinzel text-lg sm:text-2xl lg:text-3xl font-black tracking-wide uppercase leading-tight mb-1 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
             {isEhson ? 'EZGULIK VA SHAFQAT SARI BIRGALIKDA QADAM QO‘YAYLIK!' : 'BIZNESINGIZNI BIZ BILAN RIVOJLANTIRING!'}
           </h3>
 
           {/* Subheading with badge */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-1.5 sm:gap-2 mb-2.5">
-            <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-wider uppercase text-blue-700">
+            <span className="text-[11px] sm:text-xs md:text-sm font-extrabold tracking-wider uppercase text-sky-300 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
               {isEhson ? 'SAXOVAT VA EZGULIK MARKAZI' : 'ZALATIYE LASTOCHKA MCHJ'}
             </span>
-            <span className="text-slate-400 hidden sm:inline">•</span>
-            <span className="text-[11px] sm:text-xs md:text-sm font-semibold text-slate-600">
+            <span className="text-white/60 hidden sm:inline">•</span>
+            <span className="text-[11px] sm:text-xs md:text-sm font-semibold text-white/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
               {isEhson ? 'Muhtojlar, yetimlar va og‘ir xastalarga beg‘araz ko‘mak' : 'Kafolatlangan daromad va barqaror o\'sish'}
             </span>
           </div>
 
           {/* Core pitch text */}
-          <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed max-w-3xl mb-3.5">
+          <p className="text-xs sm:text-sm text-white/95 font-medium leading-relaxed max-w-3xl mb-3.5 drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">
             {isEhson 
               ? 'Muhtoj oilalar, mehrga intiq yetim bolalar va shifoga muhtoj og‘ir xastalarga bevosita ko‘mak qo‘lini cho‘zing. Har bir xayriya yordami omonat sifatida to‘g‘ridan-to‘g‘ri egalariga yetkaziladi va 100% ochiq, shaffof fotohisobotlar orqali tasdiqlanadi!'
-              : <>Biznesingizga investitsiya kiritmoqchimisiz yoki yangi yo‘nalishda daromad olmoqchimisiz? Bizning ko‘p tarmoqli ekotizimimiz (<span className="font-bold text-blue-900">Sayohat, Ta’lim, Taxi, Arxitektura va IT</span>) orqali tayyor infratuzilma, 100% yuridik shaffoflik va barqaror foydali hamkorlikka ega bo‘ling!</>
+              : <>Biznesingizga investitsiya kiritmoqchimisiz yoki yangi yo‘nalishda daromad olmoqchimisiz? Bizning ko‘p tarmoqli ekotizimimiz (<span className="font-bold text-sky-300">Sayohat, Ta’lim, Taxi, Arxitektura va IT</span>) orqali tayyor infratuzilma, 100% yuridik shaffoflik va barqaror foydali hamkorlikka ega bo‘ling!</>
             }
           </p>
 
@@ -233,15 +235,15 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
             {service.features?.map((f, i) => (
               <span 
                 key={i} 
-                className="text-[10px] sm:text-[11px] font-bold bg-white/90 backdrop-blur-xs px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-xl shadow-2xs flex items-center gap-1 border text-[#0f2963] border-blue-200"
+                className="text-[10px] sm:text-[11px] font-bold bg-slate-950/60 backdrop-blur-md px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-xl shadow-md flex items-center gap-1 border text-white border-white/25"
               >
-                <span className="text-blue-600">✦</span> {f}
+                <span className="text-sky-400">✦</span> {f}
               </span>
             ))}
           </div>
 
           {/* High-Converting CTA Button (Pure Blue) */}
-          <div className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-white text-xs sm:text-sm font-extrabold px-6 sm:px-7 py-2.5 sm:py-3 rounded-full shadow-md transition-all duration-300 bg-gradient-to-r from-[#0f2963] via-[#1746a2] to-[#2563eb] group-hover:shadow-blue-500/25 group-hover:scale-[1.02]">
+          <div className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-white text-xs sm:text-sm font-extrabold px-6 sm:px-7 py-2.5 sm:py-3 rounded-full shadow-lg transition-all duration-300 bg-gradient-to-r from-[#1d4ed8] via-[#2563eb] to-[#3b82f6] hover:from-[#1e40af] hover:to-[#1d4ed8] border border-white/30 group-hover:shadow-blue-500/40 group-hover:scale-[1.02]">
             <span>{isEhson ? 'Xayriya va ezgulik portaliga o‘tish' : 'Hamkorlik & Investitsiya portaliga o‘tish'}</span>
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />

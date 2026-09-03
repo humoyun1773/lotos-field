@@ -178,8 +178,8 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
           <div className="relative w-full h-32 sm:h-40 lg:h-44 flex items-center justify-center">
             {isEhson ? <EhsonVisual /> : <LastochkaVisual />}
           </div>
-          <div className="text-center -mt-1 sm:-mt-2">
-            <span className="text-[10px] sm:text-[11px] font-extrabold tracking-[0.2em] uppercase px-3 py-0.5 rounded-full border text-[#0f2963] bg-blue-100/80 border-blue-200/60">
+          <div className="text-center mt-1.5 sm:mt-2">
+            <span className="text-[10px] sm:text-[11px] font-extrabold tracking-[0.2em] uppercase px-3 py-0.5 rounded-full border text-[#0f2963] bg-blue-100/80 border-blue-200/60 shadow-2xs">
               {isEhson ? 'XAYRIYA PLATFORMASI' : 'EKOTIZIM MARKAZI'}
             </span>
           </div>

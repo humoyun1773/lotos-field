@@ -171,10 +171,23 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
         style={{ textDecoration: 'none', display: 'flex', cursor: 'pointer' }}
       >
         {/* Top elegant gradient accent line (Pure Blue) */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#0f2963] via-[#2563eb] to-[#0f2963] rounded-t-3xl" />
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#0f2963] via-[#2563eb] to-[#0f2963] rounded-t-3xl z-20" />
+
+        {/* Large Background Image behind text for Lastochka */}
+        {!isEhson && (
+          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            <img
+              src="/partnership-deal.png"
+              alt="Hamkorlik va Investitsiya"
+              className="w-full h-full object-cover object-right-bottom sm:object-right opacity-25 group-hover:opacity-35 transition-all duration-700 ease-out group-hover:scale-105"
+            />
+            {/* Gradient overlay to ensure text is sharp and 100% readable */}
+            <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/75 sm:from-white/95 sm:via-white/85 sm:to-white/60 backdrop-blur-[0.5px]" />
+          </div>
+        )}
 
         {/* Left: Visual with Ambient Glow & Tag */}
-        <div className="flex-shrink-0 w-full lg:w-72 flex flex-col items-center justify-center pointer-events-none">
+        <div className="relative z-10 flex-shrink-0 w-full lg:w-72 flex flex-col items-center justify-center pointer-events-none">
           <div className="relative w-full h-32 sm:h-40 lg:h-44 flex items-center justify-center">
             {isEhson ? <EhsonVisual /> : <LastochkaVisual />}
           </div>
@@ -186,7 +199,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
         </div>
 
         {/* Right: Persuasive Content */}
-        <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left pointer-events-none w-full">
+        <div className="relative z-10 flex-1 flex flex-col items-center lg:items-start text-center lg:text-left pointer-events-none w-full">
           {/* Top Tagline Pill */}
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold tracking-wider uppercase mb-2 shadow-2xs border bg-blue-100/80 border-blue-200 text-[#0f2963]">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
@@ -222,7 +235,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
             {service.features?.map((f, i) => (
               <span 
                 key={i} 
-                className="text-[10px] sm:text-[11px] font-bold bg-white px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-xl shadow-2xs flex items-center gap-1 border text-[#0f2963] border-blue-200"
+                className="text-[10px] sm:text-[11px] font-bold bg-white/90 backdrop-blur-xs px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-xl shadow-2xs flex items-center gap-1 border text-[#0f2963] border-blue-200"
               >
                 <span className="text-blue-600">✦</span> {f}
               </span>

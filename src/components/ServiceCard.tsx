@@ -185,7 +185,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
         </div>
 
         {/* Left: Visual with Ambient Glow & Tag */}
-        <div className="relative z-10 flex-shrink-0 w-full lg:w-72 flex flex-col items-center justify-center pointer-events-none bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-white/80 shadow-md">
+        <div className="relative z-10 flex-shrink-0 w-full lg:w-72 flex flex-col items-center justify-center pointer-events-none">
           <div className="relative w-full h-32 sm:h-40 lg:h-44 flex items-center justify-center">
             {isEhson ? <EhsonVisual /> : <LastochkaVisual />}
           </div>
@@ -197,7 +197,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
         </div>
 
         {/* Right: Persuasive Content */}
-        <div className="relative z-10 flex-1 flex flex-col items-center lg:items-start text-center lg:text-left pointer-events-none w-full bg-white/90 backdrop-blur-md p-5 sm:p-7 rounded-2xl border border-white/80 shadow-md">
+        <div className="relative z-10 flex-1 flex flex-col items-center lg:items-start text-center lg:text-left pointer-events-none w-full">
           {/* Top Tagline Pill */}
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold tracking-wider uppercase mb-2 shadow-2xs border bg-blue-100/80 border-blue-200 text-[#0f2963]">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />

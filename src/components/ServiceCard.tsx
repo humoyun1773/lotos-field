@@ -16,7 +16,7 @@ interface ServiceCardProps {
   onNavigate?: (service: ServiceItem) => void;
 }
 
-export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, onNavigate }) => {
+export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, onNavigate: _onNavigate }) => {
   // Render visualizer according to service id
   const renderVisual = () => {
     switch (service.id) {
@@ -152,25 +152,24 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
 
   const baseClass = "group relative flex flex-col items-center justify-between rounded-3xl p-3.5 sm:p-4 pt-5 sm:pt-6 transition-all duration-300 bg-white/90 backdrop-blur-md hover:-translate-y-1.5 hover:shadow-[0_16px_36px_-8px_rgba(23,70,162,0.2)] border border-white hover:border-blue-300 shadow-[0_4px_20px_rgba(15,41,99,0.06)] h-full w-full";
 
-  const handleClick = (e: React.MouseEvent) => {
+  /* const handleClick = (e: React.MouseEvent) => {
     if (onNavigate && service.link) {
       e.preventDefault();
       onNavigate(service);
     }
-  };
+  }; */
 
   // ── FEATURED (full-width horizontal) card for Lastochka and Ehson ──
-  if (featured && service.link) {
+  if (featured) {
     const isEhson = service.id === 'ehson';
 
     return (
-      <a
-        href={service.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={handleClick}
-        className="group relative w-full flex flex-col lg:flex-row items-center justify-between gap-5 sm:gap-6 lg:gap-10 rounded-3xl px-4 sm:px-8 lg:px-10 py-5 sm:py-7 lg:py-8 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 border-2 border-blue-400/50 hover:border-blue-300 shadow-[0_12px_32px_-6px_rgba(15,41,99,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(23,70,162,0.4)] backdrop-blur-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden select-none"
-        style={{ textDecoration: 'none', display: 'flex', cursor: 'pointer' }}
+      <div
+        // href={service.link}
+        // target="_blank"
+        // rel="noopener noreferrer"
+        // onClick={handleClick}
+        className="group relative w-full flex flex-col lg:flex-row items-center justify-between gap-5 sm:gap-6 lg:gap-10 rounded-3xl px-4 sm:px-8 lg:px-10 py-5 sm:py-7 lg:py-8 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 border-2 border-blue-400/50 hover:border-blue-300 shadow-[0_12px_32px_-6px_rgba(15,41,99,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(23,70,162,0.4)] backdrop-blur-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden select-none"
       >
         {/* Top elegant gradient accent line (Pure Blue) */}
         <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#0f2963] via-[#2563eb] to-[#0f2963] rounded-t-3xl z-20" />
@@ -243,14 +242,14 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
           </div>
 
           {/* High-Converting CTA Button (Pure Blue) */}
-          <div className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-white text-xs sm:text-sm font-extrabold px-6 sm:px-7 py-2.5 sm:py-3 rounded-full shadow-lg transition-all duration-300 bg-gradient-to-r from-[#1d4ed8] via-[#2563eb] to-[#3b82f6] hover:from-[#1e40af] hover:to-[#1d4ed8] border border-white/30 group-hover:shadow-blue-500/40 group-hover:scale-[1.02]">
+          <div className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-white text-xs sm:text-sm font-extrabold px-6 sm:px-7 py-2.5 sm:py-3 rounded-full shadow-lg transition-all duration-300 bg-gradient-to-r from-[#1d4ed8] via-[#2563eb] to-[#3b82f6] border border-white/30">
             <span>{isEhson ? 'Xayriya va ezgulik portaliga o‘tish' : 'Hamkorlik & Investitsiya portaliga o‘tish'}</span>
-            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </div>
         </div>
-      </a>
+      </div>
     );
   }
 
@@ -271,8 +270,8 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
           {service.description}
         </p>
 
-        {/* Action Button Style Indicator */}
-        {service.link && (
+        {/* Action Button Style Indicator (Commented out) */}
+        {/* {service.link && (
           <div className="w-full pt-2 mt-1 border-t border-blue-100 flex items-center justify-center">
             <div className="w-full py-1.5 px-3 rounded-xl bg-blue-50/80 group-hover:bg-[#1746a2] text-[#1746a2] group-hover:text-white border border-blue-200/60 group-hover:border-[#1746a2] flex items-center justify-center gap-1.5 text-[11px] sm:text-xs font-bold transition-all duration-300 shadow-2xs">
               <span>Saytga o'tish</span>
@@ -281,12 +280,12 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
               </svg>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </>
   );
 
-  if (service.link) {
+  /* if (service.link) {
     return (
       <a
         href={service.link}
@@ -299,7 +298,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service, featured = false, o
         {cardContent}
       </a>
     );
-  }
+  } */
 
   return (
     <div className={baseClass}>

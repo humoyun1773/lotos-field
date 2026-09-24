@@ -1,19 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { services, companyInfo } from './data/servicesData';
 import type { ServiceItem } from './types';
 import { Header } from './components/Header';
 import { ServiceCard } from './components/ServiceCard';
 import { FooterBanner } from './components/FooterBanner';
-import { DynamicBackground } from './components/DynamicBackground';
+// import { DynamicBackground } from './components/DynamicBackground';
 import { Preloader } from './components/Preloader';
 import { NavigationLoader } from './components/NavigationLoader';
 // import { LicenseModal } from './components/LicenseModal';
-import { Phone /*, ShieldCheck */ } from 'lucide-react';
+import { Phone, ShieldCheck, X } from 'lucide-react';
 
 export function App() {
   const [isNavigating, setIsNavigating] = useState(false);
   const [targetServiceName, setTargetServiceName] = useState('');
-  // const [isLicenseModalOpen, setIsLicenseModalOpen] = useState(false);
+  const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsPreviewModalOpen(false);
+      }
+    };
+    if (isPreviewModalOpen) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isPreviewModalOpen]);
 
   const lastochkaService = services.find(s => s.id === 'lastochka');
   const ehsonService = services.find(s => s.id === 'ehson');
@@ -40,14 +58,56 @@ export function App() {
       {/* Navigation Redirecting Loader */}
       <NavigationLoader isOpen={isNavigating} targetName={targetServiceName} />
 
-      {/* Official Licenses & Certificates Modal (Vaqtinchalik olib tashlangan) */}
+      {/* Image Preview Modal */}
+      {isPreviewModalOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-fade-in"
+          onClick={() => setIsPreviewModalOpen(false)}
+        >
+          <div
+            className="relative max-w-xl w-full bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-700 flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-4 py-3 bg-slate-800/90 border-b border-slate-700">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-blue-400" />
+                <span className="text-xs sm:text-sm font-bold text-white tracking-wide">
+                  Rasmiy Hujjat
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsPreviewModalOpen(false)}
+                className="p-1 rounded-full text-slate-400 hover:text-white hover:bg-slate-700 transition-colors cursor-pointer"
+                title="Yopish"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-2 sm:p-4 bg-black flex items-center justify-center">
+              <img
+                src="/special-preview.jpg"
+                alt="Hujjat"
+                className="w-full max-h-[75vh] object-contain rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Official Licenses & Certificates Modal (Vaqtinchalik olib tashlangan, o'zingiz aytganda qo'yiladi) */}
       {/* <LicenseModal
         isOpen={isLicenseModalOpen}
         onClose={() => setIsLicenseModalOpen(false)}
       /> */}
 
-      {/* Dynamic Rotating Swallow Bird Background (5 images changing smoothly) */}
-      <DynamicBackground />
+      {/* Dynamic Rotating Swallow Bird Background (Bodydagi rasmlar olib tashlandi) */}
+      {/* <DynamicBackground /> */}
 
       {/* Top Floating Utility Bar */}
       <nav className="relative w-full px-3 sm:px-6 pt-3 flex items-center justify-between z-20 max-w-screen-2xl mx-auto gap-2">
@@ -59,10 +119,10 @@ export function App() {
         </div>
 
         <div className="flex items-center gap-1.5 sm:gap-3">
-          {/* License & Certificate Modal Trigger Button (Vaqtinchalik olib tashlangan) */}
-          {/* <button
+          {/* License & Certificate Modal Trigger Button */}
+          <button
             type="button"
-            onClick={() => setIsLicenseModalOpen(true)}
+            onClick={() => setIsPreviewModalOpen(true)}
             className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-extrabold bg-white/95 hover:bg-blue-50 text-[#0f2963] border border-blue-200 shadow-2xs hover:shadow-xs transition-all cursor-pointer group"
             title="Kompaniya rasmiy litsenziya va guvohnomalarini ko'rish"
           >
@@ -72,7 +132,7 @@ export function App() {
             <span className="bg-blue-600 text-white text-[9px] sm:text-[10px] px-1.5 py-0.2 rounded-full font-black">
               5
             </span>
-          </button> */}
+          </button>
 
           <a
             href={`tel:${companyInfo.rawPhone}`}

@@ -232,9 +232,6 @@ export function App() {
             <h1 className="font-space text-2xl sm:text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-amber-300 to-rose-400 drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
               HAQIQAT SHUNDAY BO'LADI! 🦍
             </h1>
-            <p className="text-xs sm:text-sm text-slate-300 italic font-medium">
-              «Har doim ham qiziqish yaxshilikka olib kelavermaydi... 😂»
-            </p>
           </div>
 
           {/* Full Large Image with Luxury Holographic Frame */}

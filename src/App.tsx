@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { 
   Lock, 
   Unlock, 
@@ -7,57 +7,88 @@ import {
   Share2, 
   RotateCcw, 
   Check,
-  Skull
+  Skull,
+  Radio
 } from 'lucide-react';
 
 export function App() {
-  const [revealed, setRevealed] = useState(false);
+  const [revealed, setRevealed] = useState(() => {
+    const isSaved = localStorage.getItem('prank_active') === 'true';
+    const elapsed = parseInt(localStorage.getItem('prank_elapsed') || '0', 10);
+    return isSaved && elapsed < 60;
+  });
   const [isCountingDown, setIsCountingDown] = useState(false);
   const [countdown, setCountdown] = useState(3);
   const [copied, setCopied] = useState(false);
+  const [elapsedSeconds, setElapsedSeconds] = useState(() => {
+    const saved = localStorage.getItem('prank_elapsed');
+    return saved ? parseInt(saved, 10) : 0;
+  });
 
-  // Play sudden high-pitched horror screamer scream
-  const playScreamerSound = () => {
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const loopIntervalRef = useRef<number | null>(null);
+
+  // Play rich, piercing high-impact alarm scream effect
+  const playIntenseScream = useCallback(() => {
     try {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      const ctx = new AudioCtx();
+      if (!audioCtxRef.current || audioCtxRef.current.state === 'closed') {
+        const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+        audioCtxRef.current = new AudioCtx();
+      }
+
+      const ctx = audioCtxRef.current;
+      if (ctx.state === 'suspended') {
+        ctx.resume();
+      }
 
       const masterGain = ctx.createGain();
-      masterGain.gain.setValueAtTime(0.85, ctx.currentTime);
+      masterGain.gain.setValueAtTime(0.9, ctx.currentTime);
       masterGain.connect(ctx.destination);
 
-      // 1. High-pitched vocal scream harmonic 1 (Main vocal pitch: 750Hz jumping to 1100Hz and modulating wildly)
+      // Distortion Curve to add organic human vocal texture / grit
+      const n_samples = 44100;
+      const curve = new Float32Array(n_samples);
+      const deg = Math.PI / 180;
+      for (let i = 0; i < n_samples; ++i) {
+        const x = (i * 2) / n_samples - 1;
+        curve[i] = ((3 + 30) * x * 20 * deg) / (Math.PI + 30 * Math.abs(x));
+      }
+      const distortion = ctx.createWaveShaper();
+      distortion.curve = curve;
+      distortion.oversample = '4x';
+
+      // 1. High vocal screech oscillator 1 (650Hz sweeps frantically up to 1350Hz)
       const osc1 = ctx.createOscillator();
       const gain1 = ctx.createGain();
       osc1.type = 'sawtooth';
-      osc1.frequency.setValueAtTime(750, ctx.currentTime);
-      osc1.frequency.linearRampToValueAtTime(1150, ctx.currentTime + 0.15);
-      osc1.frequency.linearRampToValueAtTime(980, ctx.currentTime + 0.6);
-      osc1.frequency.exponentialRampToValueAtTime(520, ctx.currentTime + 1.6);
+      osc1.frequency.setValueAtTime(680, ctx.currentTime);
+      osc1.frequency.linearRampToValueAtTime(1380, ctx.currentTime + 0.18);
+      osc1.frequency.linearRampToValueAtTime(1050, ctx.currentTime + 0.6);
+      osc1.frequency.exponentialRampToValueAtTime(450, ctx.currentTime + 1.8);
 
-      // Tremolo/vibrato LFO for human vocal cords shiver
+      // Vocal tremor vibrato
       const lfo = ctx.createOscillator();
       const lfoGain = ctx.createGain();
-      lfo.frequency.setValueAtTime(32, ctx.currentTime); // 32Hz vocal shudder
-      lfoGain.gain.setValueAtTime(120, ctx.currentTime);
+      lfo.frequency.setValueAtTime(36, ctx.currentTime); // 36Hz rapid vocal cord flutter
+      lfoGain.gain.setValueAtTime(140, ctx.currentTime);
       lfo.connect(osc1.frequency);
 
-      // 2. High-pitched formant harmonic 2 (1400Hz - 1800Hz screech overtone)
+      // 2. High harmonic overtone (1500Hz - 2200Hz screaming resonance)
       const osc2 = ctx.createOscillator();
       const gain2 = ctx.createGain();
       osc2.type = 'triangle';
-      osc2.frequency.setValueAtTime(1450, ctx.currentTime);
-      osc2.frequency.linearRampToValueAtTime(1820, ctx.currentTime + 0.18);
-      osc2.frequency.exponentialRampToValueAtTime(780, ctx.currentTime + 1.5);
+      osc2.frequency.setValueAtTime(1400, ctx.currentTime);
+      osc2.frequency.linearRampToValueAtTime(2250, ctx.currentTime + 0.22);
+      osc2.frequency.exponentialRampToValueAtTime(700, ctx.currentTime + 1.7);
       lfo.connect(osc2.frequency);
 
-      // 3. Piercing scream formant filter (Bandpass around 1.2kHz - 3kHz where human screams pierce the ear)
+      // 3. Piercing Formant Bandpass Filter
       const filter = ctx.createBiquadFilter();
       filter.type = 'bandpass';
-      filter.frequency.setValueAtTime(1800, ctx.currentTime);
-      filter.Q.setValueAtTime(4.0, ctx.currentTime);
+      filter.frequency.setValueAtTime(1850, ctx.currentTime);
+      filter.Q.setValueAtTime(3.6, ctx.currentTime);
 
-      // 4. Air breath scream noise (turbulent rush of screaming air)
+      // 4. Air Rush Noise Burst
       const bufferSize = Math.floor(ctx.sampleRate * 1.5);
       const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
       const output = noiseBuffer.getChannelData(0);
@@ -69,30 +100,31 @@ export function App() {
 
       const noiseFilter = ctx.createBiquadFilter();
       noiseFilter.type = 'highpass';
-      noiseFilter.frequency.setValueAtTime(1200, ctx.currentTime);
+      noiseFilter.frequency.setValueAtTime(1100, ctx.currentTime);
 
       const noiseGain = ctx.createGain();
-      noiseGain.gain.setValueAtTime(0.35, ctx.currentTime);
-      noiseGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.5);
+      noiseGain.gain.setValueAtTime(0.3, ctx.currentTime);
+      noiseGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.6);
 
       noiseSource.connect(noiseFilter);
       noiseFilter.connect(noiseGain);
       noiseGain.connect(masterGain);
 
-      // Envelopes
+      // Volume envelopes
       gain1.gain.setValueAtTime(0.7, ctx.currentTime);
-      gain1.gain.linearRampToValueAtTime(0.85, ctx.currentTime + 0.1);
-      gain1.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.6);
+      gain1.gain.linearRampToValueAtTime(0.85, ctx.currentTime + 0.12);
+      gain1.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.85);
 
       gain2.gain.setValueAtTime(0.5, ctx.currentTime);
-      gain2.gain.linearRampToValueAtTime(0.65, ctx.currentTime + 0.12);
-      gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.5);
+      gain2.gain.linearRampToValueAtTime(0.65, ctx.currentTime + 0.15);
+      gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.7);
 
       osc1.connect(gain1);
       osc2.connect(gain2);
 
-      gain1.connect(filter);
-      gain2.connect(filter);
+      gain1.connect(distortion);
+      gain2.connect(distortion);
+      distortion.connect(filter);
       filter.connect(masterGain);
 
       lfo.start(ctx.currentTime);
@@ -100,14 +132,14 @@ export function App() {
       osc2.start(ctx.currentTime);
       noiseSource.start(ctx.currentTime);
 
-      lfo.stop(ctx.currentTime + 1.6);
-      osc1.stop(ctx.currentTime + 1.6);
-      osc2.stop(ctx.currentTime + 1.6);
-      noiseSource.stop(ctx.currentTime + 1.6);
+      lfo.stop(ctx.currentTime + 1.9);
+      osc1.stop(ctx.currentTime + 1.9);
+      osc2.stop(ctx.currentTime + 1.9);
+      noiseSource.stop(ctx.currentTime + 1.9);
     } catch {
       // Audio fallback
     }
-  };
+  }, []);
 
   const playClickTick = () => {
     try {
@@ -130,6 +162,40 @@ export function App() {
     }
   };
 
+  // Start 1 minute continuous scream loop (repeats until 60 seconds total elapsed)
+  const startOneMinuteLoop = useCallback(() => {
+    playIntenseScream();
+
+    if (loopIntervalRef.current) {
+      clearInterval(loopIntervalRef.current);
+    }
+
+    loopIntervalRef.current = window.setInterval(() => {
+      setElapsedSeconds((prev) => {
+        const next = prev + 1;
+        localStorage.setItem('prank_elapsed', String(next));
+        localStorage.setItem('prank_active', 'true');
+
+        // Play the intense sound every 2 seconds
+        if (next % 2 === 0 && next < 60) {
+          playIntenseScream();
+        }
+
+        // When 60 seconds (1 full minute) is reached:
+        if (next >= 60) {
+          if (loopIntervalRef.current) {
+            clearInterval(loopIntervalRef.current);
+          }
+          localStorage.removeItem('prank_active');
+          localStorage.removeItem('prank_elapsed');
+          return 60;
+        }
+
+        return next;
+      });
+    }, 1000);
+  }, [playIntenseScream]);
+
   const handleTrigger = () => {
     setIsCountingDown(true);
     playClickTick();
@@ -141,13 +207,46 @@ export function App() {
           clearInterval(timer);
           setIsCountingDown(false);
           setRevealed(true);
-          playScreamerSound();
+          localStorage.setItem('prank_active', 'true');
+          startOneMinuteLoop();
           return 0;
         }
         playClickTick();
         return prev - 1;
       });
-    }, 1000); // Aniq 3 soniya davom etadi
+    }, 1000); // Aniq 3 soniya
+  };
+
+  // If user returns/refreshes page and 1 minute is not finished, resume on user interaction
+  useEffect(() => {
+    const isSavedActive = localStorage.getItem('prank_active') === 'true';
+    const savedElapsed = parseInt(localStorage.getItem('prank_elapsed') || '0', 10);
+
+    if (isSavedActive && savedElapsed < 60) {
+      const handleUserInteraction = () => {
+        startOneMinuteLoop();
+        window.removeEventListener('click', handleUserInteraction);
+        window.removeEventListener('touchstart', handleUserInteraction);
+      };
+      window.addEventListener('click', handleUserInteraction);
+      window.addEventListener('touchstart', handleUserInteraction);
+
+      return () => {
+        window.removeEventListener('click', handleUserInteraction);
+        window.removeEventListener('touchstart', handleUserInteraction);
+      };
+    }
+  }, [startOneMinuteLoop]);
+
+  const handleReset = () => {
+    if (loopIntervalRef.current) {
+      clearInterval(loopIntervalRef.current);
+    }
+    localStorage.removeItem('prank_active');
+    localStorage.removeItem('prank_elapsed');
+    setElapsedSeconds(0);
+    setRevealed(false);
+    setIsCountingDown(false);
   };
 
   const handleCopyLink = () => {
@@ -159,12 +258,16 @@ export function App() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setRevealed(false);
-        setIsCountingDown(false);
+        handleReset();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      if (loopIntervalRef.current) {
+        clearInterval(loopIntervalRef.current);
+      }
+    };
   }, []);
 
   return (
@@ -256,13 +359,24 @@ export function App() {
         <div className="relative z-30 flex flex-col items-center justify-center w-full max-w-4xl mx-auto animate-shake">
           
           {/* Header punchline */}
-          <div className="text-center mb-4 sm:mb-6 space-y-1 sm:space-y-2">
+          <div className="text-center mb-4 sm:mb-6 space-y-2">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/60 text-amber-300 font-mono text-xs sm:text-sm font-extrabold uppercase tracking-widest shadow-[0_0_20px_rgba(245,158,11,0.3)]">
               <span>TABRIKLAYMIZ! 🎉 SIZ QIZIQUVCHANLIK QURBONISIZ!</span>
             </div>
+
             <h1 className="font-space text-2xl sm:text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-amber-300 to-rose-400 drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
               HAQIQAT SHUNDAY BO'LADI! 🦍
             </h1>
+
+            {/* 1 Minute Loop Timer Status */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/80 border border-red-500/50 text-[11px] sm:text-xs font-mono text-red-400 font-bold">
+              <Radio className="w-3.5 h-3.5 animate-pulse text-red-500" />
+              <span>
+                {elapsedSeconds < 60 
+                  ? `OVOZLI REJIM: ${60 - elapsedSeconds} soniya davom etadi...` 
+                  : '1 DAQIQA YAKUNLANDI'}
+              </span>
+            </div>
           </div>
 
           {/* Full Large Image with Luxury Holographic Frame */}
@@ -280,14 +394,11 @@ export function App() {
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6">
             <button
               type="button"
-              onClick={() => {
-                setRevealed(false);
-                setIsCountingDown(false);
-              }}
+              onClick={handleReset}
               className="flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900/90 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm border border-slate-700 shadow-lg hover:border-slate-500 transition-all cursor-pointer"
             >
               <RotateCcw className="w-4 h-4 text-sky-400" />
-              <span>Yana bir bor sinash</span>
+              <span>Qayta boshlash</span>
             </button>
 
             <button

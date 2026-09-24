@@ -4,7 +4,6 @@ import {
   Unlock, 
   Flame, 
   AlertTriangle, 
-  Sparkles, 
   Share2, 
   RotateCcw, 
   Volume2, 
@@ -19,7 +18,6 @@ export function App() {
   const [countdown, setCountdown] = useState(3);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [copied, setCopied] = useState(false);
-  const [clickCount, setClickCount] = useState(2847);
 
   // Play browser-synthesized audio effects
   const playBoomSound = () => {
@@ -81,7 +79,6 @@ export function App() {
           clearInterval(timer);
           setIsCountingDown(false);
           setRevealed(true);
-          setClickCount((c) => c + 1);
           playBoomSound();
           return 0;
         }
@@ -210,12 +207,6 @@ export function App() {
               Ichkarida nima yashiringanini faqat eng jur’atli insonlargina ko‘ra oladi.
               Agar asablaringiz zaif bo‘lsa — darhol sahifani yoping!
             </p>
-
-            <div className="pt-2 flex items-center justify-center gap-2 text-xs font-mono text-amber-400/90 font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span>Bugun {clickCount.toLocaleString()} kishi jur'at qilib bosdi</span>
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            </div>
           </div>
         </div>
       )}
@@ -279,11 +270,6 @@ export function App() {
           </div>
         </div>
       )}
-
-      {/* Minimal Footer */}
-      <footer className="absolute bottom-3 text-center text-[10px] sm:text-xs text-slate-600 font-mono tracking-wider">
-        QIZIQUVCHANLIK VA HAZIL LOYIHASI © {new Date().getFullYear()}
-      </footer>
     </main>
   );
 }

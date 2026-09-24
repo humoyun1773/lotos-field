@@ -16,42 +16,49 @@ export function App() {
   const [countdown, setCountdown] = useState(3);
   const [copied, setCopied] = useState(false);
 
-  // Play comical prank sound using Web Audio API
-  const playPrankSound = () => {
+  // Play sudden high-pitched horror screamer scream
+  const playScreamerSound = () => {
     try {
       const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
       const ctx = new AudioCtx();
 
-      // Master gain
       const masterGain = ctx.createGain();
-      masterGain.gain.setValueAtTime(0.7, ctx.currentTime);
+      masterGain.gain.setValueAtTime(0.85, ctx.currentTime);
       masterGain.connect(ctx.destination);
 
-      // 1. Sputtering low oscillator with flutter
-      const osc = ctx.createOscillator();
-      const oscGain = ctx.createGain();
-      const filter = ctx.createBiquadFilter();
+      // 1. High-pitched vocal scream harmonic 1 (Main vocal pitch: 750Hz jumping to 1100Hz and modulating wildly)
+      const osc1 = ctx.createOscillator();
+      const gain1 = ctx.createGain();
+      osc1.type = 'sawtooth';
+      osc1.frequency.setValueAtTime(750, ctx.currentTime);
+      osc1.frequency.linearRampToValueAtTime(1150, ctx.currentTime + 0.15);
+      osc1.frequency.linearRampToValueAtTime(980, ctx.currentTime + 0.6);
+      osc1.frequency.exponentialRampToValueAtTime(520, ctx.currentTime + 1.6);
 
-      osc.type = 'sawtooth';
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(420, ctx.currentTime);
-      filter.Q.setValueAtTime(3.5, ctx.currentTime);
-
-      // Frequency slide downwards with comical pitch wobble
-      osc.frequency.setValueAtTime(125, ctx.currentTime);
-      osc.frequency.linearRampToValueAtTime(70, ctx.currentTime + 0.4);
-      osc.frequency.linearRampToValueAtTime(85, ctx.currentTime + 0.7);
-      osc.frequency.exponentialRampToValueAtTime(35, ctx.currentTime + 1.3);
-
-      // Fast flutter LFO (sputter effect)
+      // Tremolo/vibrato LFO for human vocal cords shiver
       const lfo = ctx.createOscillator();
       const lfoGain = ctx.createGain();
-      lfo.frequency.setValueAtTime(26, ctx.currentTime); // 26Hz rapid vibration
-      lfoGain.gain.setValueAtTime(45, ctx.currentTime);
-      lfo.connect(osc.frequency);
+      lfo.frequency.setValueAtTime(32, ctx.currentTime); // 32Hz vocal shudder
+      lfoGain.gain.setValueAtTime(120, ctx.currentTime);
+      lfo.connect(osc1.frequency);
 
-      // 2. White noise burst for comical puff
-      const bufferSize = Math.floor(ctx.sampleRate * 1.3);
+      // 2. High-pitched formant harmonic 2 (1400Hz - 1800Hz screech overtone)
+      const osc2 = ctx.createOscillator();
+      const gain2 = ctx.createGain();
+      osc2.type = 'triangle';
+      osc2.frequency.setValueAtTime(1450, ctx.currentTime);
+      osc2.frequency.linearRampToValueAtTime(1820, ctx.currentTime + 0.18);
+      osc2.frequency.exponentialRampToValueAtTime(780, ctx.currentTime + 1.5);
+      lfo.connect(osc2.frequency);
+
+      // 3. Piercing scream formant filter (Bandpass around 1.2kHz - 3kHz where human screams pierce the ear)
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(1800, ctx.currentTime);
+      filter.Q.setValueAtTime(4.0, ctx.currentTime);
+
+      // 4. Air breath scream noise (turbulent rush of screaming air)
+      const bufferSize = Math.floor(ctx.sampleRate * 1.5);
       const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
       const output = noiseBuffer.getChannelData(0);
       for (let i = 0; i < bufferSize; i++) {
@@ -61,36 +68,42 @@ export function App() {
       noiseSource.buffer = noiseBuffer;
 
       const noiseFilter = ctx.createBiquadFilter();
-      noiseFilter.type = 'bandpass';
-      noiseFilter.frequency.setValueAtTime(280, ctx.currentTime);
-      noiseFilter.Q.setValueAtTime(2.2, ctx.currentTime);
+      noiseFilter.type = 'highpass';
+      noiseFilter.frequency.setValueAtTime(1200, ctx.currentTime);
 
       const noiseGain = ctx.createGain();
-      noiseGain.gain.setValueAtTime(0.4, ctx.currentTime);
-      noiseGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.2);
+      noiseGain.gain.setValueAtTime(0.35, ctx.currentTime);
+      noiseGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.5);
 
       noiseSource.connect(noiseFilter);
       noiseFilter.connect(noiseGain);
       noiseGain.connect(masterGain);
 
-      // Envelope for the main oscillator
-      oscGain.gain.setValueAtTime(0.65, ctx.currentTime);
-      oscGain.gain.linearRampToValueAtTime(0.75, ctx.currentTime + 0.3);
-      oscGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.35);
+      // Envelopes
+      gain1.gain.setValueAtTime(0.7, ctx.currentTime);
+      gain1.gain.linearRampToValueAtTime(0.85, ctx.currentTime + 0.1);
+      gain1.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.6);
 
-      osc.connect(filter);
-      filter.connect(oscGain);
-      oscGain.connect(masterGain);
+      gain2.gain.setValueAtTime(0.5, ctx.currentTime);
+      gain2.gain.linearRampToValueAtTime(0.65, ctx.currentTime + 0.12);
+      gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.5);
 
-      // Start all sound generators
+      osc1.connect(gain1);
+      osc2.connect(gain2);
+
+      gain1.connect(filter);
+      gain2.connect(filter);
+      filter.connect(masterGain);
+
       lfo.start(ctx.currentTime);
-      osc.start(ctx.currentTime);
+      osc1.start(ctx.currentTime);
+      osc2.start(ctx.currentTime);
       noiseSource.start(ctx.currentTime);
 
-      // Stop
-      lfo.stop(ctx.currentTime + 1.4);
-      osc.stop(ctx.currentTime + 1.4);
-      noiseSource.stop(ctx.currentTime + 1.4);
+      lfo.stop(ctx.currentTime + 1.6);
+      osc1.stop(ctx.currentTime + 1.6);
+      osc2.stop(ctx.currentTime + 1.6);
+      noiseSource.stop(ctx.currentTime + 1.6);
     } catch {
       // Audio fallback
     }
@@ -128,7 +141,7 @@ export function App() {
           clearInterval(timer);
           setIsCountingDown(false);
           setRevealed(true);
-          playPrankSound();
+          playScreamerSound();
           return 0;
         }
         playClickTick();

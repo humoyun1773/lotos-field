@@ -7,13 +7,13 @@ import { FooterBanner } from './components/FooterBanner';
 import { DynamicBackground } from './components/DynamicBackground';
 import { Preloader } from './components/Preloader';
 import { NavigationLoader } from './components/NavigationLoader';
-import { LicenseModal } from './components/LicenseModal';
-import { Phone, ShieldCheck } from 'lucide-react';
+// import { LicenseModal } from './components/LicenseModal';
+import { Phone /*, ShieldCheck */ } from 'lucide-react';
 
 export function App() {
   const [isNavigating, setIsNavigating] = useState(false);
   const [targetServiceName, setTargetServiceName] = useState('');
-  const [isLicenseModalOpen, setIsLicenseModalOpen] = useState(false);
+  // const [isLicenseModalOpen, setIsLicenseModalOpen] = useState(false);
 
   const lastochkaService = services.find(s => s.id === 'lastochka');
   const ehsonService = services.find(s => s.id === 'ehson');
@@ -40,11 +40,11 @@ export function App() {
       {/* Navigation Redirecting Loader */}
       <NavigationLoader isOpen={isNavigating} targetName={targetServiceName} />
 
-      {/* Official Licenses & Certificates Modal */}
-      <LicenseModal
+      {/* Official Licenses & Certificates Modal (Vaqtinchalik olib tashlangan) */}
+      {/* <LicenseModal
         isOpen={isLicenseModalOpen}
         onClose={() => setIsLicenseModalOpen(false)}
-      />
+      /> */}
 
       {/* Dynamic Rotating Swallow Bird Background (5 images changing smoothly) */}
       <DynamicBackground />
@@ -59,8 +59,8 @@ export function App() {
         </div>
 
         <div className="flex items-center gap-1.5 sm:gap-3">
-          {/* License & Certificate Modal Trigger Button */}
-          <button
+          {/* License & Certificate Modal Trigger Button (Vaqtinchalik olib tashlangan) */}
+          {/* <button
             type="button"
             onClick={() => setIsLicenseModalOpen(true)}
             className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-extrabold bg-white/95 hover:bg-blue-50 text-[#0f2963] border border-blue-200 shadow-2xs hover:shadow-xs transition-all cursor-pointer group"
@@ -72,7 +72,7 @@ export function App() {
             <span className="bg-blue-600 text-white text-[9px] sm:text-[10px] px-1.5 py-0.2 rounded-full font-black">
               5
             </span>
-          </button>
+          </button> */}
 
           <a
             href={`tel:${companyInfo.rawPhone}`}

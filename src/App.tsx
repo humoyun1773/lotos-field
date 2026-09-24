@@ -6,8 +6,6 @@ import {
   AlertTriangle, 
   Share2, 
   RotateCcw, 
-  Volume2, 
-  VolumeX, 
   Check,
   Skull
 } from 'lucide-react';
@@ -16,38 +14,89 @@ export function App() {
   const [revealed, setRevealed] = useState(false);
   const [isCountingDown, setIsCountingDown] = useState(false);
   const [countdown, setCountdown] = useState(3);
-  const [soundEnabled, setSoundEnabled] = useState(true);
   const [copied, setCopied] = useState(false);
 
-  // Play browser-synthesized audio effects
-  const playBoomSound = () => {
-    if (!soundEnabled) return;
+  // Play comical prank sound using Web Audio API
+  const playPrankSound = () => {
     try {
       const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
       const ctx = new AudioCtx();
-      
-      // Dramatic bass synth drop
+
+      // Master gain
+      const masterGain = ctx.createGain();
+      masterGain.gain.setValueAtTime(0.7, ctx.currentTime);
+      masterGain.connect(ctx.destination);
+
+      // 1. Sputtering low oscillator with flutter
       const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      
+      const oscGain = ctx.createGain();
+      const filter = ctx.createBiquadFilter();
+
       osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(140, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(35, ctx.currentTime + 0.6);
-      
-      gain.gain.setValueAtTime(0.4, ctx.currentTime);
-      gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.7);
-      
-      osc.start();
-      osc.stop(ctx.currentTime + 0.7);
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(420, ctx.currentTime);
+      filter.Q.setValueAtTime(3.5, ctx.currentTime);
+
+      // Frequency slide downwards with comical pitch wobble
+      osc.frequency.setValueAtTime(125, ctx.currentTime);
+      osc.frequency.linearRampToValueAtTime(70, ctx.currentTime + 0.4);
+      osc.frequency.linearRampToValueAtTime(85, ctx.currentTime + 0.7);
+      osc.frequency.exponentialRampToValueAtTime(35, ctx.currentTime + 1.3);
+
+      // Fast flutter LFO (sputter effect)
+      const lfo = ctx.createOscillator();
+      const lfoGain = ctx.createGain();
+      lfo.frequency.setValueAtTime(26, ctx.currentTime); // 26Hz rapid vibration
+      lfoGain.gain.setValueAtTime(45, ctx.currentTime);
+      lfo.connect(osc.frequency);
+
+      // 2. White noise burst for comical puff
+      const bufferSize = Math.floor(ctx.sampleRate * 1.3);
+      const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const output = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        output[i] = Math.random() * 2 - 1;
+      }
+      const noiseSource = ctx.createBufferSource();
+      noiseSource.buffer = noiseBuffer;
+
+      const noiseFilter = ctx.createBiquadFilter();
+      noiseFilter.type = 'bandpass';
+      noiseFilter.frequency.setValueAtTime(280, ctx.currentTime);
+      noiseFilter.Q.setValueAtTime(2.2, ctx.currentTime);
+
+      const noiseGain = ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.4, ctx.currentTime);
+      noiseGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.2);
+
+      noiseSource.connect(noiseFilter);
+      noiseFilter.connect(noiseGain);
+      noiseGain.connect(masterGain);
+
+      // Envelope for the main oscillator
+      oscGain.gain.setValueAtTime(0.65, ctx.currentTime);
+      oscGain.gain.linearRampToValueAtTime(0.75, ctx.currentTime + 0.3);
+      oscGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.35);
+
+      osc.connect(filter);
+      filter.connect(oscGain);
+      oscGain.connect(masterGain);
+
+      // Start all sound generators
+      lfo.start(ctx.currentTime);
+      osc.start(ctx.currentTime);
+      noiseSource.start(ctx.currentTime);
+
+      // Stop
+      lfo.stop(ctx.currentTime + 1.4);
+      osc.stop(ctx.currentTime + 1.4);
+      noiseSource.stop(ctx.currentTime + 1.4);
     } catch {
       // Audio fallback
     }
   };
 
   const playClickTick = () => {
-    if (!soundEnabled) return;
     try {
       const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
       const ctx = new AudioCtx();
@@ -79,13 +128,13 @@ export function App() {
           clearInterval(timer);
           setIsCountingDown(false);
           setRevealed(true);
-          playBoomSound();
+          playPrankSound();
           return 0;
         }
         playClickTick();
         return prev - 1;
       });
-    }, 600);
+    }, 1000); // Aniq 3 soniya davom etadi
   };
 
   const handleCopyLink = () => {
@@ -120,28 +169,6 @@ export function App() {
           backgroundSize: '48px 48px'
         }} 
       />
-
-      {/* Top Floating Sound Toggle */}
-      <header className="absolute top-4 sm:top-6 right-4 sm:right-6 z-30">
-        <button
-          type="button"
-          onClick={() => setSoundEnabled(!soundEnabled)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-slate-800 text-xs text-slate-300 backdrop-blur-md transition-colors cursor-pointer"
-          title="Ovozni yoqish / o'chirish"
-        >
-          {soundEnabled ? (
-            <>
-              <Volume2 className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="hidden sm:inline">Ovoz: Yoniq</span>
-            </>
-          ) : (
-            <>
-              <VolumeX className="w-3.5 h-3.5 text-slate-500" />
-              <span className="hidden sm:inline">Ovoz: O'chiq</span>
-            </>
-          )}
-        </button>
-      </header>
 
       {/* COUNTDOWN FLASH OVERLAY */}
       {isCountingDown && (

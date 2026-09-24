@@ -124,13 +124,8 @@ export function App() {
         }} 
       />
 
-      {/* Top Floating Utility HUD */}
-      <header className="absolute top-4 sm:top-6 left-0 right-0 max-w-5xl mx-auto px-4 flex items-center justify-between z-30">
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-[11px] sm:text-xs text-slate-400 backdrop-blur-md">
-          <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
-          <span className="font-mono text-red-400 font-bold uppercase">MAXFIY ARCHIVE #007</span>
-        </div>
-
+      {/* Top Floating Sound Toggle */}
+      <header className="absolute top-4 sm:top-6 right-4 sm:right-6 z-30">
         <button
           type="button"
           onClick={() => setSoundEnabled(!soundEnabled)}

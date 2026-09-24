@@ -1,197 +1,90 @@
 import { useState, useEffect } from 'react';
-import { services, companyInfo } from './data/servicesData';
-import type { ServiceItem } from './types';
-import { Header } from './components/Header';
-import { ServiceCard } from './components/ServiceCard';
-import { FooterBanner } from './components/FooterBanner';
-// import { DynamicBackground } from './components/DynamicBackground';
-import { Preloader } from './components/Preloader';
-import { NavigationLoader } from './components/NavigationLoader';
-// import { LicenseModal } from './components/LicenseModal';
-import { Phone, ShieldCheck, X } from 'lucide-react';
+import { Sparkles, Eye, X, ArrowLeft } from 'lucide-react';
 
 export function App() {
-  const [isNavigating, setIsNavigating] = useState(false);
-  const [targetServiceName, setTargetServiceName] = useState('');
-  const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
+  const [showImage, setShowImage] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setIsPreviewModalOpen(false);
+        setShowImage(false);
       }
     };
-    if (isPreviewModalOpen) {
-      document.body.style.overflow = 'hidden';
-      window.addEventListener('keydown', handleKeyDown);
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isPreviewModalOpen]);
-
-  const lastochkaService = services.find(s => s.id === 'lastochka');
-  const ehsonService = services.find(s => s.id === 'ehson');
-  const otherServices = services.filter(s => s.id !== 'lastochka' && s.id !== 'ehson');
-
-  const handleNavigate = (service: ServiceItem) => {
-    if (!service.link) return;
-    setTargetServiceName(service.title);
-    setIsNavigating(true);
-
-    setTimeout(() => {
-      window.open(service.link, '_blank', 'noopener,noreferrer');
-      setTimeout(() => {
-        setIsNavigating(false);
-      }, 400);
-    }, 600);
-  };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
-    <div className="min-h-screen relative flex flex-col overflow-x-hidden font-sans text-slate-800 bg-transparent">
-      {/* Initial Page Preloader */}
-      <Preloader />
+    <main className="min-h-screen w-full bg-gradient-to-br from-slate-950 via-[#0b1120] to-slate-950 flex flex-col items-center justify-center p-4 sm:p-6 text-white relative overflow-hidden select-none">
+      {/* Subtle ambient background glow */}
+      <div className="absolute w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none -top-20 -left-20" />
+      <div className="absolute w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none -bottom-20 -right-20" />
 
-      {/* Navigation Redirecting Loader */}
-      <NavigationLoader isOpen={isNavigating} targetName={targetServiceName} />
+      {!showImage ? (
+        /* Center section: Button + Intriguing quote */
+        <div className="flex flex-col items-center justify-center max-w-xl text-center z-10 animate-fade-in">
+          {/* Glowing Animated Button Container */}
+          <div className="relative group mb-8">
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 rounded-full blur-md opacity-75 group-hover:opacity-100 group-hover:blur-lg transition duration-500 group-hover:duration-200 animate-pulse" />
+            
+            <button
+              type="button"
+              onClick={() => setShowImage(true)}
+              className="relative flex items-center justify-center gap-3 px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 active:scale-95 text-white font-extrabold text-base sm:text-xl rounded-full shadow-2xl transition-all duration-300 border border-white/20 cursor-pointer"
+            >
+              <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-300 animate-spin" style={{ animationDuration: '4s' }} />
+              <span className="tracking-wider uppercase drop-shadow">BU YERGA BOSING</span>
+              <Eye className="w-5 h-5 sm:w-6 sm:h-6 text-blue-200 group-hover:scale-110 transition-transform" />
+            </button>
+          </div>
 
-      {/* Image Preview Modal */}
-      {isPreviewModalOpen && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-fade-in"
-          onClick={() => setIsPreviewModalOpen(false)}
-        >
-          <div
-            className="relative max-w-xl w-full bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-700 flex flex-col"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Header */}
-            <div className="flex items-center justify-between px-4 py-3 bg-slate-800/90 border-b border-slate-700">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-blue-400" />
-                <span className="text-xs sm:text-sm font-bold text-white tracking-wide">
-                  Rasmiy Hujjat
-                </span>
-              </div>
-              <button
-                type="button"
-                onClick={() => setIsPreviewModalOpen(false)}
-                className="p-1 rounded-full text-slate-400 hover:text-white hover:bg-slate-700 transition-colors cursor-pointer"
-                title="Yopish"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
+          {/* Psychological Catchy / Tempting Quote */}
+          <div className="space-y-3 px-4">
+            <p className="text-base sm:text-lg md:text-xl font-medium text-slate-200 italic leading-relaxed drop-shadow">
+              «Inson doimo taqiqlangan va nomaʼlum sirlarga intiladi... 
+              Ushbu tugma ortida nima yashiringanini ko‘rishga yuragingiz yetadimi?»
+            </p>
+            <p className="text-xs sm:text-sm font-semibold tracking-widest text-indigo-400 uppercase">
+              — Qiziquvchanlik ustun kelsa, bir martagina bosing! —
+            </p>
+          </div>
+        </div>
+      ) : (
+        /* Full Big Image Reveal View */
+        <div className="flex flex-col items-center justify-center w-full max-w-5xl z-20 animate-fade-in">
+          {/* Top Actions Bar */}
+          <div className="w-full flex items-center justify-between mb-3 px-2">
+            <button
+              type="button"
+              onClick={() => setShowImage(false)}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-bold backdrop-blur transition-all cursor-pointer"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Orqaga qaytish</span>
+            </button>
 
-            {/* Modal Content */}
-            <div className="p-2 sm:p-4 bg-black flex items-center justify-center">
-              <img
-                src="/special-preview.jpg"
-                alt="Hujjat"
-                className="w-full max-h-[75vh] object-contain rounded-lg shadow-lg"
-              />
-            </div>
+            <button
+              type="button"
+              onClick={() => setShowImage(false)}
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer"
+              title="Yopish"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Full Large Image Container */}
+          <div className="relative w-full flex items-center justify-center rounded-2xl sm:rounded-3xl overflow-hidden border border-white/20 bg-black/60 shadow-[0_0_60px_rgba(0,0,0,0.8)] backdrop-blur-md p-2 sm:p-4">
+            <img
+              src="/special-preview.jpg"
+              alt="Kutilmagan rasm"
+              className="w-full max-h-[82vh] object-contain rounded-xl sm:rounded-2xl shadow-2xl"
+            />
           </div>
         </div>
       )}
-
-      {/* Official Licenses & Certificates Modal (Vaqtinchalik olib tashlangan, o'zingiz aytganda qo'yiladi) */}
-      {/* <LicenseModal
-        isOpen={isLicenseModalOpen}
-        onClose={() => setIsLicenseModalOpen(false)}
-      /> */}
-
-      {/* Dynamic Rotating Swallow Bird Background (Bodydagi rasmlar olib tashlandi) */}
-      {/* <DynamicBackground /> */}
-
-      {/* Top Floating Utility Bar */}
-      <nav className="relative w-full px-3 sm:px-6 pt-3 flex items-center justify-between z-20 max-w-screen-2xl mx-auto gap-2">
-        <div className="flex items-center gap-1.5 sm:gap-2">
-          <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-white/90 backdrop-blur shadow-2xs text-blue-800 border border-blue-100">
-            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="hidden xs:inline">24/7 </span>Qabulda
-          </span>
-        </div>
-
-        <div className="flex items-center gap-1.5 sm:gap-3">
-          {/* License & Certificate Modal Trigger Button */}
-          <button
-            type="button"
-            onClick={() => setIsPreviewModalOpen(true)}
-            className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-extrabold bg-white/95 hover:bg-blue-50 text-[#0f2963] border border-blue-200 shadow-2xs hover:shadow-xs transition-all cursor-pointer group"
-            title="Kompaniya rasmiy litsenziya va guvohnomalarini ko'rish"
-          >
-            <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 group-hover:scale-110 transition-transform" />
-            <span className="sm:hidden">Litsenziya & Rekvizit</span>
-            <span className="hidden sm:inline">Litsenziyalar & Rekvizitlar</span>
-            <span className="bg-blue-600 text-white text-[9px] sm:text-[10px] px-1.5 py-0.2 rounded-full font-black">
-              5
-            </span>
-          </button>
-
-          <a
-            href={`tel:${companyInfo.rawPhone}`}
-            className="flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-2xs transition-all"
-          >
-            <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-            <span className="hidden md:inline">{companyInfo.phone}</span>
-            <span className="md:hidden">Aloqa</span>
-          </a>
-        </div>
-      </nav>
-
-      {/* Main Content Area */}
-      <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 py-2 flex flex-col justify-center max-w-screen-2xl mx-auto">
-        {/* Brand Header */}
-        <Header />
-
-        <section className="w-full mt-2 mb-4 sm:mt-3 sm:mb-6 flex flex-col gap-4 sm:gap-5">
-          {/* Featured Top Card 1 — ZALATIYE LASTOCHKA (full width, tall) */}
-          {lastochkaService && (
-            <div className="w-full">
-              <ServiceCard
-                service={lastochkaService}
-                featured
-                onNavigate={handleNavigate}
-              />
-            </div>
-          )}
-
-          {/* Featured Top Card 2 — EHSON.UZ (full width, exactly like top card) */}
-          {ehsonService && (
-            <div className="w-full">
-              <ServiceCard
-                service={ehsonService}
-                featured
-                onNavigate={handleNavigate}
-              />
-            </div>
-          )}
-
-          {/* 5 Service Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5">
-            {otherServices.map((service) => (
-              <ServiceCard
-                key={service.id}
-                service={service}
-                onNavigate={handleNavigate}
-              />
-            ))}
-          </div>
-        </section>
-
-        {/* Bottom Contact Pill Footer */}
-        <FooterBanner />
-      </main>
-    </div>
+    </main>
   );
 }
 
 export default App;
-
-

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { services, companyInfo } from './data/servicesData';
+import { services } from './data/servicesData';
 import type { ServiceItem } from './types';
 import { Header } from './components/Header';
 import { ServiceCard } from './components/ServiceCard';
@@ -8,7 +8,7 @@ import { DynamicBackground } from './components/DynamicBackground';
 import { Preloader } from './components/Preloader';
 import { NavigationLoader } from './components/NavigationLoader';
 import { LicenseModal } from './components/LicenseModal';
-import { Phone, ShieldCheck } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 
 export function App() {
   const [isNavigating, setIsNavigating] = useState(false);
@@ -73,15 +73,6 @@ export function App() {
               5
             </span>
           </button>
-
-          <a
-            href={`tel:${companyInfo.rawPhone}`}
-            className="flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-2xs transition-all"
-          >
-            <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-            <span className="hidden md:inline">{companyInfo.phone}</span>
-            <span className="md:hidden">Aloqa</span>
-          </a>
         </div>
       </nav>
 

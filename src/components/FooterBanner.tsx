@@ -1,37 +1,15 @@
 import type { FC } from 'react';
-import { Phone, ShieldCheck, MapPin } from 'lucide-react';
+import { ShieldCheck, MapPin } from 'lucide-react';
 import { companyInfo } from '../data/servicesData';
 
 export const FooterBanner: FC = () => {
   return (
-    <footer className="w-full max-w-6xl mx-auto px-4 py-6 mt-4 select-none">
+    <footer className="w-full max-w-5xl mx-auto px-4 py-6 mt-4 select-none">
       {/* Floating Bottom Card / Pill Container */}
-      <div className="relative glass-panel rounded-3xl md:rounded-full shadow-[0_10px_28px_rgba(15,41,99,0.1)] p-3 sm:p-4 md:p-3 border border-white/90 flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 transition-all duration-300">
+      <div className="relative glass-panel rounded-3xl md:rounded-full shadow-[0_10px_28px_rgba(15,41,99,0.1)] p-3 sm:p-4 md:p-3 border border-white/90 flex flex-col md:flex-row items-center justify-center md:justify-around gap-4 sm:gap-6 transition-all duration-300">
         
-        {/* Left Section: BIZ BILAN BOG'LANING + PHONE */}
-        <a
-          href={`tel:${companyInfo.rawPhone}`}
-          className="group flex items-center gap-3 px-4 py-2 rounded-full hover:bg-blue-50/80 transition-all cursor-pointer w-full md:w-auto justify-center md:justify-start"
-          title="Qo'ng'iroq qilish"
-        >
-          {/* Phone Circle Icon */}
-          <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-[#0f2963] to-[#2563eb] text-white flex items-center justify-center shadow-md group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
-            <Phone className="w-5 h-5 sm:w-6 sm:h-6 fill-current animate-bounce" />
-          </div>
-          
-          {/* Text labels */}
-          <div className="flex flex-col text-left">
-            <span className="text-[10px] sm:text-xs font-bold tracking-wider text-slate-500 uppercase">
-              BIZ BILAN BOG'LANING
-            </span>
-            <span className="text-base sm:text-lg md:text-xl font-black tracking-tight text-[#0f2963] font-space group-hover:text-blue-600 transition-colors">
-              {companyInfo.phone}
-            </span>
-          </div>
-        </a>
-
         {/* Center Section: SIFAT - ISHONCH - NATIJA Shield Badge */}
-        <div className="flex-1 max-w-sm w-full">
+        <div className="max-w-sm w-full">
           <div className="relative bg-gradient-to-r from-[#0f2963] via-[#1d4ed8] to-[#0f2963] text-white rounded-full py-2.5 px-5 shadow-lg border border-white/40 flex items-center justify-center gap-3">
             {/* Shield Icon in white circle */}
             <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center border border-white/40">
